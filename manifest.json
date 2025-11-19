@@ -1,0 +1,16 @@
+{
+  "name": "Jira Branch Creator",
+  "description": "Creates a button in Jira issues to copy a Git-friendly branch name",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "48": "jira_branch_creator.png",
+    "128": "jira_branch_creator.png"
+  },
+  "action": {
+    "default_title": "Jira Branch Creator",
+    "default_popup": "popup.html",
+    "default_icon": "jira_branch_creator.png"
+  },
+  "host_permissions": ["*://*.atlassian.net/*", "*://*.jira.com/*"]
+}
