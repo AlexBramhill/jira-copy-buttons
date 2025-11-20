@@ -6,10 +6,10 @@ export default defineConfig({
     outDir: "dist/content",
     emptyOutDir: false,
     lib: {
-      entry: resolve(__dirname, "src/content/content.ts"),
+      entry: resolve(__dirname, "src/content/index.ts"),
       name: "contentScript",
       formats: ["iife"],
-      fileName: () => "content.js",
+      fileName: () => "index.js",
     },
     rollupOptions: {
       output: {
