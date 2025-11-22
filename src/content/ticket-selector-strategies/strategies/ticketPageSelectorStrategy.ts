@@ -1,4 +1,7 @@
-import { selectElementsByVc, selectElementByTestId } from "../elementSelector";
+import {
+  selectElementsByVc,
+  selectElementByTestId,
+} from "../../helpers/elementSelector";
 import type { ITicketSelectorStrategy as ITicketSelectorStrategy } from "../ITicketSelectorStrategy";
 
 /**

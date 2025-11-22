@@ -1,4 +1,4 @@
-import { createElementName, ELEMENT_PREFIX } from "../../element-namer";
+import { createElementName, ELEMENT_PREFIX } from "../../helpers/element-namer";
 import type { ITicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
 import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy";
 

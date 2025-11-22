@@ -1,7 +1,7 @@
 import {
   selectElementsByTestId,
   selectElementByTestId,
-} from "../elementSelector";
+} from "../../helpers/elementSelector";
 import type { ITicketSelectorStrategy as ITicketSelectorStrategy } from "../ITicketSelectorStrategy";
 
 /**
