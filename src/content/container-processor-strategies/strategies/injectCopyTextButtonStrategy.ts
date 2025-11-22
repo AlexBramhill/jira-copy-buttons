@@ -6,7 +6,7 @@ export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
     container,
     ticketSelectorStrategy,
   }: {
-    container: Element;
+    container: HTMLElement;
     ticketSelectorStrategy: ITicketSelectorStrategy;
   }) => {
     const text = "Test Text";

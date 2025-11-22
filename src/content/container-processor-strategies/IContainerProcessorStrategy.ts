@@ -5,7 +5,7 @@ export interface IContainerProcessorStrategy {
     container,
     ticketSelectorStrategy,
   }: {
-    container: Element;
+    container: HTMLElement;
     ticketSelectorStrategy: ITicketSelectorStrategy;
   }) => void;
 }

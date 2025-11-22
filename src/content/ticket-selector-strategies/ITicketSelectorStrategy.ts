@@ -1,5 +1,5 @@
 export interface ITicketSelectorStrategy {
-  selectContainers: () => NodeListOf<Element>;
-  selectPrefixElement: (container: Element) => Element | null;
-  selectTitleElement: (container: Element) => Element | null;
+  selectContainers: () => NodeListOf<HTMLElement>;
+  selectPrefixElement: (container: HTMLElement) => HTMLElement | null;
+  selectTitleElement: (container: HTMLElement) => HTMLElement | null;
 }
