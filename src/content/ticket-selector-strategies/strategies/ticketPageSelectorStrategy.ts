@@ -1,17 +1,19 @@
+import { selectElementsByVc, selectElementByTestId } from "../elementSelector";
 import type { ITicketSelectorStrategy as ITicketSelectorStrategy } from "../ITicketSelectorStrategy";
 
 /**
  * Rule for ticket page ie https://example.atlassian.net/browse/PD-1
  */
 export const ticketPageSelectorStrategy: ITicketSelectorStrategy = {
-  selectContainers: () =>
-    document.querySelectorAll('[data-vc="FullPageIssueContainer"]'),
-  selectPrefixElement: (_container: Element) =>
-    _container.querySelector(
-      '[data-testid="issue.views.issue-base.foundation.breadcrumbs.current-issue.item"]'
+  selectContainers: () => selectElementsByVc("FullPageIssueContainer"),
+  selectPrefixElement: (container: HTMLElement) =>
+    selectElementByTestId(
+      "issue.views.issue-base.foundation.breadcrumbs.current-issue.item",
+      container
     ),
-  selectTitleElement: (_container: Element) =>
-    _container.querySelector(
-      '[data-testid="issue.views.issue-base.foundation.summary.heading"]'
+  selectTitleElement: (container: HTMLElement) =>
+    selectElementByTestId(
+      "issue.views.issue-base.foundation.summary.heading",
+      container
     ),
 };

@@ -1,3 +1,7 @@
+import {
+  selectElementsByTestId,
+  selectElementByTestId,
+} from "../elementSelector";
 import type { ITicketSelectorStrategy as ITicketSelectorStrategy } from "../ITicketSelectorStrategy";
 
 /**
@@ -5,15 +9,17 @@ import type { ITicketSelectorStrategy as ITicketSelectorStrategy } from "../ITic
  */
 export const ticketModalSelectorStrategy: ITicketSelectorStrategy = {
   selectContainers: () =>
-    document.querySelectorAll(
-      '[data-testid="issue.views.issue-details.issue-modal.modal-dialog"]'
+    selectElementsByTestId(
+      "issue.views.issue-details.issue-modal.modal-dialog"
     ),
-  selectPrefixElement: (_container: Element) =>
-    _container.querySelector(
-      '[data-testid="issue.views.issue-base.foundation.breadcrumbs.current-issue.item"]'
+  selectPrefixElement: (container: HTMLElement) =>
+    selectElementByTestId(
+      "issue.views.issue-base.foundation.breadcrumbs.current-issue.item",
+      container
     ),
-  selectTitleElement: (_container: Element) =>
-    _container.querySelector(
-      '[data-testid="issue.views.issue-base.foundation.summary.heading"]'
+  selectTitleElement: (container: HTMLElement) =>
+    selectElementByTestId(
+      "issue.views.issue-base.foundation.summary.heading",
+      container
     ),
 };
