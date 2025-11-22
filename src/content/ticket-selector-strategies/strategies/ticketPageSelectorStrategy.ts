@@ -6,12 +6,12 @@ import type { ITicketSelectorStrategy as ITicketSelectorStrategy } from "../ITic
 export const ticketPageSelectorStrategy: ITicketSelectorStrategy = {
   selectContainers: () =>
     document.querySelectorAll('[data-vc="FullPageIssueContainer"]'),
-  selectPrefixElement: (_container: Element) =>
-    _container.querySelector(
+  selectPrefixElement: (container: HTMLElement) =>
+    container.querySelector(
       '[data-testid="issue.views.issue-base.foundation.breadcrumbs.current-issue.item"]'
     ),
-  selectTitleElement: (_container: Element) =>
-    _container.querySelector(
+  selectTitleElement: (container: HTMLElement) =>
+    container.querySelector(
       '[data-testid="issue.views.issue-base.foundation.summary.heading"]'
     ),
 };

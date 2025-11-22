@@ -3,17 +3,15 @@ import type { ITicketSelectorStrategy as ITicketSelectorStrategy } from "../ITic
 /**
  * Rule for ticket modal ie https://example.atlassian.net/jira/software/projects/PD/boards/1?selectedIssue=PD-1
  */
-export const ticketModalSelectorStrategy: ITicketSelectorStrategy = {
+export const ticketCardSelectorStrategy: ITicketSelectorStrategy = {
   selectContainers: () =>
     document.querySelectorAll(
-      '[data-testid="issue.views.issue-details.issue-modal.modal-dialog"]'
+      '[data-testid="platform-card.ui.card.focus-container"]'
     ),
   selectPrefixElement: (container: HTMLElement) =>
-    container.querySelector(
-      '[data-testid="issue.views.issue-base.foundation.breadcrumbs.current-issue.item"]'
-    ),
+    container.querySelector('[data-testid="platform-card.common.ui.key.key"]'),
   selectTitleElement: (container: HTMLElement) =>
     container.querySelector(
-      '[data-testid="issue.views.issue-base.foundation.summary.heading"]'
+      '[data-component-selector="platform-card.ui.card.card-content.content-section"]'
     ),
 };
