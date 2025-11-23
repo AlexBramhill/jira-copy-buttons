@@ -1,4 +1,4 @@
-import { For, Index } from "solid-js";
+import { For } from "solid-js";
 import { HostnameRow } from "./HostnameRow";
 import { IconButton } from "../IconButton";
 
@@ -21,8 +21,8 @@ const HostnamesEditor = (props: HostnamesEditorProps) => {
             Whitelisted URLs
           </label>
         </p>
-        Add in the hostnames of your Jira instances (one per line) where you
-        want the branch creation buttons to appear.
+        Add in the hostnames of your Jira instances where you want the branch
+        creation buttons to appear.
       </div>
 
       <For each={props.hostnames}>
