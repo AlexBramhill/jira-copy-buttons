@@ -18,21 +18,27 @@ A Chrome extension that adds a button to Jira issue pages to easily create and c
     cd jira-branch-creator-button
     ```
 
-2.  **Install dependencies:**
+1.  **Install dependencies:**
 
     ```bash
     npm install
     ```
 
-3.  **Build the extension:**
+1.  **Build the extension:**
+
+    ```bash
+    npm run dev
+    ```
+
+    or
 
     ```bash
     npm run build
     ```
 
-    This will create a `dist` folder with the packed extension files.
+        This will create a `dist` folder with the packed extension files. Dev mode has live reloading to the build folder (note: extension still requires being reloaded in Chrome based on Chrome's requirements)
 
-4.  **Load the extension in Chrome:**
+1.  **Load the extension in Chrome:**
     - Navigate to `chrome://extensions`.
     - Enable **Developer mode** using the toggle in the top-right corner.
     - Click the **Load unpacked** button.
