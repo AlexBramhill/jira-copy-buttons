@@ -20,7 +20,7 @@ export default function UrlInput() {
     const value = (e.target as HTMLInputElement).value;
     setInputValue(value);
     await saveHostname(value);
-    logger.info({ value }, "Saved hostname to storage");
+    logger.debug({ value }, "Saved hostname to storage");
   };
 
   return (
