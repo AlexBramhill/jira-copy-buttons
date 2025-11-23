@@ -25,7 +25,7 @@ export default function UrlInput() {
 
   return (
     <div>
-      <label for="url-input">URL:</label>
+      <label for="url-input">Whitelisted URL:</label>
       <div style="display: flex; gap: 4px;">
         <span>https://</span>
         <input
