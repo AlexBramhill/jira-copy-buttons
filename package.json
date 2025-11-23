@@ -11,8 +11,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
     "pino": "^9.4.0",
-    "solid-js": "^1.9.10"
+    "solid-js": "^1.9.10",
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",
