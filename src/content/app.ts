@@ -4,7 +4,8 @@ import { allTicketSelectorStrategies } from "./ticket-selector-strategies/allTic
 import { logger } from "../shared/logger";
 
 export const runApp = () => {
-  logger.info("Content script loaded");
+  logger.debug("Debug mode enabled");
+  logger.debug("Content script loaded");
 
   chrome.runtime.sendMessage({ msg: "Hello from content script" });
 
