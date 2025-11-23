@@ -1,11 +1,12 @@
 import { allContainerProcessorStrategies } from "../container-processor-strategies/allContainerProcessorStrategies";
 import type { ITicketSelectorStrategy } from "../ticket-selector-strategies/ITicketSelectorStrategy";
+import { logger } from "../../shared/logger";
 
 export const addProcessPageEventListener = (
   ticketSelectorStrategies: ITicketSelectorStrategy[]
 ) => {
   const observer = new MutationObserver(() => {
-    console.log("DOM mutated, processing page again.");
+    logger.debug("DOM mutated, processing page again");
     processPage(ticketSelectorStrategies);
   });
 

@@ -1,15 +1,16 @@
 import { isOnJiraPage } from "./helpers/jiraPageDeterminator";
 import { addProcessPageEventListener } from "./page-processor/processPage";
 import { allTicketSelectorStrategies } from "./ticket-selector-strategies/allTicketSelectorStrategies";
+import { logger } from "../shared/logger";
 
 export const runApp = () => {
-  console.log("Content script loaded!");
+  logger.info("Content script loaded");
 
   chrome.runtime.sendMessage({ msg: "Hello from content script" });
 
   (async () => {
     if (await isOnJiraPage()) {
-      console.log("On Jira page, applying border style.");
+      logger.debug("On Jira page, registering processors");
       addProcessPageEventListener(allTicketSelectorStrategies);
     }
   })();

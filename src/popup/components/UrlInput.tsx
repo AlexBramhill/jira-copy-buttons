@@ -1,14 +1,16 @@
 import { createSignal, onMount } from "solid-js";
 import {
-    getHostname,
-  saveHostname,} from "../../shared/repository/chromeStorageSync";
+  getHostname,
+  saveHostname,
+} from "../../shared/repository/chromeStorageSync";
+import { logger } from "../../shared/logger";
 
 export default function UrlInput() {
   const [inputValue, setInputValue] = createSignal("");
 
   onMount(async () => {
     const savedValue = await getHostname();
-    console.log("Loaded from storage:", savedValue);
+    logger.debug({ savedValue }, "Loaded hostname from storage");
     if (savedValue) {
       setInputValue(savedValue);
     }
@@ -18,7 +20,7 @@ export default function UrlInput() {
     const value = (e.target as HTMLInputElement).value;
     setInputValue(value);
     await saveHostname(value);
-    console.log("Saved to storage:", value);
+    logger.info({ value }, "Saved hostname to storage");
   };
 
   return (
