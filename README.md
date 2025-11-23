@@ -36,7 +36,7 @@ A Chrome extension that adds a button to Jira issue pages to easily create and c
     npm run build
     ```
 
-        This will create a `dist` folder with the packed extension files. Dev mode has live reloading to the build folder (note: extension still requires being reloaded in Chrome based on Chrome's requirements)
+    This will create a `dist` folder with the packed extension files. Dev mode has live reloading to the build folder (note: extension still requires being reloaded in Chrome based on Chrome's requirements)
 
 1.  **Load the extension in Chrome:**
     - Navigate to `chrome://extensions`.
