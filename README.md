@@ -6,7 +6,7 @@ A Chrome extension that adds a button to Jira issue pages to easily create and c
 
 - **Configurable Jira URL**: Set your team's Jira domain in the extension popup.
 - **Automatic Button Injection**: A "Copy Branch Name" button is automatically added to Jira issue pages.
-- **Formatted Branch Names**: Generates branch names like `feature/TICKET-123-a-brief-ticket-summary`.
+- **Formatted Branch Names**: Generates branch names like `TicketNumber/a-brief-ticket-summary`.
 - **One-Click Copy**: Copies the generated branch name to your clipboard instantly.
 
 ## Development
