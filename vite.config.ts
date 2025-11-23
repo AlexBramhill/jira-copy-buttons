@@ -2,11 +2,11 @@ import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 import { resolve } from "path";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [solidPlugin()],
   build: {
     outDir: "dist",
-    emptyOutDir: true,
+    emptyOutDir: mode !== "development",
     rollupOptions: {
       input: {
         popup: resolve(__dirname, "pages/popup.html"),
@@ -20,4 +20,4 @@ export default defineConfig({
     },
   },
   publicDir: "public",
-});
+}));
