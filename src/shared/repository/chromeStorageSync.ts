@@ -1,12 +1,13 @@
 import { storageKeys } from "./storageKeys";
 
-export const saveHostname = async (hostname: string): Promise<void> => {
+export const saveHostnames = async (hostnames: string[]): Promise<void> => {
   await chrome.storage.sync.set({
-    [storageKeys.savedHostname]: hostname,
+    [storageKeys.savedHostnames]: hostnames,
   });
 };
 
-export const getHostname = async (): Promise<string | null> => {
-  const result = await chrome.storage.sync.get([storageKeys.savedHostname]);
-  return result[storageKeys.savedHostname] || null;
+export const getHostnames = async (): Promise<string[]> => {
+  const result = await chrome.storage.sync.get([storageKeys.savedHostnames]);
+  const stored = result[storageKeys.savedHostnames];
+  return Array.isArray(stored) ? stored : [];
 };
