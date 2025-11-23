@@ -1,8 +1,9 @@
 import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy";
+import { logger } from "../../../shared/logger";
 
 export const debugStrategy: IContainerProcessorStrategy = {
   processContainer: ({ container, ticketSelectorStrategy }) => {
-    console.log("Debug Strategy: Processing container", container);
+    logger.debug("Debug Strategy: Processing container", container);
 
     var prefixElement = ticketSelectorStrategy.selectPrefixElement(container);
 

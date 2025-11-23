@@ -1,6 +1,7 @@
 import { createElementName, ELEMENT_PREFIX } from "../../helpers/element-namer";
 import type { ITicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
 import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy";
+import { logger } from "../../../shared/logger";
 
 export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
   processContainer: ({
@@ -10,14 +11,14 @@ export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
     container: HTMLElement;
     ticketSelectorStrategy: ITicketSelectorStrategy;
   }) => {
-    console.log("Injecting button into container:", container);
+    logger.debug({ container }, "Injecting button into container");
 
     const text = getTextToCopy(ticketSelectorStrategy, container);
 
     const buttonId = createElementName(`copy-button-${text}`); // TODO hash the strategy and add here
 
     if (document.getElementById(buttonId)) {
-      console.log("Button already exists, skipping injection");
+      logger.debug({ buttonId }, "Button already exists, skipping injection");
       return;
     }
 

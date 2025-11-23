@@ -1,3 +1,5 @@
+import { logger } from "../shared/logger";
+
 chrome.runtime.onInstalled.addListener(() => {
-  console.log("SolidJS extension installed!");
+  logger.info("Extension installed");
 });
