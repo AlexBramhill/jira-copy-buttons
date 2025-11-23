@@ -1,8 +1,7 @@
 import pino from "pino";
-import { Environment } from "./environment";
+import { isDebug } from "./debugger";
 
-const level =
-  import.meta.env.MODE === Environment.Development ? "debug" : "info";
+const level = isDebug() ? "debug" : "info";
 
 export const logger = pino({
   level,
