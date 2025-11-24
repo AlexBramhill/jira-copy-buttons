@@ -9,7 +9,7 @@ import type { UUID } from "crypto";
 
 type MultipleTextInputEditorProps = {
   textInput: TextInputComponent;
-  hostnames: StringStoreWithId[];
+  data: StringStoreWithId[];
   onAdd: () => void;
   onChange: (stringStoreWithId: StringStoreWithId) => void;
   onRemove: (id: UUID) => void;
@@ -19,11 +19,11 @@ const MultipleTextInputEditor = (props: MultipleTextInputEditorProps) => {
   return (
     <>
       {props.children}
-      <For each={props.hostnames}>
-        {(value) => (
+      <For each={props.data}>
+        {(item) => (
           <MultipleTextInputRow
             textInput={props.textInput}
-            data={value}
+            data={item}
             onChange={props.onChange}
             onRemove={props.onRemove}
           />

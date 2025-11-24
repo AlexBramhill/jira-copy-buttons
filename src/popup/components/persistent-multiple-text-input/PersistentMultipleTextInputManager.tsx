@@ -45,12 +45,12 @@ const PersistentMultipleTextInputManager = ({
     const stringStoreWithIds =
       getStringStoreWithIdsFromSavedValuesOrDefault(savedValues);
     setSavedStrings(stringStoreWithIds);
-    logger.debug({ savedValues }, "Loaded hostnames from storage");
+    logger.debug({ savedValues }, "Loaded from storage");
   });
 
   const persistValues = async (values: StringStoreWithId[] = savedStrings) => {
     await saveToPersistence(values.map((row) => row.value));
-    logger.debug({ hostnames: values }, "Saved hostnames to storage");
+    logger.debug({ values }, "Saved to storage");
   };
 
   const handleValueChange = async (row: StringStoreWithId) => {
@@ -62,7 +62,7 @@ const PersistentMultipleTextInputManager = ({
     await persistValues();
   };
 
-  const removeHostnameField = async (id: UUID) => {
+  const removeField = async (id: UUID) => {
     if (savedStrings.length === 1) {
       setSavedStrings([createEmptyStringStoreWithId()]);
     } else {
@@ -71,7 +71,7 @@ const PersistentMultipleTextInputManager = ({
     await persistValues();
   };
 
-  const addHostnameField = async () => {
+  const addField = async () => {
     setSavedStrings((current) => [...current, createEmptyStringStoreWithId()]);
     await persistValues();
   };
@@ -80,10 +80,10 @@ const PersistentMultipleTextInputManager = ({
     <MultipleTextInputEditor
       textInput={textInput}
       children={children}
-      hostnames={savedStrings}
-      onAdd={addHostnameField}
+      data={savedStrings}
+      onAdd={addField}
       onChange={handleValueChange}
-      onRemove={removeHostnameField}
+      onRemove={removeField}
     />
   );
 };
