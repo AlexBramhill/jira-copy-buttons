@@ -1,14 +1,12 @@
 import type { UUID } from "crypto";
 import { IconButton } from "../IconButton";
+import type { ValueStoreWithId } from "../../helpers/signalHelpers";
 
-export type MultipleTextInputRowItem = {
-  id: UUID;
-  value: string;
-};
+export type StringStoreWithId = ValueStoreWithId<string>;
 
 interface MultipleTextInputRowProps {
-  data: MultipleTextInputRowItem;
-  onChange: (id: UUID, value: string) => void;
+  data: StringStoreWithId;
+  onChange: (stringStoreWithId: StringStoreWithId) => void;
   onRemove: (id: UUID) => void;
 }
 
@@ -32,7 +30,10 @@ export const MultipleTextInputRow = ({
         type="text"
         value={data.value}
         onInput={(event) =>
-          onChange(data.id, (event.target as HTMLInputElement).value)
+          onChange({
+            id: data.id,
+            value: event.currentTarget.value,
+          })
         }
         placeholder="example.atlassian.net"
         class="flex-1 rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:outline-none"

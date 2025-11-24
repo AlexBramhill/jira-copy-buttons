@@ -9,10 +9,11 @@ import {
   removeFieldByIdCallback as removeFieldByIdCallback,
 } from "../../helpers/signalHelpers";
 import MultipleTextInputEditor from "./MultipleTextInputEditor";
-import type { MultipleTextInputRowItem } from "./MultipleTextInputRow";
+import type { StringStoreWithId } from "./MultipleTextInputRow";
+import type { UUID } from "crypto";
 
 export const MultipleTextInputManager = () => {
-  const [hostnames, setHostnames] = createSignal<MultipleTextInputRowItem[]>([
+  const [hostnames, setHostnames] = createSignal<StringStoreWithId[]>([
     { id: crypto.randomUUID(), value: "" },
   ]);
 
@@ -27,27 +28,25 @@ export const MultipleTextInputManager = () => {
     logger.debug({ savedValues }, "Loaded hostnames from storage");
   });
 
-  const persistHostnames = async (values: MultipleTextInputRowItem[]) => {
+  const persistHostnames = async (values: StringStoreWithId[]) => {
     await saveHostnames(values.map((row) => row.value));
     logger.debug({ hostnames: values }, "Saved hostnames to storage");
   };
 
   const updateHostnames = async (
-    updateCallback: (
-      current: MultipleTextInputRowItem[]
-    ) => MultipleTextInputRowItem[]
+    updateCallback: (current: StringStoreWithId[]) => StringStoreWithId[]
   ) => {
     const next = updateCallback(hostnames());
     setHostnames(next);
     await persistHostnames(next);
   };
 
-  const handleValueChange = async (row: MultipleTextInputRowItem) => {
+  const handleValueChange = async (row: StringStoreWithId) => {
     await updateHostnames(updateFieldByIdCallback(row.id, row));
   };
 
-  const removeHostnameField = async (row: MultipleTextInputRowItem) => {
-    await updateHostnames(removeFieldByIdCallback(row.id));
+  const removeHostnameField = async (id: UUID) => {
+    await updateHostnames(removeFieldByIdCallback(id));
   };
 
   const addHostnameField = () => {

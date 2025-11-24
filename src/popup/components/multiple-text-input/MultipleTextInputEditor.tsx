@@ -1,15 +1,15 @@
 import { For } from "solid-js";
 import {
   MultipleTextInputRow,
-  type MultipleTextInputRowItem,
+  type StringStoreWithId,
 } from "./MultipleTextInputRow";
 import { IconButton } from "../IconButton";
 import type { UUID } from "crypto";
 
 interface MultipleTextInputEditorProps {
-  hostnames: MultipleTextInputRowItem[];
+  hostnames: StringStoreWithId[];
   onAdd: () => void;
-  onChange: (id: UUID, value: string) => void;
+  onChange: (stringStoreWithId: StringStoreWithId) => void;
   onRemove: (id: UUID) => void;
 }
 
