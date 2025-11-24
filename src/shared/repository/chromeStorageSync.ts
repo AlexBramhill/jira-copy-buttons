@@ -1,29 +1,24 @@
-import { storageKeys } from "./storageKeys";
+import { storageKeys, type StorageKey } from "./storageKeys";
 
-export const saveHostnames = async (hostnames: string[]): Promise<void> => {
-  await chrome.storage.sync.set({
-    [storageKeys.savedHostnames]: hostnames,
-  });
+const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
+  await chrome.storage.sync.set({ [key]: value });
 };
 
-export const getHostnames = async (): Promise<string[]> => {
-  const result = await chrome.storage.sync.get([storageKeys.savedHostnames]);
-  const stored = result[storageKeys.savedHostnames];
-  return Array.isArray(stored) ? stored : [];
+const getValue = async <T>(key: StorageKey, defaultValue: T): Promise<T> => {
+  const result = await chrome.storage.sync.get([key]);
+  return result[key] !== undefined ? result[key] : defaultValue;
 };
 
-export const saveBranchFormatStrings = async (
+export const saveHostnames = (hostnames: string[]): Promise<void> =>
+  saveValue<string[]>(storageKeys.savedHostnames, hostnames);
+
+export const getHostnames = (): Promise<string[]> =>
+  getValue<string[]>(storageKeys.savedHostnames, []);
+
+export const saveBranchFormatStrings = (
   formatStrings: string[]
-): Promise<void> => {
-  await chrome.storage.sync.set({
-    [storageKeys.branchFormatStrings]: formatStrings,
-  });
-};
+): Promise<void> =>
+  saveValue<string[]>(storageKeys.branchFormatStrings, formatStrings);
 
-export const getBranchFormatStrings = async (): Promise<string[]> => {
-  const result = await chrome.storage.sync.get([
-    storageKeys.branchFormatStrings,
-  ]);
-  const stored = result[storageKeys.branchFormatStrings];
-  return Array.isArray(stored) ? stored : [];
-};
+export const getBranchFormatStrings = (): Promise<string[]> =>
+  getValue<string[]>(storageKeys.branchFormatStrings, []);
