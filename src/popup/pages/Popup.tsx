@@ -1,4 +1,8 @@
-import MultipleTextInputManager from "../components/multiple-text-input/MultipleTextInputManager";
+import {
+  getHostnames,
+  saveHostnames,
+} from "../../shared/repository/chromeStorageSync";
+import PersistentMultipleTextInputManager from "../components/persistant-multiple-text-input/PersistentMultipleTextInputManager";
 import PopupContainer from "../components/PopupContainer";
 
 export const Popup = () => {
@@ -6,7 +10,10 @@ export const Popup = () => {
     <PopupContainer>
       <h1 class="text-2xl font-bold mb-4">Jira Branch Creator</h1>
       <p>Adds helpful buttons for Jira issues to create branches easily.</p>
-      <MultipleTextInputManager>
+      <PersistentMultipleTextInputManager
+        loadFromPersistence={getHostnames}
+        saveToPersistence={saveHostnames}
+      >
         <div class="space-y-3">
           <div class="">
             <p>
@@ -18,7 +25,7 @@ export const Popup = () => {
             branch creation buttons to appear.
           </div>
         </div>
-      </MultipleTextInputManager>
+      </PersistentMultipleTextInputManager>
     </PopupContainer>
   );
 };

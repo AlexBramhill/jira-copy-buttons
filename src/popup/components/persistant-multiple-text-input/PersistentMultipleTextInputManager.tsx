@@ -1,10 +1,6 @@
 import { onMount, type ParentProps } from "solid-js";
 import { createStore } from "solid-js/store";
 import { logger } from "../../../shared/logger";
-import {
-  getHostnames,
-  saveHostnames,
-} from "../../../shared/repository/chromeStorageSync";
 import MultipleTextInputEditor from "./MultipleTextInputEditor";
 import type { StringStoreWithId } from "./MultipleTextInputRow";
 import type { UUID } from "crypto";
@@ -25,23 +21,30 @@ const getStringStoreWithIdsFromSavedValuesOrDefault = (
     : [createEmptyStringStoreWithId()];
 };
 
-const MultipleTextInputManager = ({ children }: ParentProps) => {
+type PersistentMultipleTextInputManagerProps = {
+  saveToPersistence: (values: string[]) => Promise<void>;
+  loadFromPersistence: () => Promise<string[]>;
+} & ParentProps;
+
+const PersistentMultipleTextInputManager = ({
+  children,
+  saveToPersistence,
+  loadFromPersistence,
+}: PersistentMultipleTextInputManagerProps) => {
   const [savedStrings, setSavedStrings] = createStore<StringStoreWithId[]>([
     createEmptyStringStoreWithId(),
   ]);
 
   onMount(async () => {
-    const savedValues = await getHostnames();
+    const savedValues = await loadFromPersistence();
     const stringStoreWithIds =
       getStringStoreWithIdsFromSavedValuesOrDefault(savedValues);
     setSavedStrings(stringStoreWithIds);
     logger.debug({ savedValues }, "Loaded hostnames from storage");
   });
 
-  const persistHostnames = async (
-    values: StringStoreWithId[] = savedStrings
-  ) => {
-    await saveHostnames(values.map((row) => row.value));
+  const persistValues = async (values: StringStoreWithId[] = savedStrings) => {
+    await saveToPersistence(values.map((row) => row.value));
     logger.debug({ hostnames: values }, "Saved hostnames to storage");
   };
 
@@ -51,7 +54,7 @@ const MultipleTextInputManager = ({ children }: ParentProps) => {
       return;
     }
     setSavedStrings(index, "value", row.value);
-    await persistHostnames();
+    await persistValues();
   };
 
   const removeHostnameField = async (id: UUID) => {
@@ -60,12 +63,12 @@ const MultipleTextInputManager = ({ children }: ParentProps) => {
     } else {
       setSavedStrings((current) => current.filter((item) => item.id !== id));
     }
-    await persistHostnames();
+    await persistValues();
   };
 
   const addHostnameField = async () => {
     setSavedStrings((current) => [...current, createEmptyStringStoreWithId()]);
-    await persistHostnames();
+    await persistValues();
   };
 
   return (
@@ -79,4 +82,4 @@ const MultipleTextInputManager = ({ children }: ParentProps) => {
   );
 };
 
-export default MultipleTextInputManager;
+export default PersistentMultipleTextInputManager;
