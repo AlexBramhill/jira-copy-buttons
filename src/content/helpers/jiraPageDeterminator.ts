@@ -6,11 +6,9 @@ export const isOnJiraPage = async () => {
   const currentPageUrl = new URL(window.location.href);
   const currentPageHostname = removeWwwPrefix(currentPageUrl.hostname);
 
-  const isOnStoredHostnamePage =
-    hostnames &&
-    hostnames.some(
-      (hostname) => removeWwwPrefix(hostname) === currentPageHostname
-    );
+  const isOnStoredHostnamePage = hostnames.some(
+    (hostname) => removeWwwPrefix(hostname) === currentPageHostname
+  );
 
   return isOnStoredHostnamePage;
 };
