@@ -1,4 +1,4 @@
-import MultipleTextInputManager from "./components/Text Input/MultipleTextInputManager";
+import MultipleTextInputManager from "./components/multiple-text-input/MultipleTextInputManager";
 import PopupContainer from "./components/PopupContainer";
 
 export default function Popup() {
