@@ -2,17 +2,17 @@ import {
   getHostnames,
   saveHostnames,
 } from "../../shared/repository/chromeStorageSync";
-import PersistentMultipleTextInputManager from "../components/persistent-multiple-text-input/PersistentMultipleTextInputManager";
+import PersistentMultipleTextInputs from "../components/multiple-text-inputs/PersistentMultipleTextInputs";
 import PopupContainer from "../components/PopupContainer";
-import UrlInput from "../components/text-inputs/UrlInput";
+import UrlTextInput from "../components/text-inputs/UrlTextInput.tsx";
 
 export const Popup = () => {
   return (
     <PopupContainer>
       <h1 class="text-2xl font-bold mb-4">Jira Branch Creator</h1>
       <p>Adds helpful buttons for Jira issues to create branches easily.</p>
-      <PersistentMultipleTextInputManager
-        textInput={UrlInput}
+      <PersistentMultipleTextInputs
+        textInput={UrlTextInput}
         loadFromPersistence={getHostnames}
         saveToPersistence={saveHostnames}
       >
@@ -27,7 +27,7 @@ export const Popup = () => {
             </p>
           </div>
         </div>
-      </PersistentMultipleTextInputManager>
+      </PersistentMultipleTextInputs>
     </PopupContainer>
   );
 };

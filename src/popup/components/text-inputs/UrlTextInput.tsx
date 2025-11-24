@@ -1,6 +1,6 @@
 import type { TextInputProps } from "./TextInputProps";
 
-export const UrlInput = ({ data, onChange }: TextInputProps) => {
+export const UrlTextInput = ({ data, onChange }: TextInputProps) => {
   return (
     <>
       <span class="text-neutral-500">https://</span>
@@ -21,4 +21,4 @@ export const UrlInput = ({ data, onChange }: TextInputProps) => {
   );
 };
 
-export default UrlInput;
+export default UrlTextInput;
