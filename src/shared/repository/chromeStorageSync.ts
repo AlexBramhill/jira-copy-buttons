@@ -11,3 +11,19 @@ export const getHostnames = async (): Promise<string[]> => {
   const stored = result[storageKeys.savedHostnames];
   return Array.isArray(stored) ? stored : [];
 };
+
+export const saveBranchFormatStrings = async (
+  formatStrings: string[]
+): Promise<void> => {
+  await chrome.storage.sync.set({
+    [storageKeys.branchFormatStrings]: formatStrings,
+  });
+};
+
+export const getBranchFormatStrings = async (): Promise<string[]> => {
+  const result = await chrome.storage.sync.get([
+    storageKeys.branchFormatStrings,
+  ]);
+  const stored = result[storageKeys.branchFormatStrings];
+  return Array.isArray(stored) ? stored : [];
+};
