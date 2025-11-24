@@ -1,4 +1,4 @@
-import type { StringStoreWithId } from "../persistent-multiple-text-input/MultipleTextInputRow";
+import type { StringStoreWithId } from "../multiple-text-inputs/MultipleTextInputRow";
 
 export type TextInputProps = {
   data: StringStoreWithId;

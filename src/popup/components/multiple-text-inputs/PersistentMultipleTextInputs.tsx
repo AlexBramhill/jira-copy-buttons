@@ -24,18 +24,18 @@ const getStringStoreWithIdsFromSavedValuesOrDefault = (
     : [createEmptyStringStoreWithId()];
 };
 
-type PersistentMultipleTextInputManagerProps = {
+type PersistentMultipleTextInputsProps = {
   textInput: TextInputComponent;
   saveToPersistence: (values: string[]) => Promise<void>;
   loadFromPersistence: () => Promise<string[]>;
 } & ParentProps;
 
-const PersistentMultipleTextInputManager = ({
+const PersistentMultipleTextInputs = ({
   textInput,
   children,
   saveToPersistence,
   loadFromPersistence,
-}: PersistentMultipleTextInputManagerProps) => {
+}: PersistentMultipleTextInputsProps) => {
   const [savedStrings, setSavedStrings] = createStore<StringStoreWithId[]>([
     createEmptyStringStoreWithId(),
   ]);
@@ -88,4 +88,4 @@ const PersistentMultipleTextInputManager = ({
   );
 };
 
-export default PersistentMultipleTextInputManager;
+export default PersistentMultipleTextInputs;
