@@ -1,4 +1,4 @@
-import { For, type JSX, type ParentProps } from "solid-js";
+import { For, type ParentProps } from "solid-js";
 import {
   MultipleTextInputRow,
   type StringStoreWithId,
