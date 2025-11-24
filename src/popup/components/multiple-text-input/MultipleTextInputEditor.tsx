@@ -1,4 +1,4 @@
-import { For } from "solid-js";
+import { For, type JSX, type ParentProps } from "solid-js";
 import {
   MultipleTextInputRow,
   type StringStoreWithId,
@@ -6,29 +6,17 @@ import {
 import { IconButton } from "../IconButton";
 import type { UUID } from "crypto";
 
-interface MultipleTextInputEditorProps {
+type MultipleTextInputEditorProps = {
   hostnames: StringStoreWithId[];
   onAdd: () => void;
   onChange: (stringStoreWithId: StringStoreWithId) => void;
   onRemove: (id: UUID) => void;
-}
+} & ParentProps;
 
 const MultipleTextInputEditor = (props: MultipleTextInputEditorProps) => {
   return (
-    <div class="space-y-3">
-      <div class="">
-        <p>
-          <label
-            for="url-input-0"
-            class="text-sm font-semibold text-neutral-200"
-          >
-            Whitelisted URLs
-          </label>
-        </p>
-        Add in the hostnames of your Jira instances where you want the branch
-        creation buttons to appear.
-      </div>
-
+    <>
+      {props.children}
       <For each={props.hostnames}>
         {(value) => (
           <MultipleTextInputRow
@@ -41,7 +29,7 @@ const MultipleTextInputEditor = (props: MultipleTextInputEditorProps) => {
       <IconButton ariaLabel="Add hostname" onClick={props.onAdd}>
         +
       </IconButton>
-    </div>
+    </>
   );
 };
 

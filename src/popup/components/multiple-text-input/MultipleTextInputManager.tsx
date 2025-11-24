@@ -1,4 +1,4 @@
-import { createSignal, onMount } from "solid-js";
+import { createSignal, onMount, type ParentProps } from "solid-js";
 import { logger } from "../../../shared/logger";
 import {
   getHostnames,
@@ -12,7 +12,7 @@ import MultipleTextInputEditor from "./MultipleTextInputEditor";
 import type { StringStoreWithId } from "./MultipleTextInputRow";
 import type { UUID } from "crypto";
 
-export const MultipleTextInputManager = () => {
+export const MultipleTextInputManager = ({ children }: ParentProps) => {
   const [hostnames, setHostnames] = createSignal<StringStoreWithId[]>([
     { id: crypto.randomUUID(), value: "" },
   ]);
@@ -58,6 +58,7 @@ export const MultipleTextInputManager = () => {
 
   return (
     <MultipleTextInputEditor
+      children={children}
       hostnames={hostnames()}
       onAdd={addHostnameField}
       onChange={handleValueChange}

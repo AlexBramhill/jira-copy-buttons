@@ -1,4 +1,4 @@
 import { render } from "solid-js/web";
-import Popup from "./Popup";
+import Popup from "./pages/Popup";
 
 render(() => <Popup />, document.getElementById("root")!);
