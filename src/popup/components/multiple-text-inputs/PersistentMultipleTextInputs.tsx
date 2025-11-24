@@ -7,22 +7,10 @@ import type {
   TextInputComponent,
 } from "./MultipleTextInputRow";
 import type { UUID } from "crypto";
-
-const createEmptyStringStoreWithId = (): StringStoreWithId =>
-  createStringStoreWithIdFromString("");
-
-const createStringStoreWithIdFromString = (value: string) => ({
-  id: crypto.randomUUID(),
-  value,
-});
-
-const getStringStoreWithIdsFromSavedValuesOrDefault = (
-  savedValues: string[]
-) => {
-  return savedValues.length
-    ? savedValues.map((value) => createStringStoreWithIdFromString(value))
-    : [createEmptyStringStoreWithId()];
-};
+import {
+  createEmptyStringStoreWithId,
+  getStringStoreWithIdsFromSavedValuesOrDefault,
+} from "../text-inputs/TextInputHelpers";
 
 type PersistentMultipleTextInputsProps = {
   textInput: TextInputComponent;
