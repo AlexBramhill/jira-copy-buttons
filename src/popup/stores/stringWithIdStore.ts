@@ -21,11 +21,6 @@ export const createStringWithIdStore = ({
     createEmptyStringWithIdStoreItem(),
   ]);
 
-  const persistValues = async (rows: StringWithIdStoreItem[] = values) => {
-    await saveToPersistence(rows.map((row) => row.value));
-    logger.debug({ values: rows }, "Saved to storage");
-  };
-
   onMount(async () => {
     const savedValues = await loadFromPersistence();
     const stringWithIdStoreItems =
@@ -33,6 +28,11 @@ export const createStringWithIdStore = ({
     setValues(stringWithIdStoreItems);
     logger.debug({ savedValues }, "Loaded from storage");
   });
+
+  const persistValues = async (rows: StringWithIdStoreItem[] = values) => {
+    await saveToPersistence(rows.map((row) => row.value));
+    logger.debug({ values: rows }, "Saved to storage");
+  };
 
   const updateValue = async (row: StringWithIdStoreItem) => {
     const index = values.findIndex((item) => item.id === row.id);
