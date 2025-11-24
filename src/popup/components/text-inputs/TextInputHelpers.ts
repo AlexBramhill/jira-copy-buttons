@@ -1,17 +1,12 @@
-import type { StringWithIdStoreItem } from "../multiple-text-inputs/MultipleTextInputRow";
+import type { ValueWithIdStoreItem } from "../../stores/IValueWithIdStoreItem";
 
-const createStringWithIdStoreItem = (value: string) => ({
+export const createValueWithIdStoreItem = <T>(
+  value: T
+): ValueWithIdStoreItem<T> => ({
   id: crypto.randomUUID(),
   value,
 });
 
-export const createEmptyStringWithIdStoreItem = (): StringWithIdStoreItem =>
-  createStringWithIdStoreItem("");
-
-export const getStringWithIdStoreItemsFromSavedValuesOrDefault = (
-  savedValues: string[]
-) => {
-  return savedValues.length
-    ? savedValues.map((value) => createStringWithIdStoreItem(value))
-    : [createEmptyStringWithIdStoreItem()];
+export const createValuesWithIdStoreItems = <T>(savedValues: T[]) => {
+  return savedValues.map((value) => createValueWithIdStoreItem(value));
 };

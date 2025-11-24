@@ -1,17 +1,15 @@
 import type { UUID } from "crypto";
 import { IconButton } from "../IconButton";
-import type { ValueWithIdStore } from "../../helpers/signalHelpers";
+import type { ValueWithIdStoreItem } from "../../stores/IValueWithIdStoreItem";
 import type { Component } from "solid-js";
 import type { TextInputProps } from "../text-inputs/TextInputProps";
-
-export type StringWithIdStoreItem = ValueWithIdStore<string>;
 
 export type TextInputComponent = Component<TextInputProps>;
 
 type MultipleTextInputRowProps = {
   textInput: TextInputComponent;
-  data: StringWithIdStoreItem;
-  onChange: (stringWithIdStoreItem: StringWithIdStoreItem) => void;
+  data: ValueWithIdStoreItem<string>;
+  onChange: (valueWithIdStoreItem: ValueWithIdStoreItem<string>) => void;
   onRemove: (id: UUID) => void;
 };
 
