@@ -1,34 +1,38 @@
+import type { UUID } from "crypto";
 import { IconButton } from "../IconButton";
 
-interface HostnameRowProps {
-  index: number;
+export type MultipleTextInputRowItem = {
+  id: UUID;
   value: string;
-  onChange: (index: number, value: string) => void;
-  onRemove: (index: number) => void;
+};
+
+interface MultipleTextInputRowProps {
+  data: MultipleTextInputRowItem;
+  onChange: (id: UUID, value: string) => void;
+  onRemove: (id: UUID) => void;
 }
 
-export function HostnameRow({
-  index,
-  value,
+export const MultipleTextInputRow = ({
+  data,
   onChange,
   onRemove,
-}: HostnameRowProps) {
+}: MultipleTextInputRowProps) => {
   return (
     <div class="flex items-center gap-2">
       <IconButton
         ariaLabel="Remove hostname"
-        onClick={() => onRemove(index)}
+        onClick={() => onRemove(data.id)}
         class="py-2"
       >
         -
       </IconButton>
       <span class="text-neutral-500">https://</span>
       <input
-        id={`url-input-${index}`}
+        id={`url-input-${data.id}`}
         type="text"
-        value={value}
+        value={data.value}
         onInput={(event) =>
-          onChange(index, (event.target as HTMLInputElement).value)
+          onChange(data.id, (event.target as HTMLInputElement).value)
         }
         placeholder="example.atlassian.net"
         class="flex-1 rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:outline-none"
@@ -36,4 +40,6 @@ export function HostnameRow({
       <span class="text-neutral-500">/</span>
     </div>
   );
-}
+};
+
+export default MultipleTextInputRow;

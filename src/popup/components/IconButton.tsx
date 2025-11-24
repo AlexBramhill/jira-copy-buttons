@@ -7,12 +7,12 @@ interface IconButtonProps {
   class?: string;
 }
 
-export function IconButton({
+export const IconButton = ({
   children,
   onClick,
   ariaLabel,
   class: className,
-}: IconButtonProps) {
+}: IconButtonProps) => {
   return (
     <button
       type="button"
@@ -25,4 +25,6 @@ export function IconButton({
       {children}
     </button>
   );
-}
+};
+
+export default IconButton;

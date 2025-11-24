@@ -1,4 +1,4 @@
-import HostnamesManager from "./components/hostnames/HostnamesManager";
+import MultipleTextInputManager from "./components/Text Input/MultipleTextInputManager";
 import PopupContainer from "./components/PopupContainer";
 
 export default function Popup() {
@@ -6,7 +6,7 @@ export default function Popup() {
     <PopupContainer>
       <h1 class="text-2xl font-bold mb-4">Jira Branch Creator</h1>
       <p>Adds helpful buttons for Jira issues to create branches easily.</p>
-      <HostnamesManager />
+      <MultipleTextInputManager />
     </PopupContainer>
   );
 }

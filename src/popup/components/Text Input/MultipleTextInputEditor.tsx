@@ -1,15 +1,19 @@
 import { For } from "solid-js";
-import { HostnameRow } from "./HostnameRow";
+import {
+  MultipleTextInputRow,
+  type MultipleTextInputRowItem,
+} from "./MultipleTextInputRow";
 import { IconButton } from "../IconButton";
+import type { UUID } from "crypto";
 
-interface HostnamesEditorProps {
-  hostnames: string[];
+interface MultipleTextInputEditorProps {
+  hostnames: MultipleTextInputRowItem[];
   onAdd: () => void;
-  onChange: (index: number, value: string) => void;
-  onRemove: (index: number) => void;
+  onChange: (id: UUID, value: string) => void;
+  onRemove: (id: UUID) => void;
 }
 
-const HostnamesEditor = (props: HostnamesEditorProps) => {
+const MultipleTextInputEditor = (props: MultipleTextInputEditorProps) => {
   return (
     <div class="space-y-3">
       <div class="">
@@ -26,10 +30,9 @@ const HostnamesEditor = (props: HostnamesEditorProps) => {
       </div>
 
       <For each={props.hostnames}>
-        {(value, index) => (
-          <HostnameRow
-            index={index()}
-            value={value}
+        {(value) => (
+          <MultipleTextInputRow
+            data={value}
             onChange={props.onChange}
             onRemove={props.onRemove}
           />
@@ -42,4 +45,4 @@ const HostnamesEditor = (props: HostnamesEditorProps) => {
   );
 };
 
-export default HostnamesEditor;
+export default MultipleTextInputEditor;
