@@ -10,12 +10,9 @@ export const Popup = () => {
         <div class="space-y-3">
           <div class="">
             <p>
-              <label
-                for="url-input-0"
-                class="text-sm font-semibold text-neutral-200"
-              >
+              <h2 class="text-sm font-semibold text-neutral-200">
                 Whitelisted URLs
-              </label>
+              </h2>
             </p>
             Add in the hostnames of your Jira instances where you want the
             branch creation buttons to appear.
