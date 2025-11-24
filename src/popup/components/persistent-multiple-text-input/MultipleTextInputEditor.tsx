@@ -2,11 +2,13 @@ import { For, type ParentProps } from "solid-js";
 import {
   MultipleTextInputRow,
   type StringStoreWithId,
+  type TextInputComponent,
 } from "./MultipleTextInputRow";
 import { IconButton } from "../IconButton";
 import type { UUID } from "crypto";
 
 type MultipleTextInputEditorProps = {
+  textInput: TextInputComponent;
   hostnames: StringStoreWithId[];
   onAdd: () => void;
   onChange: (stringStoreWithId: StringStoreWithId) => void;
@@ -20,13 +22,14 @@ const MultipleTextInputEditor = (props: MultipleTextInputEditorProps) => {
       <For each={props.hostnames}>
         {(value) => (
           <MultipleTextInputRow
+            textInput={props.textInput}
             data={value}
             onChange={props.onChange}
             onRemove={props.onRemove}
           />
         )}
       </For>
-      <IconButton ariaLabel="Add hostname" onClick={props.onAdd}>
+      <IconButton ariaLabel="Add" onClick={props.onAdd}>
         +
       </IconButton>
     </>

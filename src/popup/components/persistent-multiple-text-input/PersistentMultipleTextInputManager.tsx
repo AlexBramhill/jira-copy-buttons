@@ -2,7 +2,10 @@ import { onMount, type ParentProps } from "solid-js";
 import { createStore } from "solid-js/store";
 import { logger } from "../../../shared/logger";
 import MultipleTextInputEditor from "./MultipleTextInputEditor";
-import type { StringStoreWithId } from "./MultipleTextInputRow";
+import type {
+  StringStoreWithId,
+  TextInputComponent,
+} from "./MultipleTextInputRow";
 import type { UUID } from "crypto";
 
 const createEmptyStringStoreWithId = (): StringStoreWithId =>
@@ -22,11 +25,13 @@ const getStringStoreWithIdsFromSavedValuesOrDefault = (
 };
 
 type PersistentMultipleTextInputManagerProps = {
+  textInput: TextInputComponent;
   saveToPersistence: (values: string[]) => Promise<void>;
   loadFromPersistence: () => Promise<string[]>;
 } & ParentProps;
 
 const PersistentMultipleTextInputManager = ({
+  textInput,
   children,
   saveToPersistence,
   loadFromPersistence,
@@ -73,6 +78,7 @@ const PersistentMultipleTextInputManager = ({
 
   return (
     <MultipleTextInputEditor
+      textInput={textInput}
       children={children}
       hostnames={savedStrings}
       onAdd={addHostnameField}
