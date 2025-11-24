@@ -1,13 +1,9 @@
 import type { UUID } from "crypto";
-
-export interface ValueWithIdStore<T> {
-  id: UUID;
-  value: T;
-}
+import type { ValueWithIdStoreItem } from "../stores/IValueWithIdStoreItem";
 
 export const removeFieldByIdCallback = <
   TValue,
-  T extends ValueWithIdStore<TValue>
+  T extends ValueWithIdStoreItem<TValue>
 >(
   idToRemove: UUID
 ): ((current: T[]) => T[]) => {
@@ -21,7 +17,7 @@ export const removeFieldByIdCallback = <
 
 export const updateFieldByIdCallback = <
   TValue,
-  T extends ValueWithIdStore<TValue>
+  T extends ValueWithIdStoreItem<TValue>
 >(
   idToUpdate: UUID,
   newValue: T

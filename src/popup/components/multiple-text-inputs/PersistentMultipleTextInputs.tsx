@@ -1,7 +1,7 @@
 import type { ParentProps } from "solid-js";
 import MultipleTextInputEditor from "./MultipleTextInputEditor";
 import type { TextInputComponent } from "./MultipleTextInputRow";
-import { createStringWithIdStore } from "../../stores/stringWithIdStore";
+import { createValueWithIdStore } from "../../stores/valueWithIdStore";
 
 type PersistentMultipleTextInputsProps = {
   textInput: TextInputComponent;
@@ -15,11 +15,13 @@ const PersistentMultipleTextInputs = ({
   saveToPersistence,
   loadFromPersistence,
 }: PersistentMultipleTextInputsProps) => {
-  const { values, addValue, updateValue, removeValue } =
-    createStringWithIdStore({
+  const { values, addValue, updateValue, removeValue } = createValueWithIdStore(
+    {
       loadFromPersistence,
       saveToPersistence,
-    });
+      createDefaultValue: () => "",
+    }
+  );
 
   return (
     <MultipleTextInputEditor
