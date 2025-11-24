@@ -1,17 +1,17 @@
-import type { StringStoreWithId } from "../multiple-text-inputs/MultipleTextInputRow";
+import type { StringWithIdStoreItem } from "../multiple-text-inputs/MultipleTextInputRow";
 
-const createStringStoreWithId = (value: string) => ({
+const createStringWithIdStoreItem = (value: string) => ({
   id: crypto.randomUUID(),
   value,
 });
 
-export const createEmptyStringStoreWithId = (): StringStoreWithId =>
-  createStringStoreWithId("");
+export const createEmptyStringWithIdStoreItem = (): StringWithIdStoreItem =>
+  createStringWithIdStoreItem("");
 
-export const getStringStoreWithIdsFromSavedValuesOrDefault = (
+export const getStringWithIdStoreItemsFromSavedValuesOrDefault = (
   savedValues: string[]
 ) => {
   return savedValues.length
-    ? savedValues.map((value) => createStringStoreWithId(value))
-    : [createEmptyStringStoreWithId()];
+    ? savedValues.map((value) => createStringWithIdStoreItem(value))
+    : [createEmptyStringWithIdStoreItem()];
 };

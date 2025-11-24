@@ -1,7 +1,7 @@
 import { For, type ParentProps } from "solid-js";
 import {
   MultipleTextInputRow,
-  type StringStoreWithId,
+  type StringWithIdStoreItem,
   type TextInputComponent,
 } from "./MultipleTextInputRow";
 import { IconButton } from "../IconButton";
@@ -9,9 +9,9 @@ import type { UUID } from "crypto";
 
 type MultipleTextInputEditorProps = {
   textInput: TextInputComponent;
-  data: StringStoreWithId[];
+  data: StringWithIdStoreItem[];
   onAdd: () => void;
-  onChange: (stringStoreWithId: StringStoreWithId) => void;
+  onChange: (stringWithIdStoreItem: StringWithIdStoreItem) => void;
   onRemove: (id: UUID) => void;
 } & ParentProps;
 
