@@ -1,6 +1,6 @@
-import type { StringWithIdStoreItem } from "../multiple-text-inputs/MultipleTextInputRow";
+import type { ValueWithIdStoreItem } from "../../stores/IValueWithIdStoreItem";
 
 export type TextInputProps = {
-  data: StringWithIdStoreItem;
-  onChange: (updated: StringWithIdStoreItem) => void;
+  data: ValueWithIdStoreItem<string>;
+  onChange: (updated: ValueWithIdStoreItem<string>) => void;
 };
