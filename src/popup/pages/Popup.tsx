@@ -17,15 +17,13 @@ export const Popup = () => {
         saveToPersistence={saveHostnames}
       >
         <div class="space-y-3">
-          <div class="">
-            <h2 class="text-sm font-semibold text-neutral-200">
-              Whitelisted URLs
-            </h2>
-            <p>
-              Add in the hostnames of your Jira instances where you want the
-              branch creation buttons to appear.
-            </p>
-          </div>
+          <h2 class="text-sm font-semibold text-neutral-200">
+            Whitelisted URLs
+          </h2>
+          <p>
+            Add in the hostnames of your Jira instances where you want the
+            branch creation buttons to appear.
+          </p>
         </div>
       </PersistentMultipleTextInputs>
     </PopupContainer>
