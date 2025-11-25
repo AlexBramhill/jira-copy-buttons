@@ -3,10 +3,10 @@ import { createStore, produce } from "solid-js/store";
 import type { UUID } from "crypto";
 import { logger } from "../../shared/logger";
 import {
-  createValueWithIdStoreItem,
-  createValuesWithIdStoreItems,
-} from "../components/text-inputs/TextInputHelpers";
-import type { ValueWithIdStoreItem } from "./IValueWithIdStoreItem";
+  createValueWithId as createValueWithId,
+  createValuesWithIds,
+} from "./storeItemTransformers";
+import type { ValueWithId } from "./IValueWithId";
 
 interface CreateValueWithIdStoreConfig<T> {
   loadFromPersistence: () => Promise<T[]>;
@@ -19,23 +19,23 @@ export const createValueWithIdStore = <T>({
   saveToPersistence,
   createDefaultValue,
 }: CreateValueWithIdStoreConfig<T>) => {
-  const [values, setValues] = createStore<ValueWithIdStoreItem<T>[]>([
-    createValueWithIdStoreItem(createDefaultValue()),
+  const [values, setValues] = createStore<ValueWithId<T>[]>([
+    createValueWithId(createDefaultValue()),
   ]);
 
   onMount(async () => {
     const savedValues = await loadFromPersistence();
-    const valueWithIdStoreItems = createValuesWithIdStoreItems(savedValues);
-    setValues(valueWithIdStoreItems);
+    const valueWithIds = createValuesWithIds(savedValues);
+    setValues(valueWithIds);
     logger.debug({ savedValues }, "Loaded from storage");
   });
 
-  const persistValues = async (rows: ValueWithIdStoreItem<T>[] = values) => {
+  const persistValues = async (rows: ValueWithId<T>[] = values) => {
     await saveToPersistence(rows.map((row) => row.value));
     logger.debug({ values: rows }, "Saved to storage");
   };
 
-  const updateValue = async (row: ValueWithIdStoreItem<T>) => {
+  const updateValue = async (row: ValueWithId<T>) => {
     const index = values.findIndex((item) => item.id === row.id);
     if (index === -1) {
       return;
@@ -46,7 +46,7 @@ export const createValueWithIdStore = <T>({
 
   const removeValue = async (id: UUID) => {
     if (values.length === 1) {
-      setValues([createValueWithIdStoreItem(createDefaultValue())]);
+      setValues([createValueWithId(createDefaultValue())]);
     } else {
       setValues(
         produce((draft) => {
@@ -63,7 +63,7 @@ export const createValueWithIdStore = <T>({
   const addValue = async () => {
     setValues(
       produce((draft) => {
-        draft.push(createValueWithIdStoreItem(createDefaultValue()));
+        draft.push(createValueWithId(createDefaultValue()));
       })
     );
     await persistValues();

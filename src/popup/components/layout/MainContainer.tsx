@@ -1,6 +1,6 @@
 import type { ParentProps } from "solid-js";
 
-const PopupContainer = (props: ParentProps) => {
+export const MainContainer = (props: ParentProps) => {
   return (
     <div class="min-w-[18rem] max-w-md space-y-4 border border-neutral-800 bg-neutral-900 p-4 text-neutral-100 shadow-lg">
       {props.children}
@@ -8,4 +8,4 @@ const PopupContainer = (props: ParentProps) => {
   );
 };
 
-export default PopupContainer;
+export default MainContainer;

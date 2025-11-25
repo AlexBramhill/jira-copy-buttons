@@ -1,16 +1,16 @@
 import { A } from "@solidjs/router";
+import { ROUTE_HOME } from "../../constants/routes";
 
-interface PopupNavbarProps {
+export interface MainNavbarProps {
   title: string;
   showBackButton?: boolean;
 }
-
-export const PopupNavbar = (props: PopupNavbarProps) => {
+export const MainNavbar = (props: MainNavbarProps) => {
   return (
     <div class="flex items-center gap-2 mb-4">
       {props.showBackButton && (
         <A
-          href="/"
+          href={ROUTE_HOME}
           class="rounded-md border border-neutral-700 px-2 py-1 text-sm text-neutral-100 transition hover:bg-neutral-800"
           aria-label="Back to home"
         >
@@ -22,4 +22,4 @@ export const PopupNavbar = (props: PopupNavbarProps) => {
   );
 };
 
-export default PopupNavbar;
+export default MainNavbar;
