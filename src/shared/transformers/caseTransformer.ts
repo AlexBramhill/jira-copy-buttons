@@ -6,7 +6,7 @@ import {
 } from "./stringTransformer";
 import { Case } from "./Case";
 
-export const transformCase = (text: string, caseType: Case): string => {
+export const toCase = (text: string, caseType: Case): string => {
   switch (caseType) {
     case Case.Upper:
       return text.toUpperCase();

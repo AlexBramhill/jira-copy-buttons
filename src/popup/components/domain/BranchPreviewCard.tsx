@@ -1,3 +1,9 @@
+import type { BranchCopyButtonConfig } from "../../../shared/repository/BranchCopyButtonConfig";
+import {
+  toBranchCopyButtonText,
+  toDescriptionButtonText,
+  toPrefixButtonText,
+} from "../../../shared/transformers/branchCopyButtonTransformer";
 import {
   EXAMPLE_DESCRIPTION,
   EXAMPLE_PREFIX,
@@ -6,30 +12,47 @@ import { Code } from "../common/Code";
 import type { ParentProps } from "solid-js";
 
 interface BranchPreviewCardProps extends ParentProps {
-  prefix: string;
-  description: string;
-  branchName: string;
+  config: BranchCopyButtonConfig;
 }
 
-export const BranchPreviewCard = (props: BranchPreviewCardProps) => (
-  <div class="rounded-md border border-neutral-700 bg-neutral-800/70 p-4 space-y-2 shadow-sm">
-    <div class="text-sm font-semibold text-neutral-200 mb-1">Live Preview</div>
-    <div class="space-y-1 text-xs text-neutral-400">
-      <div>
-        Prefix: <span class="text-neutral-300">{EXAMPLE_PREFIX}</span> →{" "}
-        <span class="text-neutral-100 font-mono">{props.prefix}</span>
+export const BranchPreviewCard = (props: BranchPreviewCardProps) => {
+  const transformedPrefix = toPrefixButtonText(EXAMPLE_PREFIX, props.config);
+
+  const transformedDescription = toDescriptionButtonText(
+    EXAMPLE_DESCRIPTION,
+    props.config
+  );
+  const transformedBranchName = toBranchCopyButtonText(
+    EXAMPLE_PREFIX,
+    EXAMPLE_DESCRIPTION,
+    props.config
+  );
+
+  return (
+    <div class="rounded-md border border-neutral-700 bg-neutral-800/70 p-4 space-y-2 shadow-sm">
+      <div class="text-sm font-semibold text-neutral-200 mb-1">
+        Live Preview
       </div>
-      <div>
-        Description: <span class="text-neutral-300">{EXAMPLE_DESCRIPTION}</span>{" "}
-        → <span class="text-neutral-100 font-mono">{props.description}</span>
+      <div class="space-y-1 text-xs text-neutral-400">
+        <div>
+          Prefix: <span class="text-neutral-300">{EXAMPLE_PREFIX}</span> →{" "}
+          <span class="text-neutral-100 font-mono">{transformedPrefix}</span>
+        </div>
+        <div>
+          Description:{" "}
+          <span class="text-neutral-300">{EXAMPLE_DESCRIPTION}</span> →{" "}
+          <span class="text-neutral-100 font-mono">
+            {transformedDescription}
+          </span>
+        </div>
       </div>
+      <div class="mt-2 pt-2 border-t border-neutral-700">
+        <div class="text-xs text-neutral-400 mb-1">Branch Name:</div>
+        <Code class="block w-full bg-neutral-900 border border-neutral-700 px-2 py-1 text-sm mt-1">
+          {transformedBranchName}
+        </Code>
+      </div>
+      {props.children}
     </div>
-    <div class="mt-2 pt-2 border-t border-neutral-700">
-      <div class="text-xs text-neutral-400 mb-1">Branch Name:</div>
-      <Code class="block w-full bg-neutral-900 border border-neutral-700 px-2 py-1 text-sm mt-1">
-        {props.branchName}
-      </Code>
-    </div>
-    {props.children}
-  </div>
-);
+  );
+};
