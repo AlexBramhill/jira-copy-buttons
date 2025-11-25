@@ -1,3 +1,4 @@
+import type { BranchCopyButtonConfig } from "./BranchCopyButtonConfig";
 import { storageKeys, type StorageKey } from "./storageKeys";
 
 const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
@@ -15,10 +16,15 @@ export const saveHostnames = (hostnames: string[]): Promise<void> =>
 export const getHostnames = (): Promise<string[]> =>
   getValue<string[]>(storageKeys.savedHostnames, []);
 
-export const saveBranchFormatStrings = (
-  formatStrings: string[]
+export const saveBranchCopyButtonConfigs = (
+  configs: BranchCopyButtonConfig[]
 ): Promise<void> =>
-  saveValue<string[]>(storageKeys.branchFormatStrings, formatStrings);
+  saveValue<BranchCopyButtonConfig[]>(
+    storageKeys.branchCopyButtonConfigs,
+    configs
+  );
 
-export const getBranchFormatStrings = (): Promise<string[]> =>
-  getValue<string[]>(storageKeys.branchFormatStrings, []);
+export const getBranchCopyButtonConfigs = (): Promise<
+  BranchCopyButtonConfig[]
+> =>
+  getValue<BranchCopyButtonConfig[]>(storageKeys.branchCopyButtonConfigs, []);

@@ -14,6 +14,7 @@ interface CreateValueWithIdStoreConfig<T> {
   createDefaultValue: () => T;
 }
 
+// TODO don't need create default here
 export const createValueWithIdStore = <T>({
   loadFromPersistence,
   saveToPersistence,

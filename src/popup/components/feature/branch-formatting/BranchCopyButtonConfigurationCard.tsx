@@ -1,0 +1,51 @@
+import { toCase } from "../../../../shared/transformers/caseTransformer";
+import {
+  EXAMPLE_PREFIX,
+  EXAMPLE_DESCRIPTION,
+} from "../../../constants/exampleTicket";
+import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
+import { BranchNameFormatField } from "../../domain/BranchNameFormatField";
+import { BranchPreviewCard } from "../../domain/BranchPreviewCard";
+import { ButtonNameField } from "../../domain/ButtonNameField";
+import CaseTransformField from "../../domain/CaseTransformField";
+
+interface BranchCopyButtonConfigurationCardProps {
+  value: BranchCopyButtonConfig;
+  updateValue: (value: BranchCopyButtonConfig) => Promise<void>;
+}
+
+export const BranchCopyButtonConfigurationCard = (
+  props: BranchCopyButtonConfigurationCardProps
+) => {
+  <div class="space-y-4">
+    <ButtonNameField
+      value={props.value.buttonName}
+      onInput={(value) =>
+        props.updateValue({ ...props.value, buttonName: value })
+      }
+    />
+    <BranchNameFormatField
+      value={props.value.formatPattern}
+      onInput={(value) =>
+        props.updateValue({ ...props.value, formatPattern: value })
+      }
+    />
+    <CaseTransformField
+      id="prefix-case"
+      label="Prefix Case Transform"
+      value={props.value.prefixCase}
+      onChange={(value) =>
+        props.updateValue({ ...props.value, prefixCase: value })
+      }
+    />
+    <CaseTransformField
+      id="description-case"
+      label="Description Case Transform"
+      value={props.value.descriptionCase}
+      onChange={(value) =>
+        props.updateValue({ ...props.value, descriptionCase: value })
+      }
+    />
+    <BranchPreviewCard config={props.value} />
+  </div>;
+};

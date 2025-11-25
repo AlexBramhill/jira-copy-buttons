@@ -1,11 +1,13 @@
+import type { BranchCopyButtonConfig } from "./BranchCopyButtonConfig";
+
 interface StorageData {
   savedHostnames: string[];
-  branchFormatStrings: string[];
+  branchCopyButtonConfigs: BranchCopyButtonConfig[];
 }
 
 export const storageKeys = {
   savedHostnames: "savedHostnames",
-  branchFormatStrings: "branchFormatStrings",
+  branchCopyButtonConfigs: "branchCopyButtonConfigs",
 } as const satisfies { [K in keyof StorageData]: K };
 
 export type StorageKey = (typeof storageKeys)[keyof StorageData];
