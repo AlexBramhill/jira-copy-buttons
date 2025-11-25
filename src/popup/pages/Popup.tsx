@@ -2,7 +2,7 @@ import { A } from "@solidjs/router";
 import { MainContainer } from "../components/layout/MainContainer.tsx";
 import { MainNavbar } from "../components/layout/MainNavbar.tsx";
 import { ROUTE_ADD_BUTTON } from "../constants/routes.ts";
-import { WhitelistedUrlsInput } from "../components/domain/WhitelistedUrlsInput";
+import WhitelistManager from "../components/feature/whitelist-management/WhitelistManager.tsx";
 
 export const Popup = () => {
   return (
@@ -11,7 +11,7 @@ export const Popup = () => {
       <p class="mb-4">
         Adds helpful buttons for Jira issues to create branches easily.
       </p>
-      <WhitelistedUrlsInput />
+      <WhitelistManager />
 
       <A
         href={ROUTE_ADD_BUTTON}
