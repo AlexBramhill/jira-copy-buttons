@@ -1,7 +1,7 @@
 import type { ParentProps } from "solid-js";
 import MultipleTextInputEditor from "./MultipleTextInputEditor";
 import type { TextInputComponent } from "./MultipleTextInputRow";
-import { createValueWithIdStore } from "../../stores/valueWithIdStore";
+import { createValueWithIdStore } from "../../../stores/valueWithIdStore";
 
 type PersistentMultipleTextInputsProps = {
   textInput: TextInputComponent;

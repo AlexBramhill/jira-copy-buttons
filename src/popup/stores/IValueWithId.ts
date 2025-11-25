@@ -1,6 +1,6 @@
 import type { UUID } from "crypto";
 
-export interface ValueWithIdStoreItem<T> {
+export interface ValueWithId<T> {
   id: UUID;
   value: T;
 }

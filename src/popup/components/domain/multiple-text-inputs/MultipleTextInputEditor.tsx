@@ -5,13 +5,13 @@ import {
 } from "./MultipleTextInputRow";
 import { IconButton } from "../IconButton";
 import type { UUID } from "crypto";
-import type { ValueWithIdStoreItem } from "../../stores/IValueWithIdStoreItem";
+import type { ValueWithId } from "../../../stores/IValueWithId";
 
 type MultipleTextInputEditorProps = {
   textInput: TextInputComponent;
-  data: ValueWithIdStoreItem<string>[];
+  data: ValueWithId<string>[];
   onAdd: () => void;
-  onChange: (valueWithIdStoreItem: ValueWithIdStoreItem<string>) => void;
+  onChange: (valueWithId: ValueWithId<string>) => void;
   onRemove: (id: UUID) => void;
 } & ParentProps;
 
