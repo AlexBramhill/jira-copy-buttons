@@ -1,8 +1,3 @@
-import { toCase } from "../../../../shared/transformers/caseTransformer";
-import {
-  EXAMPLE_PREFIX,
-  EXAMPLE_DESCRIPTION,
-} from "../../../constants/exampleTicket";
 import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
 import { BranchNameFormatField } from "../../domain/BranchNameFormatField";
 import { BranchPreviewCard } from "../../domain/BranchPreviewCard";
