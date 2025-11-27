@@ -1,14 +1,14 @@
-import type { BranchCopyButtonConfig } from "../../../shared/repository/BranchCopyButtonConfig";
+import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
 import {
   toBranchCopyButtonText,
   toDescriptionButtonText,
   toPrefixButtonText,
-} from "../../../shared/transformers/branchCopyButtonTransformer";
+} from "../../../../shared/transformers/branchCopyButtonTransformer";
 import {
   EXAMPLE_DESCRIPTION,
   EXAMPLE_PREFIX,
-} from "../../constants/exampleTicket";
-import { Code } from "../common/Code";
+} from "../../../constants/exampleTicket";
+import { Code } from "../../common/Code";
 import type { ParentProps } from "solid-js";
 
 interface BranchPreviewCardProps extends ParentProps {

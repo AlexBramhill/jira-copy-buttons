@@ -1,6 +1,6 @@
-import Select from "../common/Select";
-import { Case } from "../../../shared/transformers/Case";
-import FormField from "../common/FormField";
+import Select from "../../common/Select";
+import { Case } from "../../../../shared/transformers/Case";
+import FormField from "../../common/FormField";
 
 type CaseTransformOption = {
   value: Case;
