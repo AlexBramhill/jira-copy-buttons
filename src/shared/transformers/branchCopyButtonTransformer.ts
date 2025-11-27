@@ -1,3 +1,7 @@
+import {
+  EXAMPLE_DESCRIPTION,
+  EXAMPLE_PREFIX,
+} from "../../popup/constants/exampleTicket";
 import type { BranchCopyButtonConfig } from "../repository/BranchCopyButtonConfig";
 import {
   TICKET_DESCRIPTION_WILDCARD,
@@ -42,3 +46,7 @@ export const toBranchCopyButtonText = (
 
   return toJoinedButtonText(transformedPrefix, transformedDescription, config);
 };
+
+export const getExampleBranchCopyButtonText = (
+  config: BranchCopyButtonConfig
+) => toBranchCopyButtonText(EXAMPLE_PREFIX, EXAMPLE_DESCRIPTION, config);
