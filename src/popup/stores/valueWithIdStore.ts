@@ -12,6 +12,7 @@ interface CreateValueWithIdStoreConfig<T> {
   loadFromPersistence: () => Promise<T[]>;
   saveToPersistence: (values: T[]) => Promise<void>;
   createDefaultValue: () => T;
+  allowEmptyStore?: boolean;
 }
 
 // TODO don't need create default here
@@ -19,6 +20,7 @@ export const createValueWithIdStore = <T>({
   loadFromPersistence,
   saveToPersistence,
   createDefaultValue,
+  allowEmptyStore = false,
 }: CreateValueWithIdStoreConfig<T>) => {
   const [values, setValues] = createStore<ValueWithId<T>[]>([
     createValueWithId(createDefaultValue()),
@@ -46,7 +48,7 @@ export const createValueWithIdStore = <T>({
   };
 
   const removeValue = async (id: UUID) => {
-    if (values.length === 1) {
+    if (values.length === 1 && !allowEmptyStore) {
       setValues([createValueWithId(createDefaultValue())]);
     } else {
       setValues(
