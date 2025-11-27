@@ -1,5 +1,6 @@
 import { A } from "@solidjs/router";
 import { ROUTE_HOME } from "../../constants/routes";
+import { ContainerHeading } from "./ContainerHeading";
 
 export interface MainNavbarProps {
   title: string;
@@ -17,7 +18,7 @@ export const MainNavbar = (props: MainNavbarProps) => {
           ←
         </A>
       )}
-      <h1 class="text-2xl font-bold">{props.title}</h1>
+      <ContainerHeading level={1}>{props.title}</ContainerHeading>
     </div>
   );
 };
