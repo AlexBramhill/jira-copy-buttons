@@ -41,7 +41,7 @@ export const BranchCopyButtonsSummary = () => {
         <BranchCopyButtonConfigurationCard
           value={valueWithId.value}
           updateValue={(newValue) =>
-            updateValue({ ...valueWithId, value: newValue })
+            updateValue({ id: valueWithId.id, value: newValue })
           }
         ></BranchCopyButtonConfigurationCard>
       </Accordion>
