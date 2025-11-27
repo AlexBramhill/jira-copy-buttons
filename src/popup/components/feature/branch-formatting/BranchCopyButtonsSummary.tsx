@@ -9,6 +9,9 @@ import {
 } from "../../../../shared/ticketWildcards";
 import { Case } from "../../../../shared/transformers/Case";
 import { createValueWithIdStore } from "../../../stores/valueWithIdStore";
+import Accordion from "../../common/Accordion";
+import { BranchCopyButtonConfigurationCard } from "./BranchCopyButtonConfigurationCard";
+import Button from "../../common/Button";
 
 export const BranchCopyButtonsSummary = () => {
   const { values, addValue, updateValue, removeValue } = createValueWithIdStore(
@@ -26,23 +29,26 @@ export const BranchCopyButtonsSummary = () => {
 
   const renderRow = (valueWithId: (typeof values)[number]) => {
     return (
-      <tr id={valueWithId.id}>
-        <td>{valueWithId.value.buttonName}</td>
-        <td>
-          <a href={`#config-card-${valueWithId.id}`}>
-            <button type="button">Edit</button>
-          </a>
-        </td>
-      </tr>
+      <>
+        <Accordion title={valueWithId.value.buttonName}>
+          <BranchCopyButtonConfigurationCard
+            value={valueWithId.value}
+            updateValue={(newValue) =>
+              updateValue({ ...valueWithId, value: newValue })
+            }
+          ></BranchCopyButtonConfigurationCard>
+        </Accordion>
+        <Button onClick={() => removeValue(valueWithId.id)}>Remove</Button>
+      </>
     );
   };
 
   return (
     <>
-      Test
       <table>
         <tbody>
           <For each={values}>{renderRow}</For>
+          <Button onClick={addValue}>Add new button</Button>
         </tbody>
       </table>
     </>
