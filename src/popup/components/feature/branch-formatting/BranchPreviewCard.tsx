@@ -1,6 +1,6 @@
 import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
 import {
-  toBranchCopyButtonText,
+  getExampleBranchCopyButtonText,
   toDescriptionButtonText,
   toPrefixButtonText,
 } from "../../../../shared/transformers/branchCopyButtonTransformer";
@@ -22,11 +22,8 @@ export const BranchPreviewCard = (props: BranchPreviewCardProps) => {
     EXAMPLE_DESCRIPTION,
     props.config
   );
-  const transformedBranchName = toBranchCopyButtonText(
-    EXAMPLE_PREFIX,
-    EXAMPLE_DESCRIPTION,
-    props.config
-  );
+
+  const transformedBranchName = getExampleBranchCopyButtonText(props.config);
 
   return (
     <div class="rounded-md border border-neutral-700 bg-neutral-800/70 p-4 space-y-2 shadow-sm">

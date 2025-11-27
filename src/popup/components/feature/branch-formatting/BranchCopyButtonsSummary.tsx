@@ -12,6 +12,7 @@ import { createValueWithIdStore } from "../../../stores/valueWithIdStore";
 import Accordion from "../../common/Accordion";
 import { BranchCopyButtonConfigurationCard } from "./BranchCopyButtonConfigurationCard";
 import Button from "../../common/Button";
+import BranchCopyButtonHeader from "./BranchCopyButtonHeader";
 
 export const BranchCopyButtonsSummary = () => {
   const { values, addValue, updateValue, removeValue } = createValueWithIdStore(
@@ -30,7 +31,9 @@ export const BranchCopyButtonsSummary = () => {
   const renderRow = (valueWithId: (typeof values)[number]) => {
     return (
       <>
-        <Accordion title={valueWithId.value.buttonName}>
+        <Accordion
+          header={<BranchCopyButtonHeader config={valueWithId.value} />}
+        >
           <BranchCopyButtonConfigurationCard
             value={valueWithId.value}
             updateValue={(newValue) =>
