@@ -12,7 +12,7 @@ export const Accordion = (props: AccordionProps) => {
 
   return (
     <div
-      class={`border border-neutral-700 rounded-md bg-neutral-900/80 ${
+      class={`w-full border border-neutral-700 rounded-md bg-neutral-900/80 ${
         props.class ?? ""
       }`}
     >

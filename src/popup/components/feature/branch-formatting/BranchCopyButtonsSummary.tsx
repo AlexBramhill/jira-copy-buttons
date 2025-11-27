@@ -30,30 +30,32 @@ export const BranchCopyButtonsSummary = () => {
 
   const renderRow = (valueWithId: (typeof values)[number]) => {
     return (
-      <>
-        <Accordion
-          header={<BranchCopyButtonHeader config={valueWithId.value} />}
-        >
-          <BranchCopyButtonConfigurationCard
-            value={valueWithId.value}
-            updateValue={(newValue) =>
-              updateValue({ ...valueWithId, value: newValue })
-            }
-          ></BranchCopyButtonConfigurationCard>
-        </Accordion>
-        <Button onClick={() => removeValue(valueWithId.id)}>Remove</Button>
-      </>
+      <Accordion
+        header={
+          <BranchCopyButtonHeader
+            config={valueWithId.value}
+            onRemove={() => removeValue(valueWithId.id)}
+          />
+        }
+      >
+        <BranchCopyButtonConfigurationCard
+          value={valueWithId.value}
+          updateValue={(newValue) =>
+            updateValue({ ...valueWithId, value: newValue })
+          }
+        ></BranchCopyButtonConfigurationCard>
+      </Accordion>
     );
   };
 
   return (
     <>
-      <table>
+      <table class="w-full">
         <tbody>
           <For each={values}>{renderRow}</For>
-          <Button onClick={addValue}>Add new button</Button>
         </tbody>
       </table>
+      <Button onClick={addValue}>Add new button</Button>
     </>
   );
 };
