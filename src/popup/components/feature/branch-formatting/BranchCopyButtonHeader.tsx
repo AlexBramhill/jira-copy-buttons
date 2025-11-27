@@ -5,7 +5,7 @@ import IconButton from "../../common/IconButton";
 
 interface BranchCopyButtonHeaderProps {
   config: BranchCopyButtonConfig;
-  onRemove: () => void;
+  onRemove: () => Promise<void>;
 }
 
 export const BranchCopyButtonHeader = (props: BranchCopyButtonHeaderProps) => {
@@ -14,7 +14,7 @@ export const BranchCopyButtonHeader = (props: BranchCopyButtonHeaderProps) => {
       <div class="flex items-center justify-center w-10 shrink-0">
         <IconButton
           ariaLabel="Remove button"
-          onClick={props.onRemove}
+          onClick={async () => await props.onRemove()}
           class="w-8 h-8 flex items-center justify-center text-xs"
         >
           ✖

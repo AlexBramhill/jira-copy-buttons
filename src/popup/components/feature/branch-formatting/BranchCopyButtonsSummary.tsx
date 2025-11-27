@@ -9,10 +9,11 @@ import {
 } from "../../../../shared/ticketWildcards";
 import { Case } from "../../../../shared/transformers/Case";
 import { createValueWithIdStore } from "../../../stores/valueWithIdStore";
-import Accordion from "../../common/Accordion";
-import { BranchCopyButtonConfigurationCard } from "./BranchCopyButtonConfigurationCard";
 import Button from "../../common/Button";
-import BranchCopyButtonHeader from "./BranchCopyButtonHeader";
+import BranchCopyButtonAccordion from "./BranchCopyButtonAccordion";
+import type { UUID } from "crypto";
+import type { ValueWithId } from "../../../stores/IValueWithId";
+import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
 
 export const BranchCopyButtonsSummary = () => {
   const { values, addValue, updateValue, removeValue } = createValueWithIdStore(
@@ -28,34 +29,36 @@ export const BranchCopyButtonsSummary = () => {
     }
   );
 
-  const renderRow = (valueWithId: (typeof values)[number]) => {
-    return (
-      <Accordion
-        header={
-          <BranchCopyButtonHeader
-            config={valueWithId.value}
-            onRemove={() => removeValue(valueWithId.id)}
-          />
-        }
-      >
-        <BranchCopyButtonConfigurationCard
-          value={valueWithId.value}
-          updateValue={(newValue) =>
-            updateValue({ id: valueWithId.id, value: newValue })
-          }
-        ></BranchCopyButtonConfigurationCard>
-      </Accordion>
-    );
+  const handleOnRemove = async (id: UUID) => {
+    await removeValue(id);
+  };
+
+  const handleOnUpdate = async (
+    valueWithId: ValueWithId<BranchCopyButtonConfig>
+  ) => {
+    await updateValue(valueWithId);
+  };
+
+  const handleAddButtonOnClick = async () => {
+    await addValue();
   };
 
   return (
     <>
       <table class="w-full">
         <tbody>
-          <For each={values}>{renderRow}</For>
+          <For each={values}>
+            {(valueWithId) => (
+              <BranchCopyButtonAccordion
+                valueWithId={valueWithId}
+                onUpdate={handleOnUpdate}
+                onRemove={handleOnRemove}
+              />
+            )}
+          </For>
         </tbody>
       </table>
-      <Button onClick={addValue}>Add new button</Button>
+      <Button onClick={handleAddButtonOnClick}>Add new button</Button>
     </>
   );
 };
