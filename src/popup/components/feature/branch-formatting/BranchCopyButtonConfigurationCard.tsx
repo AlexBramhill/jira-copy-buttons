@@ -1,6 +1,5 @@
 import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
 import { BranchNameFormatField } from "./BranchNameFormatField";
-import { BranchPreviewCard } from "./BranchPreviewCard";
 import { ButtonNameField } from "./ButtonNameField";
 import CaseTransformField from "./CaseTransformField";
 
@@ -42,7 +41,6 @@ export const BranchCopyButtonConfigurationCard = (
           props.updateValue({ ...props.value, descriptionCase: value })
         }
       />
-      <BranchPreviewCard config={props.value} />
     </div>
   );
 };
