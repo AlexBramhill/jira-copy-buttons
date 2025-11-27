@@ -1,5 +1,6 @@
 import { MainContainer } from "../components/common/MainContainer.tsx";
 import { MainNavbar } from "../components/common/MainNavbar.tsx";
+import ContainerHeading from "../components/common/ContainerHeading.tsx";
 import WhitelistManager from "../components/feature/whitelist-management/WhitelistManager.tsx";
 import BranchCopyButtonsSummary from "../components/feature/branch-formatting/BranchCopyButtonsSummary.tsx";
 
@@ -10,7 +11,9 @@ export const Popup = () => {
       <p class="mb-4">
         Adds helpful buttons for Jira issues to create branches easily.
       </p>
+      <ContainerHeading level={2}>Sites active:</ContainerHeading>
       <WhitelistManager />
+      <ContainerHeading level={2}>Buttons:</ContainerHeading>
       <BranchCopyButtonsSummary />
     </MainContainer>
   );

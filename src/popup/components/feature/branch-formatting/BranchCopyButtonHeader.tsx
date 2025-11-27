@@ -2,6 +2,7 @@ import type { BranchCopyButtonConfig } from "../../../../shared/repository/Branc
 import { getExampleBranchCopyButtonText } from "../../../../shared/transformers/branchCopyButtonTransformer";
 import { Code } from "../../common/Code";
 import IconButton from "../../common/IconButton";
+import ContainerHeading from "../../common/ContainerHeading";
 
 interface BranchCopyButtonHeaderProps {
   config: BranchCopyButtonConfig;
@@ -21,7 +22,9 @@ export const BranchCopyButtonHeader = (props: BranchCopyButtonHeaderProps) => {
         </IconButton>
       </div>
       <div class="flex-1">
-        <h3 class="text-sm">{props.config.buttonName} button</h3>
+        <ContainerHeading level={3} class="text-sm">
+          {props.config.buttonName} button
+        </ContainerHeading>
         <Code class="mt-1">{getExampleBranchCopyButtonText(props.config)}</Code>
       </div>
     </div>
