@@ -1,5 +1,5 @@
-import { MainContainer } from "../components/layout/MainContainer.tsx";
-import { MainNavbar } from "../components/layout/MainNavbar.tsx";
+import { MainContainer } from "../components/common/MainContainer.tsx";
+import { MainNavbar } from "../components/common/MainNavbar.tsx";
 import WhitelistManager from "../components/feature/whitelist-management/WhitelistManager.tsx";
 import BranchCopyButtonsSummary from "../components/feature/branch-formatting/BranchCopyButtonsSummary.tsx";
 

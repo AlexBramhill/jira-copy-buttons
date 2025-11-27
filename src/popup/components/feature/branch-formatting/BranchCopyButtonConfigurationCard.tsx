@@ -1,8 +1,8 @@
 import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
-import { BranchNameFormatField } from "../../domain/BranchNameFormatField";
-import { BranchPreviewCard } from "../../domain/BranchPreviewCard";
-import { ButtonNameField } from "../../domain/ButtonNameField";
-import CaseTransformField from "../../domain/CaseTransformField";
+import { BranchNameFormatField } from "./BranchNameFormatField";
+import { BranchPreviewCard } from "./BranchPreviewCard";
+import { ButtonNameField } from "./ButtonNameField";
+import CaseTransformField from "./CaseTransformField";
 
 interface BranchCopyButtonConfigurationCardProps {
   value: BranchCopyButtonConfig;

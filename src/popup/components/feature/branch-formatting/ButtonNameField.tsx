@@ -1,5 +1,5 @@
-import { FormField } from "../common/FormField";
-import { TextInput } from "../common/TextInput";
+import { FormField } from "../../common/FormField";
+import { TextInput } from "../../common/TextInput";
 import type { Component } from "solid-js";
 
 interface ButtonNameFieldProps {
