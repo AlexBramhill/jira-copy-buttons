@@ -15,19 +15,14 @@ interface BranchNameFormatFieldProps {
 export const BranchNameFormatField: Component<BranchNameFormatFieldProps> = (
   props
 ) => (
-  <FormField id="format-pattern" label="Branch Name Format">
-    <>
-      <div class="mb-1 text-xs text-neutral-400">
-        Use <Code>{TICKET_PREFIX_WILDCARD}</Code> and{" "}
-        <Code>{TICKET_DESCRIPTION_WILDCARD}</Code> as wildcards
-      </div>
-      <TextInput
-        id="format-pattern"
-        value={props.value}
-        onInput={props.onInput}
-        placeholder={`${TICKET_PREFIX_WILDCARD}: ${TICKET_DESCRIPTION_WILDCARD}`}
-        class="font-mono"
-      />
-    </>
+  <FormField id="format-pattern">
+    <TextInput
+      id="format-pattern"
+      value={props.value}
+      onInput={props.onInput}
+      placeholder={`${TICKET_PREFIX_WILDCARD}: ${TICKET_DESCRIPTION_WILDCARD}`}
+      class="font-mono"
+      prefix="Formatting:"
+    />
   </FormField>
 );

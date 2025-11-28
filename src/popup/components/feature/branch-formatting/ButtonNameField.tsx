@@ -8,12 +8,13 @@ interface ButtonNameFieldProps {
 }
 
 export const ButtonNameField: Component<ButtonNameFieldProps> = (props) => (
-  <FormField id="button-name" label="Button Name">
+  <FormField id="button-name">
     <TextInput
       id="button-name"
       value={props.value}
       onInput={props.onInput}
       placeholder="Copy Branch Name"
+      prefix="Button text:"
     />
   </FormField>
 );

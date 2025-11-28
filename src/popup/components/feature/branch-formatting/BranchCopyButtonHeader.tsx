@@ -16,7 +16,7 @@ export const BranchCopyButtonHeader = (props: BranchCopyButtonHeaderProps) => {
         <IconButton
           ariaLabel="Remove button"
           onClick={async () => await props.onRemove()}
-          class="w-8 h-8 flex items-center justify-center text-xs"
+          class="w-8 h-8 flex items-center justify-center text-xs bg-neutral-800 text-neutral-400 hover:bg-red-600 hover:text-white transition-colors"
         >
           ✖
         </IconButton>
