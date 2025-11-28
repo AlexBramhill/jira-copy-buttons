@@ -1,8 +1,8 @@
 import { isOnJiraPage } from "./helpers/jiraPageDeterminator";
 import { addProcessPageEventListener } from "./page-processor/processPage";
-import { allTicketSelectorStrategies } from "./ticket-selector-strategies/allTicketSelectorStrategies";
 import { logger } from "../shared/logger";
 import { isDebug } from "../shared/debugger";
+import { getEnabledTicketSelectorStrategies } from "./helpers/strategyGetter";
 
 export const runApp = () => {
   logger.debug("Debug mode enabled");
@@ -15,7 +15,9 @@ export const runApp = () => {
   (async () => {
     if (await isOnJiraPage()) {
       logger.debug("On Jira page, registering processors");
-      addProcessPageEventListener(allTicketSelectorStrategies);
+      const enabledTicketSelectorStrategies =
+        await getEnabledTicketSelectorStrategies();
+      addProcessPageEventListener(enabledTicketSelectorStrategies);
     }
   })();
 };

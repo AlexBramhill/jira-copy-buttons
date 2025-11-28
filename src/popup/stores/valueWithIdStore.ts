@@ -1,81 +1,52 @@
 import { onMount } from "solid-js";
-import { createStore, produce } from "solid-js/store";
-import type { UUID } from "crypto";
+import { createStore } from "solid-js/store";
 import { logger } from "../../shared/logger";
-import {
-  createValueWithId as createValueWithId,
-  createValuesWithIds,
-} from "./storeItemTransformers";
 import type { ValueWithId } from "./IValueWithId";
+import { createValueWithId } from "./storeItemTransformers";
 
-interface CreateValueWithIdStoreConfig<T> {
-  loadFromPersistence: () => Promise<T[]>;
-  saveToPersistence: (values: T[]) => Promise<void>;
+interface CreateValueWithIdConfig<T> {
+  loadFromPersistence: () => Promise<T>;
+  saveToPersistence: (value: T) => Promise<void>;
   createDefaultValue: () => T;
-  allowEmptyStore?: boolean;
 }
 
 // TODO don't need create default here
+// TODO separate id layer
 export const createValueWithIdStore = <T>({
   loadFromPersistence,
   saveToPersistence,
   createDefaultValue,
-  allowEmptyStore = false,
-}: CreateValueWithIdStoreConfig<T>) => {
-  const [values, setValues] = createStore<ValueWithId<T>[]>([
-    createValueWithId(createDefaultValue()),
-  ]);
+}: CreateValueWithIdConfig<T>) => {
+  const [value, setValue] = createStore<ValueWithId<T>>(
+    createValueWithId(createDefaultValue())
+  );
 
+  // TODO: update mount to handle change in object type on new release
   onMount(async () => {
-    const savedValues = await loadFromPersistence();
-    const valueWithIds = createValuesWithIds(savedValues);
-    setValues(valueWithIds);
-    logger.debug({ savedValues }, "Loaded from storage");
+    const savedValue = await loadFromPersistence();
+    const valueWithId = createValueWithId(savedValue);
+    setValue(valueWithId);
+    logger.debug({ savedValue }, "Loaded from storage");
   });
 
-  const persistValues = async (rows: ValueWithId<T>[] = values) => {
-    await saveToPersistence(rows.map((row) => row.value));
-    logger.debug({ values: rows }, "Saved to storage");
+  const persistValues = async (valueWithId: ValueWithId<T> = value) => {
+    await saveToPersistence(valueWithId.value);
+    logger.debug({ value: valueWithId }, "Saved to storage");
   };
 
-  const updateValue = async (row: ValueWithId<T>) => {
-    const index = values.findIndex((item) => item.id === row.id);
-    if (index === -1) {
-      return;
-    }
-    setValues(index, "value", row.value);
+  const updateValue = async (valueWithId: ValueWithId<T>) => {
+    setValue(valueWithId);
     await persistValues();
   };
 
-  const removeValue = async (id: UUID) => {
-    if (values.length === 1 && !allowEmptyStore) {
-      setValues([createValueWithId(createDefaultValue())]);
-    } else {
-      setValues(
-        produce((draft) => {
-          const index = draft.findIndex((item) => item.id === id);
-          if (index !== -1) {
-            draft.splice(index, 1);
-          }
-        })
-      );
-    }
-    await persistValues();
-  };
-
-  const addValue = async () => {
-    setValues(
-      produce((draft) => {
-        draft.push(createValueWithId(createDefaultValue()));
-      })
-    );
+  const resetValue = async () => {
+    setValue(createValueWithId(createDefaultValue()));
     await persistValues();
   };
 
   return {
-    values,
-    addValue,
+    value,
     updateValue,
-    removeValue,
+    resetValue,
   };
 };

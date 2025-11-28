@@ -2,8 +2,7 @@ import { render } from "solid-js/web";
 import { HashRouter, Route } from "@solidjs/router";
 import Popup from "./pages/Popup";
 import { ROUTES } from "./constants/routes";
-import DevTools from "./pages/Devtools";
-import About from "./pages/About";
+import DevTools from "./pages/DevTools";
 
 render(
   () => (

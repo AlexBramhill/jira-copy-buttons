@@ -1,6 +1,6 @@
-import { allContainerProcessorStrategies } from "../container-processor-strategies/allContainerProcessorStrategies";
 import type { ITicketSelectorStrategy } from "../ticket-selector-strategies/ITicketSelectorStrategy";
 import { logger } from "../../shared/logger";
+import { getEnabledContainerProcessorStrategies } from "../helpers/strategyGetter";
 
 export const addProcessPageEventListener = (
   ticketSelectorStrategies: ITicketSelectorStrategy[]
@@ -19,11 +19,14 @@ export const addProcessPageEventListener = (
 export const processPage = (
   ticketSelectorStrategies: ITicketSelectorStrategy[]
 ) => {
-  ticketSelectorStrategies.forEach((ticketSelectorStrategy) => {
+  ticketSelectorStrategies.forEach(async (ticketSelectorStrategy) => {
     const containers = ticketSelectorStrategy.selectContainers();
 
+    const enabledContainerProcessorStrategies =
+      await getEnabledContainerProcessorStrategies();
+
     containers.forEach((container) => {
-      allContainerProcessorStrategies.forEach((processorStrategy) => {
+      enabledContainerProcessorStrategies.forEach((processorStrategy) => {
         processorStrategy.processContainer({
           container,
           ticketSelectorStrategy,
