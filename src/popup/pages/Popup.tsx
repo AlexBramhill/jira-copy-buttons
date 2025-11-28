@@ -16,7 +16,7 @@ export const Popup = () => {
         <WhitelistManager />
       </div>
       <div>
-        <ContainerHeading level={2}>Buttons to add:</ContainerHeading>
+        <ContainerHeading level={2}>Buttons:</ContainerHeading>
         <BranchCopyButtonsSummary />
       </div>
     </MainContainer>
