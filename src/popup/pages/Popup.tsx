@@ -9,7 +9,7 @@ export const Popup = () => {
     <MainContainer>
       <MainNavbar title="Jira Branch Creator" />
       <p class="mb-4">
-        Adds helpful buttons for Jira issues to create branches easily.
+        Adds helpful buttons for copying Jira issues in any format.
       </p>
       <div>
         <ContainerHeading level={2}>Whitelisted sites:</ContainerHeading>
