@@ -1,5 +1,5 @@
 import { createBooleanToggle } from "../../signals/booleanToggleStore";
-import { JSX, Show, type ParentProps } from "solid-js";
+import { type JSX, Show, type ParentProps } from "solid-js";
 
 interface AccordionProps extends ParentProps {
   openByDefault?: boolean;

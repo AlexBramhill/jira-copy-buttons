@@ -1,8 +1,9 @@
 import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
 import { getExampleBranchCopyButtonText } from "../../../../shared/transformers/branchCopyButtonTransformer";
 import { Code } from "../../common/Code";
-import IconButton from "../../common/IconButton";
 import ContainerHeading from "../../common/ContainerHeading";
+import IconButton from "../../common/IconButton";
+import { IconButtonVariants } from "../../common/IconButtonVariants";
 
 interface BranchCopyButtonHeaderProps {
   config: BranchCopyButtonConfig;
@@ -16,7 +17,7 @@ export const BranchCopyButtonHeader = (props: BranchCopyButtonHeaderProps) => {
         <IconButton
           ariaLabel="Remove button"
           onClick={async () => await props.onRemove()}
-          class="w-8 h-8 flex items-center justify-center text-xs bg-neutral-800 text-neutral-400 hover:bg-red-600 hover:text-white transition-colors"
+          variant={IconButtonVariants.DELETE}
         >
           ✖
         </IconButton>

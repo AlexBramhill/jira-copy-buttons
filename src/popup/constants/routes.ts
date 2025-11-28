@@ -1,1 +1,4 @@
-export const ROUTE_HOME = "/" as const;
+export const ROUTES = {
+  HOME: "/",
+  DEVTOOLS: "/devtools",
+} as const;
