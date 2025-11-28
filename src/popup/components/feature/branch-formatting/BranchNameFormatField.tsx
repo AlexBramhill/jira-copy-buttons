@@ -1,6 +1,5 @@
 import { FormField } from "../../common/FormField";
 import { TextInput } from "../../common/TextInput";
-import { Code } from "../../common/Code";
 import type { Component } from "solid-js";
 import {
   TICKET_DESCRIPTION_WILDCARD,
