@@ -11,9 +11,9 @@ export const Popup = () => {
       <p class="mb-4">
         Adds helpful buttons for Jira issues to create branches easily.
       </p>
-      <ContainerHeading level={2}>Sites active:</ContainerHeading>
+      <ContainerHeading level={2}>Whitelisted sites:</ContainerHeading>
       <WhitelistManager />
-      <ContainerHeading level={2}>Buttons:</ContainerHeading>
+      <ContainerHeading level={2}>Buttons to add:</ContainerHeading>
       <BranchCopyButtonsSummary />
     </MainContainer>
   );
