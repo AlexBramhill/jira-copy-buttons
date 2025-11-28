@@ -23,7 +23,7 @@ export const BranchCopyButtonHeader = (props: BranchCopyButtonHeaderProps) => {
       </div>
       <div class="flex-1">
         <ContainerHeading level={3} class="text-sm">
-          {props.config.buttonName} button
+          {props.config.buttonName}
         </ContainerHeading>
         <Code class="mt-1">{getExampleBranchCopyButtonText(props.config)}</Code>
       </div>
