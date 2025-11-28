@@ -1,7 +1,8 @@
 import {
   selectElementsByVc,
   selectElementByTestId,
-} from "../../helpers/elementSelector";
+} from "../../helpers/element-selectors/elementSelector";
+import { selectButtonDivUnderTitle } from "../../helpers/element-selectors/jiraSpecifcSelectors";
 import type { ITicketSelectorStrategy as ITicketSelectorStrategy } from "../ITicketSelectorStrategy";
 
 /**
@@ -19,4 +20,6 @@ export const ticketPageSelectorStrategy: ITicketSelectorStrategy = {
       "issue.views.issue-base.foundation.summary.heading",
       container
     ),
+  selectElementToAddButtonTo: (container: HTMLElement) =>
+    selectButtonDivUnderTitle(container),
 };

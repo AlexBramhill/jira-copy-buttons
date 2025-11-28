@@ -17,7 +17,7 @@ const processContainer = async ({
 
   const configs = await getBranchCopyButtonConfigs();
   const domElementToAppend =
-    ticketSelectorStrategy.selectTitleElement(container);
+    ticketSelectorStrategy.selectElementToAddButtonTo(container);
 
   const prefixElement = ticketSelectorStrategy.selectPrefixElement(container);
   const titleElement = ticketSelectorStrategy.selectTitleElement(container);
@@ -71,6 +71,7 @@ const createButton = (
   button.id = buttonId;
   button.textContent = buttonText;
   button.style.marginLeft = "8px";
+  button.style.height = "32px";
   button.onclick = (event) => {
     event.stopPropagation();
     event.preventDefault();
