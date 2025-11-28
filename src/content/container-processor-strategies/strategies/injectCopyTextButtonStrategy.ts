@@ -2,40 +2,74 @@ import { createElementName, ELEMENT_PREFIX } from "../../helpers/elementNamer";
 import type { ITicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
 import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy";
 import { logger } from "../../../shared/logger";
+import { getBranchCopyButtonConfigs } from "../../../shared/repository/chromeStorageSync";
+import type { BranchCopyButtonConfig } from "../../../shared/repository/BranchCopyButtonConfig";
+import { toBranchCopyButtonText } from "../../../shared/transformers/branchCopyButtonTransformer";
 
-export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
-  processContainer: ({
-    container,
-    ticketSelectorStrategy,
-  }: {
-    container: HTMLElement;
-    ticketSelectorStrategy: ITicketSelectorStrategy;
-  }) => {
-    logger.debug({ container }, "Injecting button into container");
+const processContainer = async ({
+  container,
+  ticketSelectorStrategy,
+}: {
+  container: HTMLElement;
+  ticketSelectorStrategy: ITicketSelectorStrategy;
+}) => {
+  logger.debug({ container }, "Injecting button into container");
 
-    const text = getTextToCopy(ticketSelectorStrategy, container);
+  const configs = await getBranchCopyButtonConfigs();
+  const domElementToAppend =
+    ticketSelectorStrategy.selectTitleElement(container);
 
-    const buttonId = createElementName(`copy-button-${text}`); // TODO hash the strategy and add here
+  const prefixElement = ticketSelectorStrategy.selectPrefixElement(container);
+  const titleElement = ticketSelectorStrategy.selectTitleElement(container);
 
-    if (document.getElementById(buttonId)) {
-      logger.debug({ buttonId }, "Button already exists, skipping injection");
-      return;
-    }
+  const prefixText = getTextFromElementExcludingInjectedElements(prefixElement);
+  const titleText = getTextFromElementExcludingInjectedElements(titleElement);
 
-    const button = createButton(buttonId, text);
-
-    const titleElement = ticketSelectorStrategy.selectTitleElement(container);
-
-    if (titleElement) {
-      titleElement.appendChild(button);
-    }
-  },
+  configs.forEach((config) => {
+    upsertButtonOnDom(config, prefixText, titleText, domElementToAppend);
+  });
 };
 
-const createButton = (buttonId: string, ticketName: string) => {
+const upsertButtonOnDom = (
+  branchCopyButtonConfig: BranchCopyButtonConfig,
+  prefixText: string,
+  titleText: string,
+  domElementToAppend: HTMLElement | null
+) => {
+  const buttonId = createElementName(
+    `copy-button-${branchCopyButtonConfig.buttonName}`
+  );
+
+  if (document.getElementById(buttonId)) {
+    logger.debug({ buttonId }, "Button already exists, skipping injection");
+    return;
+  }
+
+  const copyText = toBranchCopyButtonText(
+    prefixText,
+    titleText,
+    branchCopyButtonConfig
+  );
+
+  const button = createButton(
+    buttonId,
+    branchCopyButtonConfig.buttonName,
+    copyText
+  );
+
+  if (domElementToAppend) {
+    domElementToAppend.appendChild(button);
+  }
+};
+
+const createButton = (
+  buttonId: string,
+  buttonText: string,
+  ticketName: string
+) => {
   const button = document.createElement("button");
   button.id = buttonId;
-  button.textContent = "Copy Branch Name";
+  button.textContent = buttonText;
   button.style.marginLeft = "8px";
   button.onclick = (event) => {
     event.stopPropagation();
@@ -43,20 +77,6 @@ const createButton = (buttonId: string, ticketName: string) => {
     navigator.clipboard.writeText(ticketName);
   };
   return button;
-};
-
-// TODO make this customisable
-const getTextToCopy = (
-  ticketSelectorStrategy: ITicketSelectorStrategy,
-  container: HTMLElement
-): string => {
-  const prefixElement = ticketSelectorStrategy.selectPrefixElement(container);
-  const titleElement = ticketSelectorStrategy.selectTitleElement(container);
-
-  const prefixText = getTextFromElementExcludingInjectedElements(prefixElement);
-  const titleText = getTextFromElementExcludingInjectedElements(titleElement);
-
-  return `${prefixText}: ${titleText}`;
 };
 
 const getTextFromElementExcludingInjectedElements = (
@@ -79,4 +99,8 @@ const containsInjectedTextElement = (node: ChildNode): boolean => {
   }
 
   return false;
+};
+
+export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
+  processContainer: processContainer,
 };
