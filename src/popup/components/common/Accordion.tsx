@@ -12,13 +12,13 @@ export const Accordion = (props: AccordionProps) => {
 
   return (
     <div
-      class={`w-full border border-neutral-700 rounded-md bg-neutral-900/80 ${
+      class={`border border-neutral-700 rounded-md bg-neutral-900/80 ${
         props.class ?? ""
       }`}
     >
       <button
         type="button"
-        class="w-full flex justify-between items-center px-4 py-3 text-left text-white font-semibold focus:outline-none focus:ring"
+        class="w-full flex justify-between items-center px-2 py-2 text-left text-white font-semibold focus:outline-none focus:ring"
         aria-expanded={open()}
         onClick={toggle}
       >
@@ -26,7 +26,7 @@ export const Accordion = (props: AccordionProps) => {
         <span class="ml-2 text-neutral-400">{open() ? "▲" : "▼"}</span>
       </button>
       <Show when={open()}>
-        <div class="px-4 pb-4">{props.children}</div>
+        <div class="py-4 px-4">{props.children}</div>
       </Show>
     </div>
   );

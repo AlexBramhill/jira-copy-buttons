@@ -42,11 +42,10 @@ export const BranchCopyButtonsSummary = () => {
   const handleAddButtonOnClick = async () => {
     await addValue();
   };
-
   return (
     <>
       <table class="w-full">
-        <tbody>
+        <tbody class="gap-2 flex flex-col">
           <For each={values}>
             {(valueWithId) => (
               <BranchCopyButtonAccordion
@@ -56,9 +55,9 @@ export const BranchCopyButtonsSummary = () => {
               />
             )}
           </For>
+          <Button onClick={handleAddButtonOnClick}>Add new button</Button>
         </tbody>
       </table>
-      <Button onClick={handleAddButtonOnClick}>Add new button</Button>
     </>
   );
 };
