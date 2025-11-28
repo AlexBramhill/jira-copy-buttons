@@ -44,7 +44,7 @@ export const StrategyToggles = <T extends Record<string, boolean>>(
         </IconButton>
       </div>
       <div class="space-y-2">
-        <For each={Object.keys(value.value) as Array<keyof T & string>}>
+        <For each={Object.keys(value.value).sort() as Array<keyof T & string>}>
           {(key) => (
             <Toggle
               id={`toggle-${String(key)}`}
