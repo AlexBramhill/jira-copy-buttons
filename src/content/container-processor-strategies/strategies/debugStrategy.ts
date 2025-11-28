@@ -16,5 +16,12 @@ export const debugStrategy: IContainerProcessorStrategy = {
     if (titleElement) {
       titleElement.style.border = "2px solid blue";
     }
+
+    var buttonElement =
+      ticketSelectorStrategy.selectElementToAddButtonTo(container);
+
+    if (buttonElement) {
+      buttonElement.style.border = "2px solid green";
+    }
   },
 };
