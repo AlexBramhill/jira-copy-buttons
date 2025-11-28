@@ -2,6 +2,8 @@ import { For } from "solid-js";
 import ContainerHeading from "../../common/ContainerHeading";
 import Toggle from "../../common/Toggle";
 import { createValueWithIdStore } from "../../../stores/valueWithIdStore";
+import IconButton from "../../common/IconButton";
+import { IconButtonVariants } from "../../common/IconButtonVariants";
 
 interface StrategyTogglesProps<T extends Record<string, boolean>> {
   title: string;
@@ -13,7 +15,7 @@ interface StrategyTogglesProps<T extends Record<string, boolean>> {
 export const StrategyToggles = <T extends Record<string, boolean>>(
   props: StrategyTogglesProps<T>
 ) => {
-  const { value, updateValue } = createValueWithIdStore({
+  const { value, updateValue, resetValue } = createValueWithIdStore({
     loadFromPersistence: props.loadFromPersistence,
     saveToPersistence: props.saveToPersistence,
     createDefaultValue: props.createDefaultValue,
@@ -31,7 +33,16 @@ export const StrategyToggles = <T extends Record<string, boolean>>(
 
   return (
     <>
-      <ContainerHeading level={2}>{props.title}</ContainerHeading>
+      <div class="flex items-center justify-between">
+        <ContainerHeading level={2}>{props.title}</ContainerHeading>
+        <IconButton
+          onClick={resetValue}
+          ariaLabel="Reset to defaults"
+          variant={IconButtonVariants.SECONDARY}
+        >
+          ↻
+        </IconButton>
+      </div>
       <div class="space-y-2">
         <For each={Object.keys(value.value) as Array<keyof T & string>}>
           {(key) => (
