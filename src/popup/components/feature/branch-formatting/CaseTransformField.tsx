@@ -18,10 +18,12 @@ export const caseTransformOptions: CaseTransformOption[] = [
 
 interface CaseTransformFieldProps {
   id: string;
-  label: string;
+  label?: string;
   value: Case;
   onChange: (value: Case) => void;
   class?: string;
+  prefix?: string;
+  suffix?: string;
 }
 
 export const CaseTransformField = (props: CaseTransformFieldProps) => (
@@ -32,6 +34,8 @@ export const CaseTransformField = (props: CaseTransformFieldProps) => (
       onChange={props.onChange}
       options={caseTransformOptions}
       class={props.class}
+      prefix={props.prefix}
+      suffix={props.suffix}
     />
   </FormField>
 );

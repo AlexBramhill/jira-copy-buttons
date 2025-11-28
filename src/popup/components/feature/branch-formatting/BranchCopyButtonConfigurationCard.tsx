@@ -27,7 +27,7 @@ export const BranchCopyButtonConfigurationCard = (
       />
       <CaseTransformField
         id="prefix-case"
-        label="Prefix Case Transform"
+        prefix="Prefix Case:"
         value={props.value.prefixCase}
         onChange={(value) =>
           props.updateValue({ ...props.value, prefixCase: value })
@@ -35,7 +35,7 @@ export const BranchCopyButtonConfigurationCard = (
       />
       <CaseTransformField
         id="description-case"
-        label="Description Case Transform"
+        prefix="Description Case:"
         value={props.value.descriptionCase}
         onChange={(value) =>
           props.updateValue({ ...props.value, descriptionCase: value })
