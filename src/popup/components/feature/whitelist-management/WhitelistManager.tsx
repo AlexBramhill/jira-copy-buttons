@@ -1,6 +1,6 @@
 import { For } from "solid-js";
 import { TextInput } from "../../common/TextInput";
-import { createValueWithIdStore } from "../../../stores/valueWithIdStore";
+import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
 import {
   getHostnames,
   saveHostnames,
@@ -8,13 +8,12 @@ import {
 import type { UUID } from "crypto";
 
 export const WhitelistManager = () => {
-  const { values, addValue, updateValue, removeValue } = createValueWithIdStore(
-    {
+  const { values, addValue, updateValue, removeValue } =
+    createValueWithIdArrayStore({
       loadFromPersistence: getHostnames,
       saveToPersistence: saveHostnames,
       createDefaultValue: () => "",
-    }
-  );
+    });
 
   const handleInput = (id: UUID, value: string) => {
     updateValue({ id, value });

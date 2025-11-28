@@ -1,3 +1,11 @@
+import {
+  containerProcessorStrategyStorageDataDefault,
+  type ContainerProcessorStrategyStorageData,
+} from "./containerProcessorStrategy";
+import {
+  TicketSelectorStrategyStorageDataDefault,
+  type TicketSelectorStrategyStorageData,
+} from "./ticketSelectorStrategy";
 import type { BranchCopyButtonConfig } from "./BranchCopyButtonConfig";
 import { storageKeys, type StorageKey } from "./storageKeys";
 
@@ -5,7 +13,10 @@ const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
   await chrome.storage.sync.set({ [key]: value });
 };
 
-const getValue = async <T>(key: StorageKey, defaultValue: T): Promise<T> => {
+const getValueOrDefault = async <T>(
+  key: StorageKey,
+  defaultValue: T
+): Promise<T> => {
   const result = await chrome.storage.sync.get([key]);
   return result[key] !== undefined ? result[key] : defaultValue;
 };
@@ -14,7 +25,37 @@ export const saveHostnames = (hostnames: string[]): Promise<void> =>
   saveValue<string[]>(storageKeys.savedHostnames, hostnames);
 
 export const getHostnames = (): Promise<string[]> =>
-  getValue<string[]>(storageKeys.savedHostnames, []);
+  getValueOrDefault<string[]>(storageKeys.savedHostnames, []);
+
+export const saveContainerProcessorStrategies = (
+  strategies: ContainerProcessorStrategyStorageData
+): Promise<void> =>
+  saveValue<ContainerProcessorStrategyStorageData>(
+    storageKeys.containerProcessorStrategies,
+    strategies
+  );
+
+export const getContainerProcessorStrategies =
+  (): Promise<ContainerProcessorStrategyStorageData> =>
+    getValueOrDefault<ContainerProcessorStrategyStorageData>(
+      storageKeys.containerProcessorStrategies,
+      containerProcessorStrategyStorageDataDefault
+    );
+
+export const saveTicketSelectorStrategies = (
+  strategies: TicketSelectorStrategyStorageData
+): Promise<void> =>
+  saveValue<TicketSelectorStrategyStorageData>(
+    storageKeys.ticketSelectorStrategies,
+    strategies
+  );
+
+export const getTicketSelectorStrategies =
+  (): Promise<TicketSelectorStrategyStorageData> =>
+    getValueOrDefault<TicketSelectorStrategyStorageData>(
+      storageKeys.ticketSelectorStrategies,
+      TicketSelectorStrategyStorageDataDefault
+    );
 
 export const saveBranchCopyButtonConfigs = (
   configs: BranchCopyButtonConfig[]
@@ -27,4 +68,7 @@ export const saveBranchCopyButtonConfigs = (
 export const getBranchCopyButtonConfigs = (): Promise<
   BranchCopyButtonConfig[]
 > =>
-  getValue<BranchCopyButtonConfig[]>(storageKeys.branchCopyButtonConfigs, []);
+  getValueOrDefault<BranchCopyButtonConfig[]>(
+    storageKeys.branchCopyButtonConfigs,
+    []
+  );
