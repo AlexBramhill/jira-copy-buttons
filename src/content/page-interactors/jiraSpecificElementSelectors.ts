@@ -1,4 +1,4 @@
-import { selectElementByTestId } from "./elementSelector";
+import { selectElementByTestId } from "./elementSelectors";
 
 // Selects the div that contains the two buttons under the title on both ticket pages and modals
 // Does so in a hacky way due to no easily accessible test ids
@@ -9,8 +9,8 @@ export const selectButtonDivUnderTitle = (container: HTMLElement) => {
   );
   const divWithButtonsIn =
     mainWrapper?.nextElementSibling as HTMLElement | null;
-  const secondChildofDivWithButtons = divWithButtonsIn
+  const secondChildOfDivWithButtons = divWithButtonsIn
     ?.children[1] as HTMLElement | null;
 
-  return secondChildofDivWithButtons;
+  return secondChildOfDivWithButtons;
 };

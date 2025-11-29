@@ -4,7 +4,7 @@ import type { Component } from "solid-js";
 import {
   TICKET_DESCRIPTION_WILDCARD,
   TICKET_PREFIX_WILDCARD,
-} from "../../../../shared/ticketWildcards";
+} from "../../../../shared/transformers/ticketWildcards";
 
 interface BranchNameFormatFieldProps {
   value: string;
