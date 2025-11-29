@@ -11,14 +11,14 @@ interface StringTransformer {
 export const toSnakeCase: StringTransformer = (text) =>
   text
     .replace(WHITESPACE_REGEX, "_")
-    .replace(UPPERCASE_LETTER_REGEX, (letter) => `_${letter.toLowerCase()}`)
+    .replace(UPPERCASE_LETTER_REGEX, (letter) => `${letter.toLowerCase()}`)
     .replace(LEADING_UNDERSCORE_REGEX, "")
     .toLowerCase();
 
 export const toKebabCase: StringTransformer = (text) =>
   text
     .replace(WHITESPACE_REGEX, "-")
-    .replace(UPPERCASE_LETTER_REGEX, (letter) => `-${letter.toLowerCase()}`)
+    .replace(UPPERCASE_LETTER_REGEX, (letter) => `${letter.toLowerCase()}`)
     .replace(LEADING_DASH_REGEX, "")
     .toLowerCase();
 
