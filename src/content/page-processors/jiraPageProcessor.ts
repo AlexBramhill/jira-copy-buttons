@@ -2,7 +2,7 @@ import type { ITicketSelectorStrategy } from "../ticket-selector-strategies/ITic
 import { logger } from "../../shared/logger";
 import { getEnabledContainerProcessorStrategies } from "../helpers/strategyGetter";
 
-export const addProcessPageEventListener = (
+export const addProcessJiraPageEventListener = (
   ticketSelectorStrategies: ITicketSelectorStrategy[]
 ) => {
   const observer = new MutationObserver(() => {
@@ -26,8 +26,8 @@ export const processPage = (
       await getEnabledContainerProcessorStrategies();
 
     containers.forEach((container) => {
-      enabledContainerProcessorStrategies.forEach((processorStrategy) => {
-        processorStrategy.processContainer({
+      enabledContainerProcessorStrategies.forEach((containerProcessorStrategy) => {
+        containerProcessorStrategy.processContainer({
           container,
           ticketSelectorStrategy,
         });

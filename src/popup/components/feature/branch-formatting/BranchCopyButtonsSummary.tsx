@@ -6,7 +6,7 @@ import {
 import {
   TICKET_DESCRIPTION_WILDCARD,
   TICKET_PREFIX_WILDCARD,
-} from "../../../../shared/ticketWildcards";
+} from "../../../../shared/transformers/ticketWildcards";
 import { Case } from "../../../../shared/transformers/Case";
 import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
 import Button from "../../common/Button";

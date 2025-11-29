@@ -6,7 +6,7 @@ import type { BranchCopyButtonConfig } from "../repository/BranchCopyButtonConfi
 import {
   TICKET_DESCRIPTION_WILDCARD,
   TICKET_PREFIX_WILDCARD,
-} from "../ticketWildcards";
+} from "./ticketWildcards";
 import { toCase } from "./caseTransformer";
 
 export const toPrefixButtonText = (

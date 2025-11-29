@@ -16,4 +16,4 @@ export const storageKeys = {
   ticketSelectorStrategies: "ticketSelectorStrategies",
 } as const satisfies { [K in keyof StorageData]: K };
 
-export type StorageKey = (typeof storageKeys)[keyof StorageData];
+export type StorageKey = (typeof storageKeys)[keyof typeof storageKeys];
