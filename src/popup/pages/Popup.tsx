@@ -8,7 +8,7 @@ import BranchCopyButtonsSummary from "../components/feature/branch-formatting/Br
 export const Popup = () => {
   return (
     <MainContainer>
-      <MainNavbar title="Jira Branch Creator" />
+      <MainNavbar title="Jira Button Creator" />
       <p class="mb-4">
         Adds helpful buttons for copying Jira issues in any format.
       </p>
