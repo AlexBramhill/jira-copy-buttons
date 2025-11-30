@@ -24,24 +24,4 @@ export const debugStrategy: IContainerProcessorStrategy = {
       addClassToElement(buttonElement, DEBUG_CSS.BUTTON.className);
     }
   },
-
-  cleanUp: () => {
-    logger.debug("Debug Strategy: Cleaning up injected styles");
-
-    const cssClassesToRemove = Object.values(DEBUG_CSS).map(
-      (cssClass) => cssClass.className
-    );
-
-    const elementsWithDebugClasses = document.querySelectorAll(
-      cssClassesToRemove.map((className) => `.${className}`).join(", ")
-    );
-
-    elementsWithDebugClasses.forEach((element) => {
-      element.classList.remove(
-        DEBUG_CSS.PREFIX.className,
-        DEBUG_CSS.TITLE.className,
-        DEBUG_CSS.BUTTON.className
-      );
-    });
-  },
 };

@@ -8,6 +8,4 @@ export interface IContainerProcessorStrategy {
     container: HTMLElement;
     ticketSelectorStrategy: ITicketSelectorStrategy;
   }) => void;
-
-  cleanUp: () => void;
 }

@@ -30,8 +30,4 @@ export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
       upsertCopyButtonOnDom(config, prefixText, titleText, domElementToAppend);
     });
   },
-
-  cleanUp: () => {
-    logger.debug("Inject Copy Text Button Strategy: No cleanup needed");
-  },
 };
