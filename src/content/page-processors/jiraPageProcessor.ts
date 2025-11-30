@@ -1,14 +1,14 @@
 import type { ITicketSelectorStrategy } from "../ticket-selector-strategies/ITicketSelectorStrategy";
 import { logger } from "../../shared/logger";
 import { getEnabledContainerProcessorStrategies } from "../helpers/strategyGetter";
-import { activateExtensionStyles } from "../helpers/cssInjector";
+import { addCssRootClass } from "../helpers/cssInjector";
 
 export const addProcessJiraPageEventListener = (
   ticketSelectorStrategies: ITicketSelectorStrategy[]
 ) => {
   const observer = new MutationObserver(() => {
     logger.debug("DOM mutated, processing page again");
-    activateExtensionStyles();
+    addCssRootClass();
     processPage(ticketSelectorStrategies);
   });
 

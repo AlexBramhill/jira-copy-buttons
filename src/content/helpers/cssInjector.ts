@@ -8,7 +8,7 @@ export interface CssClassConfig {
   styles: string;
 }
 
-export const activateExtensionStyles = (): void => {
+export const addCssRootClass = (): void => {
   document.documentElement.classList.add(ROOT_CLASS);
 };
 
