@@ -2,7 +2,7 @@ import { logger } from "../../../shared/logger";
 import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy";
 
 export const debugStrategy: IContainerProcessorStrategy = {
-  processContainer: ({ container, ticketSelectorStrategy }) => {
+  process: ({ container, ticketSelectorStrategy }) => {
     logger.debug({ container }, "Debug Strategy: Processing container");
 
     var prefixElement = ticketSelectorStrategy.selectPrefixElement(container);
@@ -23,5 +23,9 @@ export const debugStrategy: IContainerProcessorStrategy = {
     if (buttonElement) {
       buttonElement.style.border = "2px solid green";
     }
+  },
+
+  cleanUp: (container: HTMLElement) => {
+    logger.debug({ container }, "Debug Strategy: Cleaning up container");
   },
 };

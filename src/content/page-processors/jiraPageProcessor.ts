@@ -26,12 +26,14 @@ export const processPage = (
       await getEnabledContainerProcessorStrategies();
 
     containers.forEach((container) => {
-      enabledContainerProcessorStrategies.forEach((containerProcessorStrategy) => {
-        containerProcessorStrategy.processContainer({
-          container,
-          ticketSelectorStrategy,
-        });
-      });
+      enabledContainerProcessorStrategies.forEach(
+        (containerProcessorStrategy) => {
+          containerProcessorStrategy.process({
+            container,
+            ticketSelectorStrategy,
+          });
+        }
+      );
     });
   });
 };

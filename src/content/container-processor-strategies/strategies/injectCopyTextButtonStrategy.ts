@@ -30,5 +30,5 @@ const processContainer = async ({
 };
 
 export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
-  processContainer: processContainer,
+  process: processContainer,
 };
