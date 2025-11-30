@@ -2,7 +2,7 @@ import { createCssClassName } from "../../../helpers/cssHelper";
 import {
   addCssClassToStylesheet,
   type CssClassConfig,
-} from "../../../helpers/cssInjector";
+} from "../../../page-interactors/cssInjector";
 
 export const DEBUG_CSS = {
   PREFIX: {

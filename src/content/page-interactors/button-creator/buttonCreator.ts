@@ -1,4 +1,4 @@
-import { addCssClassToStylesheet } from "../../helpers/cssInjector";
+import { addCssClassToStylesheet } from "../cssInjector";
 import { addClassToElement } from "../elementClassModifier";
 import { BUTTON_CLASS } from "./buttonCreatorCss";
 

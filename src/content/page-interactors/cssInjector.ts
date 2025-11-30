@@ -1,7 +1,8 @@
-import type { CssClassName } from "./cssHelper";
-
 const STYLE_ID = "jbc-style";
 const ROOT_CLASS = "jbc-active";
+export const CSS_CLASS_PREFIX = "jbc-" as const;
+
+export type CssClassName = `${typeof CSS_CLASS_PREFIX}${string}`;
 
 export interface CssClassConfig {
   className: CssClassName;
@@ -13,29 +14,32 @@ export const addCssRootClass = (): void => {
 };
 
 const getStyleElement = (): HTMLStyleElement => {
-  let styleEl = document.getElementById(STYLE_ID) as HTMLStyleElement;
+  let styleElement = document.getElementById(STYLE_ID) as HTMLStyleElement;
 
-  if (!styleEl) {
-    styleEl = document.createElement("style");
-    styleEl.id = STYLE_ID;
-    document.head.appendChild(styleEl);
+  if (!styleElement) {
+    styleElement = document.createElement("style");
+    styleElement.id = STYLE_ID;
+    document.head.appendChild(styleElement);
   }
 
-  return styleEl;
+  return styleElement;
 };
 
 export const addCssClassToStylesheet = (
   className: CssClassName,
   styles: string
 ): void => {
-  const styleEl = getStyleElement();
-  const sheet = styleEl.sheet!;
+  const styleElement = getStyleElement();
+  const sheet = styleElement.sheet!;
 
   const selector = `.${ROOT_CLASS} .${className}`;
   const rule = `${selector} { ${styles} }`;
 
   for (const cssRule of sheet.cssRules) {
-    if (cssRule instanceof CSSStyleRule && cssRule.selectorText === selector) {
+    const isRuleAdded =
+      cssRule instanceof CSSStyleRule && cssRule.selectorText === selector;
+
+    if (isRuleAdded) {
       return;
     }
   }
