@@ -1,13 +1,18 @@
+import { addCssClassToStylesheet } from "../../helpers/cssInjector";
+import { addClassToElement } from "../elementClassModifier";
+import { BUTTON_CLASS } from "./buttonCreatorCss";
+
 export const createButton = (
   buttonId: string,
   buttonText: string,
   onClick: (event: MouseEvent) => void
 ): HTMLButtonElement => {
+  addCssClassToStylesheet(BUTTON_CLASS.className, BUTTON_CLASS.styles);
+
   const button = document.createElement("button");
   button.id = buttonId;
   button.textContent = buttonText;
-  button.style.marginLeft = "8px";
-  button.style.height = "32px";
+  addClassToElement(button, BUTTON_CLASS.className);
   button.onclick = (event) => {
     event.stopPropagation();
     event.preventDefault();

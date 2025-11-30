@@ -1,10 +1,10 @@
 import { logger } from "../../shared/logger";
 import type { BranchCopyButtonConfig } from "../../shared/repository/BranchCopyButtonConfig";
 import { toBranchCopyButtonText } from "../../shared/transformers/branchCopyButtonTransformer";
-import { createCopyButton } from "./buttonCreator";
+import { createCopyButton } from "./button-creator/buttonCreator";
 import { createElementName } from "./elementNamer";
 
-export const upsertButtonOnDom = (
+export const upsertCopyButtonOnDom = (
   branchCopyButtonConfig: BranchCopyButtonConfig,
   prefixText: string,
   titleText: string,
