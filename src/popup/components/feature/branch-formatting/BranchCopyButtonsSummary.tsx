@@ -9,7 +9,7 @@ import {
 } from "../../../../shared/transformers/ticketWildcards";
 import { Case } from "../../../../shared/transformers/Case";
 import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
-import Button from "../../common/Button";
+import Button from "../../common/button/Button";
 import BranchCopyButtonAccordion from "./BranchCopyButtonAccordion";
 import type { UUID } from "crypto";
 import type { ValueWithId } from "../../../stores/IValueWithId";

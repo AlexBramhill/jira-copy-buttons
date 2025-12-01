@@ -1,7 +1,7 @@
 import { useNavigate } from "@solidjs/router";
 import { ContainerHeading } from "./ContainerHeading";
-import { IconButton } from "./IconButton";
 import { ROUTES } from "../../constants/routes";
+import { BackButton } from "./button/BackButton";
 
 export interface MainNavbarProps {
   title: string;
@@ -13,12 +13,7 @@ export const MainNavbar = (props: MainNavbarProps) => {
   return (
     <div class="flex items-center gap-2 mb-4">
       {props.showBackButton && (
-        <IconButton
-          onClick={() => navigate(ROUTES.HOME)}
-          ariaLabel="Back to home"
-        >
-          ◀
-        </IconButton>
+        <BackButton onClick={() => navigate(ROUTES.HOME)} />
       )}
       <ContainerHeading level={1}>{props.title}</ContainerHeading>
     </div>
