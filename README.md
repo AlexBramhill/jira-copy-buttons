@@ -2,7 +2,7 @@
 <img src="public/jira_branch_creator.png" alt="alt text" width="128" height="128">
 </div>
 
-# Jira Button Creator
+# Jira Copy Buttons
 
 ![alt text](readme-assets/exampleTicket.png)
 A Chrome extension that adds buttons to Jira to easily copy Jira ticket identifiers and titles in a customisable format.
@@ -41,8 +41,8 @@ This extension is currently only available to install by building it yourself. F
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/AlexBramhill/jira-branch-creator-button.git
-    cd jira-branch-creator-button
+    git clone https://github.com/AlexBramhill/jira-copy-buttons.git
+    cd jira-copy-buttons
     ```
 
 1.  **Install dependencies:**

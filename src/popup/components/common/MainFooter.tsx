@@ -5,7 +5,7 @@ export const MainFooter = () => {
   return (
     <div class="flex items-center justify-between mt-6 pt-1">
       <A
-        href="https://github.com/AlexBramhill/jira-branch-creator-button"
+        href="https://github.com/AlexBramhill/jira-copy-buttons"
         target="_blank"
         rel="noopener noreferrer"
         class="text-xs text-neutral-400 hover:text-neutral-100 transition"

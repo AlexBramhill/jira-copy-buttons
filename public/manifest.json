@@ -1,5 +1,5 @@
 {
-  "name": "Jira Button Creator",
+  "name": "Jira Copy Buttons",
   "description": "Creates a button in Jira issues to copy a Git-friendly branch name",
   "version": "1.0",
   "manifest_version": 3,
@@ -8,7 +8,7 @@
     "128": "jira_branch_creator.png"
   },
   "action": {
-    "default_title": "Jira Button Creator",
+    "default_title": "Jira Copy Buttons",
     "default_popup": "pages/popup.html",
     "default_icon": "jira_branch_creator.png"
   },
