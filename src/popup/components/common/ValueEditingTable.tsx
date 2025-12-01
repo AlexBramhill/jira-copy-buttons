@@ -40,7 +40,7 @@ export const ValuesTable = <T,>({
         <tbody class="gap-2 flex flex-col p-2">
           <For each={values}>
             {(valueWithId: ValueWithId<T>) => (
-              <tr class="flex items-start justify-between w-full p-2 gap-2 border border-neutral-700 rounded-md bg-neutral-900/80">
+              <tr class="flex items-start justify-between w-full p-2 pr-3 gap-2 dark:bg-neutral-800/50 rounded-lg">
                 <td class="shrink-0 pl-1 pt-1">
                   <DeleteButton
                     onClick={() => handleOnRemove(valueWithId.id)}
