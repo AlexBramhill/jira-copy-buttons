@@ -1,6 +1,7 @@
 const STYLE_ID = "jbc-style";
 const ROOT_CLASS = "jbc-active";
-export const CSS_CLASS_PREFIX = "jbc-" as const;
+
+export const CSS_CLASS_PREFIX = "jbc-css-" as const;
 
 export type CssClassName = `${typeof CSS_CLASS_PREFIX}${string}`;
 

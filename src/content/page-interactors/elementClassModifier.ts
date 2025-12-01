@@ -1,6 +1,8 @@
+import type { CssClassName } from "./cssInjector";
+
 export const addClassToElement = (
   element: HTMLElement,
-  className: string
+  className: CssClassName
 ): void => {
   element.classList.add(className);
 };
