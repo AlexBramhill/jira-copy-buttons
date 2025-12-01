@@ -8,11 +8,18 @@ import {
 } from "./storeItemTransformers";
 import type { ValueWithId } from "./IValueWithId";
 
-interface CreateValueWithIdArrayStoreConfig<T> {
+export interface CreateValueWithIdArrayStoreConfig<T> {
   loadFromPersistence: () => Promise<T[]>;
   saveToPersistence: (values: T[]) => Promise<void>;
   createDefaultValue: () => T;
   allowEmptyStore?: boolean;
+}
+
+export interface CreateValueWithIdArrayStoreResponse<T> {
+  values: ValueWithId<T>[];
+  addValue: () => Promise<void>;
+  updateValue: (row: ValueWithId<T>) => Promise<void>;
+  removeValue: (id: UUID) => Promise<void>;
 }
 
 // TODO don't need create default here

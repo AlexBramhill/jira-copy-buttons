@@ -1,4 +1,3 @@
-import { For } from "solid-js";
 import {
   getBranchCopyButtonConfigs,
   saveBranchCopyButtonConfigs,
@@ -9,14 +8,11 @@ import {
 } from "../../../../shared/transformers/ticketWildcards";
 import { Case } from "../../../../shared/transformers/Case";
 import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
-import Button from "../../common/button/Button";
 import BranchCopyButtonAccordion from "./BranchCopyButtonAccordion";
-import type { UUID } from "crypto";
-import type { ValueWithId } from "../../../stores/IValueWithId";
-import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
+import ValuesTable from "../../common/ValueEditingTable";
 
 export const BranchCopyButtonsSummary = () => {
-  const { values, addValue, updateValue, removeValue } =
+  const createValuesStore = () =>
     createValueWithIdArrayStore({
       loadFromPersistence: getBranchCopyButtonConfigs,
       saveToPersistence: saveBranchCopyButtonConfigs,
@@ -28,35 +24,17 @@ export const BranchCopyButtonsSummary = () => {
       }),
     });
 
-  const handleOnRemove = async (id: UUID) => {
-    await removeValue(id);
-  };
-
-  const handleOnUpdate = async (
-    valueWithId: ValueWithId<BranchCopyButtonConfig>
-  ) => {
-    await updateValue(valueWithId);
-  };
-
-  const handleAddButtonOnClick = async () => {
-    await addValue();
-  };
   return (
     <>
-      <table class="w-full">
-        <tbody class="gap-2 flex flex-col">
-          <For each={values}>
-            {(valueWithId) => (
-              <BranchCopyButtonAccordion
-                valueWithId={valueWithId}
-                onUpdate={handleOnUpdate}
-                onRemove={handleOnRemove}
-              />
-            )}
-          </For>
-          <Button onClick={handleAddButtonOnClick}>Add new button</Button>
-        </tbody>
-      </table>
+      <ValuesTable
+        createValuesWithIdArrayStore={createValuesStore}
+        renderRow={(valueWithId, onUpdate) => (
+          <BranchCopyButtonAccordion
+            valueWithId={valueWithId}
+            onUpdate={async (newValue) => onUpdate(newValue)}
+          />
+        )}
+      />
     </>
   );
 };
