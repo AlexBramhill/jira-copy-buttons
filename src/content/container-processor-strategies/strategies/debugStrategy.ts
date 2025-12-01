@@ -1,12 +1,12 @@
-import { logger } from "../../../../shared/logger";
-import type { IContainerProcessorStrategy } from "../../IContainerProcessorStrategy";
-import { addClassToElement } from "../../../page-interactors/elementClassModifier";
+import { logger } from "../../../shared/logger";
+import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy";
+import { addClassToElement } from "../../page-interactors/elementClassModifier";
 import {
   createDebugPrefixCss,
   createDebugTitleCss,
   createDebugButtonCss,
-} from "../../../css/debugCss";
-import type { ITicketSelectorStrategy } from "../../../ticket-selector-strategies/ITicketSelectorStrategy";
+} from "../../css/debugCss";
+import type { ITicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
 
 export const debugStrategy: IContainerProcessorStrategy = {
   process: ({ container, ticketSelectorStrategy }) => {
