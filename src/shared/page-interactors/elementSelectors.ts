@@ -1,4 +1,4 @@
-import { ELEMENT_PREFIX } from "../helpers/elementHelper";
+import { ELEMENT_PREFIX } from "../../content/helpers/elementHelper";
 
 export const selectElementByTestId = (
   testIdName: string,
