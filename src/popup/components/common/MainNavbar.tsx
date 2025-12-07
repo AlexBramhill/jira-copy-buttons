@@ -1,7 +1,7 @@
 import { useNavigate } from "@solidjs/router";
 import { ContainerHeading } from "./ContainerHeading";
 import { ROUTES } from "../../constants/routes";
-import { BackButton } from "./button/BackButton";
+import { BackButton } from "./buttons/BackButton";
 
 export interface MainNavbarProps {
   title: string;

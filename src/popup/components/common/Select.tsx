@@ -1,13 +1,11 @@
-import type { JSX } from "solid-js";
-
 interface SelectProps<T extends string> {
   id: string;
   value: T;
   onChange: (value: T) => void;
   options: { value: T; label: string }[];
   class?: string;
-  prefix?: JSX.Element | string;
-  suffix?: JSX.Element | string;
+  prefix?: string;
+  suffix?: string;
 }
 
 export const Select = <T extends string>(props: SelectProps<T>) => {

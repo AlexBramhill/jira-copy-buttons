@@ -1,6 +1,5 @@
-import Select from "../../common/Select";
 import { Case } from "../../../../shared/transformers/Case";
-import FormField from "../../common/FormField";
+import SelectField from "./DropdownField";
 
 type CaseTransformOption = {
   value: Case;
@@ -27,17 +26,16 @@ interface CaseTransformFieldProps {
 }
 
 export const CaseTransformField = (props: CaseTransformFieldProps) => (
-  <FormField id={props.id} label={props.label}>
-    <Select
-      id={props.id}
-      value={props.value}
-      onChange={props.onChange}
-      options={caseTransformOptions}
-      class={props.class}
-      prefix={props.prefix}
-      suffix={props.suffix}
-    />
-  </FormField>
+  <SelectField
+    id={props.id}
+    label={props.label}
+    value={props.value}
+    onChange={props.onChange}
+    options={caseTransformOptions}
+    class={props.class}
+    prefix={props.prefix}
+    suffix={props.suffix}
+  />
 );
 
 export default CaseTransformField;

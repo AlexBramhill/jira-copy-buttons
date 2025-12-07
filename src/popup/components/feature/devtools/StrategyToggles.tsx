@@ -2,8 +2,8 @@ import { For } from "solid-js";
 import ContainerHeading from "../../common/ContainerHeading";
 import Toggle from "../../common/Toggle";
 import { createValueWithIdStore } from "../../../stores/valueWithIdStore";
-import { IconButtonVariants } from "../../common/button/IconButtonVariants";
-import IconButton from "../../common/button/IconButton";
+import { IconButtonVariants } from "../../common/buttons/IconButtonVariants";
+import IconButton from "../../common/buttons/IconButton";
 
 interface StrategyTogglesProps<T extends Record<string, boolean>> {
   title: string;

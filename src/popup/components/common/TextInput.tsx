@@ -1,13 +1,11 @@
-import type { JSX } from "solid-js";
-
 interface TextInputProps {
   id: string;
   value: string;
   onInput: (value: string) => void;
   placeholder?: string;
   class?: string;
-  prefix?: JSX.Element | string;
-  suffix?: JSX.Element | string;
+  prefix?: string;
+  suffix?: string;
 }
 
 export const TextInput = (props: TextInputProps) => (
