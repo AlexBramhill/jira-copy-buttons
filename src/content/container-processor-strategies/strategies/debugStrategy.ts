@@ -6,7 +6,7 @@ import {
   createDebugTitleCss,
   createDebugButtonCss,
 } from "../../css/debugCss";
-import type { ITicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
+import type { ITicketSelectorStrategy } from "../../../shared/ticket-selector-strategies/ITicketSelectorStrategy";
 
 export const debugStrategy: IContainerProcessorStrategy = {
   process: ({ container, ticketSelectorStrategy }) => {
