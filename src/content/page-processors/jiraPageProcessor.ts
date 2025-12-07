@@ -1,5 +1,5 @@
 import { logger } from "../../shared/logger";
-import type { ITicketSelectorStrategy } from "../../shared/ticket-selector-strategies/ITicketSelectorStrategy";
+import type { ITicketSelectorStrategy } from "../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
 import { getEnabledContainerProcessorStrategies } from "../helpers/strategyGetter";
 import { addCssRootClass } from "../page-interactors/cssInjector";
 

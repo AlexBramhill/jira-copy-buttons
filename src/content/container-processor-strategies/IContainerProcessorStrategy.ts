@@ -1,4 +1,4 @@
-import type { ITicketSelectorStrategy } from "../../shared/ticket-selector-strategies/ITicketSelectorStrategy";
+import type { ITicketSelectorStrategy } from "../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
 
 export interface IContainerProcessorStrategy {
   process: ({

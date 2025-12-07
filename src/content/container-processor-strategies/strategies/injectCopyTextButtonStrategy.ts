@@ -3,7 +3,7 @@ import { logger } from "../../../shared/logger";
 import { getBranchCopyButtonStrategies } from "../../../shared/repository/chromeStorageSync";
 import { upsertCopyButtonOnDom } from "../../page-interactors/buttonInjector";
 import { getTextFromElementExcludingInjectedElements } from "../../page-interactors/elementSelectors";
-import type { ITicketSelectorStrategy } from "../../../shared/ticket-selector-strategies/ITicketSelectorStrategy";
+import type { ITicketSelectorStrategy } from "../../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
 
 export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
   process: async ({
