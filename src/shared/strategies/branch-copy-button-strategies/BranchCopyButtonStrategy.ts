@@ -1,4 +1,4 @@
-import type { Case } from "../transformers/Case";
+import type { Case } from "../../transformers/Case";
 
 export type BranchCopyButtonStrategy = {
   buttonName: string;

@@ -11,7 +11,7 @@ export type ContainerProcessorStrategyStorageData = {
   [K in ContainerProcessorStrategyName]: boolean;
 };
 
-export const containerProcessorStrategyStorageDataDefault: ContainerProcessorStrategyStorageData =
+export const DEFAULT_CONTAINER_PROCESSOR_STRATEGY_STORAGE_DATA_DEFAULT: ContainerProcessorStrategyStorageData =
   {
     injectCopyTextButtonStrategy: true,
     debugStrategy: false,

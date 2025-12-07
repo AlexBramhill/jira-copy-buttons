@@ -1,5 +1,5 @@
 import type { IContainerProcessorStrategy } from "./IContainerProcessorStrategy";
-import type { ContainerProcessorStrategyName } from "../../shared/repository/containerProcessorStrategyStoageData";
+import type { ContainerProcessorStrategyName } from "../../shared/repository/containerProcessorStrategyStorageData";
 import { debugStrategy } from "./strategies/debugStrategy";
 import { injectCopyTextButtonStrategy } from "./strategies/injectCopyTextButtonStrategy";
 

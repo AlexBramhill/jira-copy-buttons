@@ -1,18 +1,20 @@
-import type { BranchCopyButtonStrategy } from "../../../../shared/strategies/BranchCopyButtonStrategy";
 import Accordion from "../../common/Accordion";
 import { BranchCopyButtonStrategyCard } from "./BranchCopyButtonStrategyCard";
 import BranchCopyButtonHeader from "./BranchCopyButtonHeader";
 import type { ValueWithId } from "../../../stores/IValueWithId";
+import type { BranchCopyButtonStrategyStorageDataItem } from "../../../../shared/repository/branchCopyButtonStrategyStorageData";
 
 interface BranchCopyButtonAccordionProps {
-  valueWithId: ValueWithId<BranchCopyButtonStrategy>;
-  onUpdate: (value: BranchCopyButtonStrategy) => Promise<void>;
+  valueWithId: ValueWithId<BranchCopyButtonStrategyStorageDataItem>;
+  onUpdate: (value: BranchCopyButtonStrategyStorageDataItem) => Promise<void>;
 }
 
 export const BranchCopyButtonAccordion = (
   props: BranchCopyButtonAccordionProps
 ) => {
-  const handleUpdate = async (newValue: BranchCopyButtonStrategy) => {
+  const handleUpdate = async (
+    newValue: BranchCopyButtonStrategyStorageDataItem
+  ) => {
     await props.onUpdate(newValue);
   };
 

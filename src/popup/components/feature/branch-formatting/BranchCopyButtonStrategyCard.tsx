@@ -1,11 +1,13 @@
-import type { BranchCopyButtonStrategy } from "../../../../shared/strategies/BranchCopyButtonStrategy";
 import { BranchNameFormatField } from "./BranchNameFormatField";
 import { ButtonNameField } from "./BranchButtonNameField";
 import CaseTransformField from "./CaseTransformField";
+import type { BranchCopyButtonStrategyStorageDataItem } from "../../../../shared/repository/branchCopyButtonStrategyStorageData";
 
 interface BranchCopyButtonStrategyCardProps {
-  value: BranchCopyButtonStrategy;
-  updateValue: (value: BranchCopyButtonStrategy) => Promise<void>;
+  value: BranchCopyButtonStrategyStorageDataItem;
+  updateValue: (
+    value: BranchCopyButtonStrategyStorageDataItem
+  ) => Promise<void>;
 }
 
 export const BranchCopyButtonStrategyCard = (
