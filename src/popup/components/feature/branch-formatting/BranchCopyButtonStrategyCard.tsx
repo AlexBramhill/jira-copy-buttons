@@ -1,4 +1,4 @@
-import type { BranchCopyButtonStrategy } from "../../../../shared/repository/BranchCopyButtonStrategy";
+import type { BranchCopyButtonStrategy } from "../../../../shared/strategies/BranchCopyButtonStrategy";
 import { BranchNameFormatField } from "./BranchNameFormatField";
 import { ButtonNameField } from "./BranchButtonNameField";
 import CaseTransformField from "./CaseTransformField";

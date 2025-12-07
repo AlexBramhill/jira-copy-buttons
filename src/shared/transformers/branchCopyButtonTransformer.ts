@@ -2,7 +2,7 @@ import {
   EXAMPLE_DESCRIPTION,
   EXAMPLE_PREFIX,
 } from "../../popup/constants/exampleTicket";
-import type { BranchCopyButtonStrategy } from "../repository/BranchCopyButtonStrategy";
+import type { BranchCopyButtonStrategy } from "../strategies/BranchCopyButtonStrategy";
 import {
   TICKET_DESCRIPTION_WILDCARD,
   TICKET_PREFIX_WILDCARD,

@@ -4,12 +4,12 @@ import {
   saveContainerProcessorStrategies,
   saveTicketSelectorStrategies,
 } from "../../shared/repository/chromeStorageSync";
-import { containerProcessorStrategyStorageDataDefault } from "../../shared/repository/containerProcessorStrategy";
+import { containerProcessorStrategyStorageDataDefault } from "../../shared/repository/containerProcessorStrategyStoageData";
 import MainContainer from "../components/common/MainContainer";
 import MainFooter from "../components/common/MainFooter";
 import MainNavbar from "../components/common/MainNavbar";
 import StrategyToggles from "../components/feature/devtools/StrategyToggles";
-import { TicketSelectorStrategyStorageDataDefault } from "../../shared/repository/ticketSelectorStrategy";
+import { TicketSelectorStrategyStorageDataDefault } from "../../shared/repository/ticketSelectorStrategyStorageData";
 
 export const DevTools = () => {
   return (

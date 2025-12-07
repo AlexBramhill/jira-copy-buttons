@@ -1,6 +1,6 @@
-import type { ContainerProcessorStrategyStorageData } from "./containerProcessorStrategy";
-import type { TicketSelectorStrategyStorageData } from "./ticketSelectorStrategy";
-import type { BranchCopyButtonStrategy } from "./BranchCopyButtonStrategy";
+import type { ContainerProcessorStrategyStorageData } from "./containerProcessorStrategyStoageData";
+import type { TicketSelectorStrategyStorageData } from "./ticketSelectorStrategyStorageData";
+import type { BranchCopyButtonStrategy } from "../strategies/BranchCopyButtonStrategy";
 
 interface StorageData {
   savedHostnames: string[];
