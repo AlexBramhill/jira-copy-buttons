@@ -1,5 +1,4 @@
-import IconButton from "./IconButton";
-import { IconButtonVariants } from "./IconButtonVariants";
+import IconButton, { IconButtonVariants } from "./IconButton";
 
 type DeleteButtonProps = {
   onClick: () => Promise<void>;

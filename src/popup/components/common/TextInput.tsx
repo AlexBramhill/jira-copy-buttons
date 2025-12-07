@@ -1,3 +1,5 @@
+import { Affixes } from "./Affixes";
+
 interface TextInputProps {
   id: string;
   value: string;
@@ -9,12 +11,7 @@ interface TextInputProps {
 }
 
 export const TextInput = (props: TextInputProps) => (
-  <div class="flex items-stretch w-full">
-    {props.prefix && (
-      <span class="inline-flex items-center px-2 rounded-l-md border border-r-0 border-neutral-700 bg-neutral-800 text-neutral-400 text-sm">
-        {props.prefix}
-      </span>
-    )}
+  <Affixes prefix={props.prefix} suffix={props.suffix}>
     <input
       id={props.id}
       type="text"
@@ -28,10 +25,5 @@ export const TextInput = (props: TextInputProps) => (
       }`}
       autocomplete="off"
     />
-    {props.suffix && (
-      <span class="inline-flex items-center px-2 rounded-r-md border border-l-0 border-neutral-700 bg-neutral-800 text-neutral-400 text-sm">
-        {props.suffix}
-      </span>
-    )}
-  </div>
+  </Affixes>
 );

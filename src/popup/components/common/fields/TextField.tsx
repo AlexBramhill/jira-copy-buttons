@@ -8,6 +8,7 @@ export type TextFieldProps = {
   placeholder?: string;
   prefix?: string;
   suffix?: string;
+  class?: string;
 };
 
 export const TextField = (props: TextFieldProps) => (
@@ -19,6 +20,7 @@ export const TextField = (props: TextFieldProps) => (
       placeholder={props.placeholder}
       prefix={props.prefix}
       suffix={props.suffix}
+      class={props.class}
     />
   </FormField>
 );

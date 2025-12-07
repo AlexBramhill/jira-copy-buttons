@@ -1,3 +1,5 @@
+import { Affixes } from "./Affixes";
+
 interface SelectProps<T extends string> {
   id: string;
   value: T;
@@ -10,12 +12,7 @@ interface SelectProps<T extends string> {
 
 export const Select = <T extends string>(props: SelectProps<T>) => {
   return (
-    <div class="flex items-stretch w-full">
-      {props.prefix && (
-        <span class="inline-flex items-center px-2 rounded-l-md border border-r-0 border-neutral-700 bg-neutral-800 text-neutral-400 text-sm">
-          {props.prefix}
-        </span>
-      )}
+    <Affixes prefix={props.prefix} suffix={props.suffix}>
       <select
         id={props.id}
         value={props.value}
@@ -30,12 +27,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
           <option value={option.value}>{option.label}</option>
         ))}
       </select>
-      {props.suffix && (
-        <span class="inline-flex items-center px-2 rounded-r-md border border-l-0 border-neutral-700 bg-neutral-800 text-neutral-400 text-sm">
-          {props.suffix}
-        </span>
-      )}
-    </div>
+    </Affixes>
   );
 };
 

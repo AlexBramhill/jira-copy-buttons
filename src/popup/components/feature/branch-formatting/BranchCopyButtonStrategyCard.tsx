@@ -1,10 +1,13 @@
-import { BranchNameFormatField } from "./BranchNameFormatField";
-import { ButtonNameField } from "./ButtonNameField";
 import CaseTransformField from "../../common/fields/CaseTransformField";
 import type { BranchCopyButtonStrategyStorageDataItem } from "../../../../shared/repository/branchCopyButtonStrategyStorageData";
 import Toggle from "../../common/Toggle";
 import FormField from "../../common/FormField";
 import TextField from "../../common/fields/TextField";
+import {
+  TICKET_DESCRIPTION_WILDCARD,
+  TICKET_PREFIX_WILDCARD,
+} from "../../../../shared/transformers/ticketWildcards";
+import { ToggleField } from "../../common/fields/ToggleField";
 
 interface BranchCopyButtonStrategyCardProps {
   value: BranchCopyButtonStrategyStorageDataItem;
@@ -34,6 +37,8 @@ export const BranchCopyButtonStrategyCard = (
           props.updateValue({ ...props.value, formatPattern: value })
         }
         prefix="Copy Text:"
+        placeholder={`${TICKET_PREFIX_WILDCARD}: ${TICKET_DESCRIPTION_WILDCARD}`}
+        class="font-mono"
       />
       <CaseTransformField
         id="prefix-case"
@@ -51,19 +56,17 @@ export const BranchCopyButtonStrategyCard = (
           props.updateValue({ ...props.value, descriptionCase: value })
         }
       />
-      <ToggleField/>
-      <FormField id="enabled-toggle" label="Enabled">
-        <Toggle
-          id="enabled-toggle"
-          checked={props.value.isEnabled}
-          onChange={() =>
-            props.updateValue({
-              ...props.value,
-              isEnabled: !props.value.isEnabled,
-            })
-          }
-        />
-      </FormField>
+      <ToggleField
+        id="enabled-toggle"
+        checked={props.value.isEnabled}
+        onChange={() =>
+          props.updateValue({
+            ...props.value,
+            isEnabled: !props.value.isEnabled,
+          })
+        }
+        prefix="Enabled"
+      />
     </div>
   );
 };
