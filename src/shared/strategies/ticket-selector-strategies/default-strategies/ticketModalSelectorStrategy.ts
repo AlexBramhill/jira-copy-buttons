@@ -1,8 +1,8 @@
 import {
-  selectElementByTestId,
   selectElementsByTestId,
-} from "../../../content/page-interactors/elementSelectors";
-import { selectButtonDivUnderTitle } from "../../../content/page-interactors/jiraSpecificElementSelectors";
+  selectElementByTestId,
+} from "../../../../content/page-interactors/elementSelectors";
+import { selectButtonDivUnderTitle } from "../../../../content/page-interactors/jiraSpecificElementSelectors";
 import type { ITicketSelectorStrategy as ITicketSelectorStrategy } from "../ITicketSelectorStrategy";
 
 /**

@@ -2,8 +2,8 @@ import {
   getContainerProcessorStrategies,
   getTicketSelectorStrategies,
 } from "../../shared/repository/chromeStorageSync";
-import { defaultTicketSelectorStrategies } from "../../shared/ticket-selector-strategies/defaultTicketSelectorStrategies";
-import type { ITicketSelectorStrategy } from "../../shared/ticket-selector-strategies/ITicketSelectorStrategy";
+import { DEFAULT_TICKET_SELECTOR_STRATEGIES } from "../../shared/strategies/ticket-selector-strategies/defaultTicketSelectorStrategies";
+import type { ITicketSelectorStrategy } from "../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
 import { containerProcessorStrategies } from "../container-processor-strategies/allContainerProcessorStrategies";
 import type { IContainerProcessorStrategy } from "../container-processor-strategies/IContainerProcessorStrategy";
 
@@ -32,5 +32,8 @@ export const getEnabledTicketSelectorStrategies = async (): Promise<
   ITicketSelectorStrategy[]
 > => {
   const strategyEnabled = await getTicketSelectorStrategies();
-  return getEnabledStrategies(defaultTicketSelectorStrategies, strategyEnabled);
+  return getEnabledStrategies(
+    DEFAULT_TICKET_SELECTOR_STRATEGIES,
+    strategyEnabled
+  );
 };
