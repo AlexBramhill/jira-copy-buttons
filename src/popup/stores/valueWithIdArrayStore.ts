@@ -7,10 +7,10 @@ import {
   createValuesWithIds,
 } from "./storeItemTransformers";
 import type { ValueWithId } from "./IValueWithId";
+import type { StorageRepository } from "../../shared/repository/chromeStorageSync";
 
 export interface CreateValueWithIdArrayStoreConfig<T> {
-  loadFromPersistence: () => Promise<T[]>;
-  saveToPersistence: (values: T[]) => Promise<void>;
+  repository: StorageRepository<T[]>;
   createDefaultValue: () => T;
   allowEmptyStore?: boolean;
 }
@@ -25,8 +25,7 @@ export interface CreateValueWithIdArrayStoreResponse<T> {
 // TODO don't need create default here
 // TODO separate id layer
 export const createValueWithIdArrayStore = <T>({
-  loadFromPersistence,
-  saveToPersistence,
+  repository,
   createDefaultValue,
   allowEmptyStore = false,
 }: CreateValueWithIdArrayStoreConfig<T>) => {
@@ -35,14 +34,14 @@ export const createValueWithIdArrayStore = <T>({
   ]);
 
   onMount(async () => {
-    const savedValues = await loadFromPersistence();
+    const savedValues = await repository.get();
     const valueWithIds = createValuesWithIds(savedValues);
     setValues(valueWithIds);
     logger.debug({ savedValues }, "Loaded from storage");
   });
 
   const persistValues = async (rows: ValueWithId<T>[] = values) => {
-    await saveToPersistence(rows.map((row) => row.value));
+    await repository.save(rows.map((row) => row.value));
     logger.debug({ values: rows }, "Saved to storage");
   };
 

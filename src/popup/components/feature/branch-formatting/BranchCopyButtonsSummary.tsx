@@ -7,8 +7,7 @@ import { DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA } from "../../../../sh
 export const BranchCopyButtonsSummary = () => {
   const createValuesStore = () =>
     createValueWithIdArrayStore({
-      loadFromPersistence: branchCopyButtonStrategiesRepository.get,
-      saveToPersistence: branchCopyButtonStrategiesRepository.save,
+      repository: branchCopyButtonStrategiesRepository,
       createDefaultValue: () =>
         DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA[0],
     }); // TODO: make so default value not required?
