@@ -7,6 +7,11 @@ const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
   await chrome.storage.sync.set({ [key]: value });
 };
 
+export type StorageRepository<T> = {
+  save: (value: T) => Promise<void>;
+  get: () => Promise<T>;
+};
+
 const getValueOrDefault = async <T>(
   key: StorageKey,
   defaultValue: T
@@ -14,8 +19,10 @@ const getValueOrDefault = async <T>(
   const result = await chrome.storage.sync.get([key]);
   return result[key] !== undefined ? result[key] : defaultValue;
 };
-
-const createStorageRepository = <T>(key: StorageKey, defaultValue: T) => ({
+const createStorageRepository = <T>(
+  key: StorageKey,
+  defaultValue: T
+): StorageRepository<T> => ({
   save: (value: T) => saveValue(key, value),
   get: () => getValueOrDefault(key, defaultValue),
 });

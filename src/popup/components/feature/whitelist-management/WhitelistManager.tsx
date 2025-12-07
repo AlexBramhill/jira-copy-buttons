@@ -8,8 +8,7 @@ export const WhitelistManager = () => {
     <ValuesTable
       createValuesWithIdArrayStore={() =>
         createValueWithIdArrayStore({
-          loadFromPersistence: hostnamesRepository.get,
-          saveToPersistence: hostnamesRepository.save,
+          repository: hostnamesRepository,
           createDefaultValue: () => "",
         })
       }
