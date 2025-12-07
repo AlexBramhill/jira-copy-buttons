@@ -1,18 +1,15 @@
 import { TextInput } from "../../common/TextInput";
 import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
-import {
-  getHostnames,
-  saveHostnames,
-} from "../../../../shared/repository/chromeStorageSync";
 import ValuesTable from "../../common/ValueEditingTable";
+import { hostnamesRepository } from "../../../../shared/repository/chromeStorageSync";
 
 export const WhitelistManager = () => {
   return (
     <ValuesTable
       createValuesWithIdArrayStore={() =>
         createValueWithIdArrayStore({
-          loadFromPersistence: getHostnames,
-          saveToPersistence: saveHostnames,
+          loadFromPersistence: hostnamesRepository.get,
+          saveToPersistence: hostnamesRepository.save,
           createDefaultValue: () => "",
         })
       }

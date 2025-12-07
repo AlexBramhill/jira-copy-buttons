@@ -1,8 +1,8 @@
-import { getHostnames } from "../../shared/repository/chromeStorageSync";
+import { hostnamesRepository } from "../../shared/repository/chromeStorageSync";
 import { removeWwwPrefix } from "../helpers/urlHelper";
 
 export const isOnJiraPage = async () => {
-  const hostnames = await getHostnames();
+  const hostnames = await hostnamesRepository.get();
   const currentPageUrl = new URL(window.location.href);
   const currentPageHostname = removeWwwPrefix(currentPageUrl.hostname);
 

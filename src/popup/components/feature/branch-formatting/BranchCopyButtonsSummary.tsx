@@ -1,28 +1,17 @@
-import {
-  getBranchCopyButtonStrategies,
-  saveBranchCopyButtonStrategies,
-} from "../../../../shared/repository/chromeStorageSync";
-import {
-  TICKET_DESCRIPTION_WILDCARD,
-  TICKET_PREFIX_WILDCARD,
-} from "../../../../shared/transformers/ticketWildcards";
-import { Case } from "../../../../shared/transformers/Case";
 import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
 import BranchCopyButtonAccordion from "./BranchCopyButtonAccordion";
 import ValuesTable from "../../common/ValueEditingTable";
+import { branchCopyButtonStrategiesRepository } from "../../../../shared/repository/chromeStorageSync";
+import { DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA } from "../../../../shared/repository/branchCopyButtonStrategyStorageData";
 
 export const BranchCopyButtonsSummary = () => {
   const createValuesStore = () =>
     createValueWithIdArrayStore({
-      loadFromPersistence: getBranchCopyButtonStrategies,
-      saveToPersistence: saveBranchCopyButtonStrategies,
-      createDefaultValue: () => ({
-        buttonName: "Create Branch",
-        formatPattern: `git checkout -b ${TICKET_PREFIX_WILDCARD}-${TICKET_DESCRIPTION_WILDCARD}`,
-        prefixCase: Case.Kebab,
-        descriptionCase: Case.Kebab,
-      }),
-    });
+      loadFromPersistence: branchCopyButtonStrategiesRepository.get,
+      saveToPersistence: branchCopyButtonStrategiesRepository.save,
+      createDefaultValue: () =>
+        DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA[0],
+    }); // TODO: make so default value not required?
 
   return (
     <>

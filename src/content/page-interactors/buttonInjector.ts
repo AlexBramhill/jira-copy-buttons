@@ -1,5 +1,5 @@
 import { logger } from "../../shared/logger";
-import type { BranchCopyButtonStrategy } from "../../shared/strategies/BranchCopyButtonStrategy";
+import type { BranchCopyButtonStrategy } from "../../shared/strategies/branch-copy-button-strategies/BranchCopyButtonStrategy";
 import { toBranchCopyButtonText } from "../../shared/transformers/branchCopyButtonTransformer";
 import { createCopyButton } from "../components/button/copyButton";
 import { createElementName } from "../helpers/elementHelper";

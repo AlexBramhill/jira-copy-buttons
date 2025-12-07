@@ -1,4 +1,4 @@
-import type { BranchCopyButtonStrategy } from "../../../../shared/strategies/BranchCopyButtonStrategy";
+import type { BranchCopyButtonStrategy } from "../../../../shared/strategies/branch-copy-button-strategies/BranchCopyButtonStrategy";
 import { getExampleBranchCopyButtonText } from "../../../../shared/transformers/branchCopyButtonTransformer";
 import { Code } from "../../common/Code";
 import ContainerHeading from "../../common/ContainerHeading";

@@ -1,13 +1,7 @@
-import {
-  containerProcessorStrategyStorageDataDefault,
-  type ContainerProcessorStrategyStorageData,
-} from "./containerProcessorStrategyStoageData";
-import {
-  TicketSelectorStrategyStorageDataDefault,
-  type TicketSelectorStrategyStorageData,
-} from "./ticketSelectorStrategyStorageData";
-import type { BranchCopyButtonStrategy } from "../strategies/BranchCopyButtonStrategy";
+import { DEFAULT_CONTAINER_PROCESSOR_STRATEGY_STORAGE_DATA_DEFAULT } from "./containerProcessorStrategyStorageData";
+import { DEFAULT_TICKET_SELECTOR_STRATEGY_STORAGE_DATA } from "./ticketSelectorStrategyStorageData";
 import { storageKeys, type StorageKey } from "./storageKeys";
+import { DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA } from "./branchCopyButtonStrategyStorageData";
 
 const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
   await chrome.storage.sync.set({ [key]: value });
@@ -21,54 +15,27 @@ const getValueOrDefault = async <T>(
   return result[key] !== undefined ? result[key] : defaultValue;
 };
 
-export const saveHostnames = (hostnames: string[]): Promise<void> =>
-  saveValue<string[]>(storageKeys.savedHostnames, hostnames);
+const createStorageRepository = <T>(key: StorageKey, defaultValue: T) => ({
+  save: (value: T) => saveValue(key, value),
+  get: () => getValueOrDefault(key, defaultValue),
+});
 
-export const getHostnames = (): Promise<string[]> =>
-  getValueOrDefault<string[]>(storageKeys.savedHostnames, []);
+export const hostnamesRepository = createStorageRepository<string[]>(
+  storageKeys.savedHostnames,
+  []
+);
 
-export const saveContainerProcessorStrategies = (
-  strategies: ContainerProcessorStrategyStorageData
-): Promise<void> =>
-  saveValue<ContainerProcessorStrategyStorageData>(
-    storageKeys.containerProcessorStrategies,
-    strategies
-  );
+export const containerProcessorStrategiesRepository = createStorageRepository(
+  storageKeys.containerProcessorStrategies,
+  DEFAULT_CONTAINER_PROCESSOR_STRATEGY_STORAGE_DATA_DEFAULT
+);
 
-export const getContainerProcessorStrategies =
-  (): Promise<ContainerProcessorStrategyStorageData> =>
-    getValueOrDefault<ContainerProcessorStrategyStorageData>(
-      storageKeys.containerProcessorStrategies,
-      containerProcessorStrategyStorageDataDefault
-    );
+export const ticketSelectorStrategiesRepository = createStorageRepository(
+  storageKeys.ticketSelectorStrategies,
+  DEFAULT_TICKET_SELECTOR_STRATEGY_STORAGE_DATA
+);
 
-export const saveTicketSelectorStrategies = (
-  strategies: TicketSelectorStrategyStorageData
-): Promise<void> =>
-  saveValue<TicketSelectorStrategyStorageData>(
-    storageKeys.ticketSelectorStrategies,
-    strategies
-  );
-
-export const getTicketSelectorStrategies =
-  (): Promise<TicketSelectorStrategyStorageData> =>
-    getValueOrDefault<TicketSelectorStrategyStorageData>(
-      storageKeys.ticketSelectorStrategies,
-      TicketSelectorStrategyStorageDataDefault
-    );
-
-export const saveBranchCopyButtonStrategies = (
-  strategies: BranchCopyButtonStrategy[]
-): Promise<void> =>
-  saveValue<BranchCopyButtonStrategy[]>(
-    storageKeys.branchCopyButtonStrategies,
-    strategies
-  );
-
-export const getBranchCopyButtonStrategies = (): Promise<
-  BranchCopyButtonStrategy[]
-> =>
-  getValueOrDefault<BranchCopyButtonStrategy[]>(
-    storageKeys.branchCopyButtonStrategies,
-    []
-  );
+export const branchCopyButtonStrategiesRepository = createStorageRepository(
+  storageKeys.branchCopyButtonStrategies,
+  DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA
+);
