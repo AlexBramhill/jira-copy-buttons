@@ -2,10 +2,10 @@ import {
   getContainerProcessorStrategies,
   getTicketSelectorStrategies,
 } from "../../shared/repository/chromeStorageSync";
+import { ticketSelectorStrategies } from "../../shared/ticket-selector-strategies/allTicketSelectorStrategies";
+import type { ITicketSelectorStrategy } from "../../shared/ticket-selector-strategies/ITicketSelectorStrategy";
 import { containerProcessorStrategies } from "../container-processor-strategies/allContainerProcessorStrategies";
 import type { IContainerProcessorStrategy } from "../container-processor-strategies/IContainerProcessorStrategy";
-import { ticketSelectorStrategies } from "../ticket-selector-strategies/allTicketSelectorStrategies";
-import type { ITicketSelectorStrategy } from "../ticket-selector-strategies/ITicketSelectorStrategy";
 
 export const getEnabledStrategies = <
   TStrategy,
