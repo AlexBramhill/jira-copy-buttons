@@ -1,5 +1,5 @@
 import { Case } from "../../../../shared/transformers/Case";
-import SelectField from "./DropdownField";
+import SelectField from "./SelectField";
 
 type CaseTransformOption = {
   value: Case;

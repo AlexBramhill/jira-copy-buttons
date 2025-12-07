@@ -1,4 +1,5 @@
 import type { JSX } from "solid-js";
+import { Affixes } from "./Affixes";
 
 interface ToggleProps {
   id: string;
@@ -10,8 +11,13 @@ interface ToggleProps {
 }
 
 export const Toggle = (props: ToggleProps) => (
-  <div class={`flex items-center ${props.class || ""}`}>
-    {props.prefix && <span class="mr-2 text-neutral-300">{props.prefix}</span>}
+  <Affixes
+    prefix={props.prefix}
+    suffix={props.suffix}
+    prefixClass="rounded-r-md border-r-1 mr-2"
+    suffixClass="rounded-l-md border-l-1 ml-2"
+    wrapperClass={props.class}
+  >
     <button
       type="button"
       role="switch"
@@ -28,8 +34,7 @@ export const Toggle = (props: ToggleProps) => (
         }`}
       />
     </button>
-    {props.suffix && <span class="ml-2  text-neutral-300">{props.suffix}</span>}
-  </div>
+  </Affixes>
 );
 
 export default Toggle;

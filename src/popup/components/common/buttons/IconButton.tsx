@@ -1,8 +1,4 @@
 import type { ParentProps } from "solid-js";
-import {
-  IconButtonVariants,
-  type IconButtonVariant,
-} from "./IconButtonVariants";
 
 type IconButtonProps = {
   onClick: () => void;
@@ -10,6 +6,15 @@ type IconButtonProps = {
   variant?: IconButtonVariant;
   class?: string;
 } & ParentProps;
+
+export const IconButtonVariants = {
+  PRIMARY: "primary",
+  SECONDARY: "secondary",
+  DELETE: "delete",
+} as const;
+
+export type IconButtonVariant =
+  (typeof IconButtonVariants)[keyof typeof IconButtonVariants];
 
 export const IconButton = ({
   children,
