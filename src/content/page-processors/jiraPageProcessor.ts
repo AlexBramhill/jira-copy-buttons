@@ -18,9 +18,7 @@ export const addProcessJiraPageEventListener = (
   });
 };
 
-export const processPage = (
-  ticketSelectorStrategies: ITicketSelectorStrategy[]
-) => {
+const processPage = (ticketSelectorStrategies: ITicketSelectorStrategy[]) => {
   ticketSelectorStrategies.forEach(async (ticketSelectorStrategy) => {
     const containers = ticketSelectorStrategy.selectContainers();
 

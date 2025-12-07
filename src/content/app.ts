@@ -1,6 +1,6 @@
-import { isDebug } from "../../shared/debugger";
-import { logger } from "../../shared/logger";
-import { processPage } from "../page-processors/pageProcessor";
+import { isDebug } from "../shared/debugger";
+import { logger } from "../shared/logger";
+import { processPage } from "./page-processors/pageProcessor";
 
 export const runApp = () => {
   logger.debug("Debug mode enabled");
