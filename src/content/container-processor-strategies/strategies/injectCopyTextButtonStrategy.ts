@@ -2,8 +2,8 @@ import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy
 import { logger } from "../../../shared/logger";
 import { getBranchCopyButtonStrategies } from "../../../shared/repository/chromeStorageSync";
 import { upsertCopyButtonOnDom } from "../../page-interactors/buttonInjector";
-import { getTextFromElementExcludingInjectedElements } from "../../page-interactors/elementSelectors";
 import type { ITicketSelectorStrategy } from "../../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
+import { getTextFromElementExcludingInjectedElements } from "../../../shared/page-interactors/elementSelectors";
 
 export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
   process: async ({
