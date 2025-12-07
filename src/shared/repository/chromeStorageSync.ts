@@ -6,7 +6,7 @@ import {
   TicketSelectorStrategyStorageDataDefault,
   type TicketSelectorStrategyStorageData,
 } from "./ticketSelectorStrategy";
-import type { BranchCopyButtonConfig } from "./BranchCopyButtonConfig";
+import type { BranchCopyButtonStrategy } from "./BranchCopyButtonStrategy";
 import { storageKeys, type StorageKey } from "./storageKeys";
 
 const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
@@ -57,18 +57,18 @@ export const getTicketSelectorStrategies =
       TicketSelectorStrategyStorageDataDefault
     );
 
-export const saveBranchCopyButtonConfigs = (
-  configs: BranchCopyButtonConfig[]
+export const saveBranchCopyButtonStrategies = (
+  strategies: BranchCopyButtonStrategy[]
 ): Promise<void> =>
-  saveValue<BranchCopyButtonConfig[]>(
-    storageKeys.branchCopyButtonConfigs,
-    configs
+  saveValue<BranchCopyButtonStrategy[]>(
+    storageKeys.branchCopyButtonStrategies,
+    strategies
   );
 
-export const getBranchCopyButtonConfigs = (): Promise<
-  BranchCopyButtonConfig[]
+export const getBranchCopyButtonStrategies = (): Promise<
+  BranchCopyButtonStrategy[]
 > =>
-  getValueOrDefault<BranchCopyButtonConfig[]>(
-    storageKeys.branchCopyButtonConfigs,
+  getValueOrDefault<BranchCopyButtonStrategy[]>(
+    storageKeys.branchCopyButtonStrategies,
     []
   );

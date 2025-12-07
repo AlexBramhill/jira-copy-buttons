@@ -1,17 +1,17 @@
 import type { ContainerProcessorStrategyStorageData } from "./containerProcessorStrategy";
 import type { TicketSelectorStrategyStorageData } from "./ticketSelectorStrategy";
-import type { BranchCopyButtonConfig } from "./BranchCopyButtonConfig";
+import type { BranchCopyButtonStrategy } from "./BranchCopyButtonStrategy";
 
 interface StorageData {
   savedHostnames: string[];
-  branchCopyButtonConfigs: BranchCopyButtonConfig[];
+  branchCopyButtonStrategies: BranchCopyButtonStrategy[];
   containerProcessorStrategies: ContainerProcessorStrategyStorageData[];
   ticketSelectorStrategies: TicketSelectorStrategyStorageData[];
 }
 
 export const storageKeys = {
   savedHostnames: "savedHostnames",
-  branchCopyButtonConfigs: "branchCopyButtonConfigs",
+  branchCopyButtonStrategies: "branchCopyButtonStrategies",
   containerProcessorStrategies: "containerProcessorStrategies",
   ticketSelectorStrategies: "ticketSelectorStrategies",
 } as const satisfies { [K in keyof StorageData]: K };

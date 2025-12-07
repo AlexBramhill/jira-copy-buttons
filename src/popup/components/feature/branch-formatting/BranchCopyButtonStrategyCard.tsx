@@ -1,15 +1,15 @@
-import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
+import type { BranchCopyButtonStrategy } from "../../../../shared/repository/BranchCopyButtonStrategy";
 import { BranchNameFormatField } from "./BranchNameFormatField";
-import { ButtonNameField } from "./ButtonNameField";
+import { ButtonNameField } from "./BranchButtonNameField";
 import CaseTransformField from "./CaseTransformField";
 
-interface BranchCopyButtonConfigurationCardProps {
-  value: BranchCopyButtonConfig;
-  updateValue: (value: BranchCopyButtonConfig) => Promise<void>;
+interface BranchCopyButtonStrategyCardProps {
+  value: BranchCopyButtonStrategy;
+  updateValue: (value: BranchCopyButtonStrategy) => Promise<void>;
 }
 
-export const BranchCopyButtonConfigurationCard = (
-  props: BranchCopyButtonConfigurationCardProps
+export const BranchCopyButtonStrategyCard = (
+  props: BranchCopyButtonStrategyCardProps
 ) => {
   return (
     <div class="space-y-4">

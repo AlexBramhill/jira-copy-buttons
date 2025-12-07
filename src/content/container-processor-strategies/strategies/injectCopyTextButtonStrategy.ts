@@ -1,7 +1,7 @@
 import type { ITicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
 import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy";
 import { logger } from "../../../shared/logger";
-import { getBranchCopyButtonConfigs } from "../../../shared/repository/chromeStorageSync";
+import { getBranchCopyButtonStrategies } from "../../../shared/repository/chromeStorageSync";
 import { upsertCopyButtonOnDom } from "../../page-interactors/buttonInjector";
 import { getTextFromElementExcludingInjectedElements } from "../../page-interactors/elementSelectors";
 
@@ -15,7 +15,7 @@ export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
   }) => {
     logger.debug({ container }, "Injecting button into container");
 
-    const configs = await getBranchCopyButtonConfigs();
+    const configs = await getBranchCopyButtonStrategies();
     const domElementToAppend =
       ticketSelectorStrategy.selectElementToAddButtonTo(container);
 

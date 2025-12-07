@@ -1,10 +1,10 @@
-import type { BranchCopyButtonConfig } from "../../../../shared/repository/BranchCopyButtonConfig";
+import type { BranchCopyButtonStrategy } from "../../../../shared/repository/BranchCopyButtonStrategy";
 import { getExampleBranchCopyButtonText } from "../../../../shared/transformers/branchCopyButtonTransformer";
 import { Code } from "../../common/Code";
 import ContainerHeading from "../../common/ContainerHeading";
 
 interface BranchCopyButtonHeaderProps {
-  config: BranchCopyButtonConfig;
+  config: BranchCopyButtonStrategy;
 }
 
 export const BranchCopyButtonHeader = (props: BranchCopyButtonHeaderProps) => {

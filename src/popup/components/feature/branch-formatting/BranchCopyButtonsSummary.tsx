@@ -1,6 +1,6 @@
 import {
-  getBranchCopyButtonConfigs,
-  saveBranchCopyButtonConfigs,
+  getBranchCopyButtonStrategies,
+  saveBranchCopyButtonStrategies,
 } from "../../../../shared/repository/chromeStorageSync";
 import {
   TICKET_DESCRIPTION_WILDCARD,
@@ -14,8 +14,8 @@ import ValuesTable from "../../common/ValueEditingTable";
 export const BranchCopyButtonsSummary = () => {
   const createValuesStore = () =>
     createValueWithIdArrayStore({
-      loadFromPersistence: getBranchCopyButtonConfigs,
-      saveToPersistence: saveBranchCopyButtonConfigs,
+      loadFromPersistence: getBranchCopyButtonStrategies,
+      saveToPersistence: saveBranchCopyButtonStrategies,
       createDefaultValue: () => ({
         buttonName: "Create Branch",
         formatPattern: `git checkout -b ${TICKET_PREFIX_WILDCARD}-${TICKET_DESCRIPTION_WILDCARD}`,

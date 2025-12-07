@@ -1,17 +1,17 @@
 import { logger } from "../../shared/logger";
-import type { BranchCopyButtonConfig } from "../../shared/repository/BranchCopyButtonConfig";
+import type { BranchCopyButtonStrategy } from "../../shared/repository/BranchCopyButtonStrategy";
 import { toBranchCopyButtonText } from "../../shared/transformers/branchCopyButtonTransformer";
 import { createCopyButton } from "../components/button/copyButton";
 import { createElementName } from "../helpers/elementHelper";
 
 export const upsertCopyButtonOnDom = (
-  branchCopyButtonConfig: BranchCopyButtonConfig,
+  branchCopyButtonStrategy: BranchCopyButtonStrategy,
   prefixText: string,
   titleText: string,
   domElementToAppend: HTMLElement | null
 ) => {
   const buttonId = createElementName(
-    `copy-button-${branchCopyButtonConfig.buttonName}`
+    `copy-button-${branchCopyButtonStrategy.buttonName}`
   );
 
   if (document.getElementById(buttonId)) {
@@ -22,12 +22,12 @@ export const upsertCopyButtonOnDom = (
   const copyText = toBranchCopyButtonText(
     prefixText,
     titleText,
-    branchCopyButtonConfig
+    branchCopyButtonStrategy
   );
 
   const button = createCopyButton(
     buttonId,
-    branchCopyButtonConfig.buttonName,
+    branchCopyButtonStrategy.buttonName,
     copyText
   );
 
