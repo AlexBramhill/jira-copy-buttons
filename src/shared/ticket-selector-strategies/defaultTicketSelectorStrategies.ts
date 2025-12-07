@@ -1,9 +1,9 @@
 import type { ITicketSelectorStrategy } from "./ITicketSelectorStrategy";
-import type { TicketSelectorStrategyName } from "../../shared/repository/ticketSelectorStrategy";
+import type { TicketSelectorStrategyName } from "../repository/ticketSelectorStrategyStorageData";
 import { ticketPageSelectorStrategy } from "./strategies/ticketPageSelectorStrategy";
 import { ticketModalSelectorStrategy } from "./strategies/ticketModalSelectorStrategy";
 
-export const ticketSelectorStrategies = {
+export const defaultTicketSelectorStrategies = {
   ticketModalSelectorStrategy,
   ticketPageSelectorStrategy,
 } satisfies {

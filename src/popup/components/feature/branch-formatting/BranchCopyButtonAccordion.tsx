@@ -1,4 +1,4 @@
-import type { BranchCopyButtonStrategy } from "../../../../shared/repository/BranchCopyButtonStrategy";
+import type { BranchCopyButtonStrategy } from "../../../../shared/strategies/BranchCopyButtonStrategy";
 import Accordion from "../../common/Accordion";
 import { BranchCopyButtonStrategyCard } from "./BranchCopyButtonStrategyCard";
 import BranchCopyButtonHeader from "./BranchCopyButtonHeader";

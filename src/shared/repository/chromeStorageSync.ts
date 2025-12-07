@@ -1,12 +1,12 @@
 import {
   containerProcessorStrategyStorageDataDefault,
   type ContainerProcessorStrategyStorageData,
-} from "./containerProcessorStrategy";
+} from "./containerProcessorStrategyStoageData";
 import {
   TicketSelectorStrategyStorageDataDefault,
   type TicketSelectorStrategyStorageData,
-} from "./ticketSelectorStrategy";
-import type { BranchCopyButtonStrategy } from "./BranchCopyButtonStrategy";
+} from "./ticketSelectorStrategyStorageData";
+import type { BranchCopyButtonStrategy } from "../strategies/BranchCopyButtonStrategy";
 import { storageKeys, type StorageKey } from "./storageKeys";
 
 const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
