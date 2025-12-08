@@ -8,22 +8,13 @@ export const DevTools = () => {
   return (
     <MainContainer>
       <MainNavbar title="Dev tools" showBackButton={true} />
-      // TODO: update to take repository
       <StrategyToggles
         title="Container processor strategies"
-        loadFromPersistence={repository.containerProcessorStrategies.get}
-        saveToPersistence={repository.containerProcessorStrategies.save}
-        createDefaultValue={() =>
-          repository.containerProcessorStrategies.createDefaultValue()
-        }
+        repository={repository.containerProcessorStrategies}
       />
       <StrategyToggles
         title="Ticket selector strategies"
-        loadFromPersistence={repository.ticketSelectorStrategies.get}
-        saveToPersistence={repository.ticketSelectorStrategies.save}
-        createDefaultValue={() =>
-          repository.ticketSelectorStrategies.createDefaultValue()
-        }
+        repository={repository.ticketSelectorStrategies}
       />
       <MainFooter />
     </MainContainer>
