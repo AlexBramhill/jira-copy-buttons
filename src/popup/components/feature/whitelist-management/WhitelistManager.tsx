@@ -1,14 +1,14 @@
 import { TextInput } from "../../common/TextInput";
 import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
 import ValuesTable from "../../common/ValueEditingTable";
-import { hostnamesRepository } from "../../../../shared/repository/chromeStorageSync";
+import { repository } from "../../../../shared/repository/chromeStorageSync";
 
 export const WhitelistManager = () => {
   return (
     <ValuesTable
       createValuesWithIdArrayStore={() =>
         createValueWithIdArrayStore({
-          repository: hostnamesRepository,
+          repository: repository.hostnames,
           createDefaultValue: () => "",
         })
       }

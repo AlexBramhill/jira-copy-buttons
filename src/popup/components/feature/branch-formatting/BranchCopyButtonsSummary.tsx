@@ -1,13 +1,13 @@
 import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
 import BranchCopyButtonAccordion from "./BranchCopyButtonAccordion";
 import ValuesTable from "../../common/ValueEditingTable";
-import { branchCopyButtonStrategiesRepository } from "../../../../shared/repository/chromeStorageSync";
 import { DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA } from "../../../../shared/repository/branchCopyButtonStrategyStorageData";
+import { repository } from "../../../../shared/repository/chromeStorageSync";
 
 export const BranchCopyButtonsSummary = () => {
   const createValuesStore = () =>
     createValueWithIdArrayStore({
-      repository: branchCopyButtonStrategiesRepository,
+      repository: repository.branchCopyButtonStrategies,
       createDefaultValue: () =>
         DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA[0],
     }); // TODO: make so default value not required?

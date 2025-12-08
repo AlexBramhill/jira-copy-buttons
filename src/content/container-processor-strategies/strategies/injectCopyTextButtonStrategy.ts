@@ -3,7 +3,7 @@ import { logger } from "../../../shared/logger";
 import { upsertCopyButtonOnDom } from "../../page-interactors/buttonInjector";
 import type { ITicketSelectorStrategy } from "../../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
 import { getTextFromElementExcludingInjectedElements } from "../../../shared/page-interactors/elementSelectors";
-import { branchCopyButtonStrategiesRepository } from "../../../shared/repository/chromeStorageSync";
+import { repository } from "../../../shared/repository/chromeStorageSync";
 
 export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
   process: async ({
@@ -16,7 +16,7 @@ export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
     logger.debug({ container }, "Injecting button into container");
 
     const branchCopyButtonStrategies = (
-      await branchCopyButtonStrategiesRepository.get()
+      await repository.branchCopyButtonStrategies.get()
     ).filter((strategy) => strategy.isEnabled);
 
     logger.debug(

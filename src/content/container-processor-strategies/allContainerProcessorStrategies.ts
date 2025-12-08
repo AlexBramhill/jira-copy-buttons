@@ -3,7 +3,7 @@ import type { ContainerProcessorStrategyName } from "../../shared/repository/con
 import { debugStrategy } from "./strategies/debugStrategy";
 import { injectCopyTextButtonStrategy } from "./strategies/injectCopyTextButtonStrategy";
 
-export const containerProcessorStrategies = {
+export const CONTAINER_PROCESSOR_STRATEGIES = {
   injectCopyTextButtonStrategy,
   debugStrategy,
 } satisfies {
