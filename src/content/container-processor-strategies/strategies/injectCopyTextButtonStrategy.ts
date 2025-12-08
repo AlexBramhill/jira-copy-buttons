@@ -15,7 +15,14 @@ export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
   }) => {
     logger.debug({ container }, "Injecting button into container");
 
-    const configs = await branchCopyButtonStrategiesRepository.get();
+    const branchCopyButtonStrategies = (
+      await branchCopyButtonStrategiesRepository.get()
+    ).filter((strategy) => strategy.isEnabled);
+
+    logger.debug(
+      { branchCopyButtonStrategies },
+      "Inject Copy Text Button Strategy: Retrieved enabled strategies"
+    );
     const domElementToAppend =
       ticketSelectorStrategy.selectElementToAddButtonTo(container);
 
@@ -26,8 +33,13 @@ export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
       getTextFromElementExcludingInjectedElements(prefixElement);
     const titleText = getTextFromElementExcludingInjectedElements(titleElement);
 
-    configs.forEach((config) => {
-      upsertCopyButtonOnDom(config, prefixText, titleText, domElementToAppend);
+    branchCopyButtonStrategies.forEach((branchCopyButtonStrategy) => {
+      upsertCopyButtonOnDom(
+        branchCopyButtonStrategy,
+        prefixText,
+        titleText,
+        domElementToAppend
+      );
     });
   },
 };
