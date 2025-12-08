@@ -1,4 +1,4 @@
-import type { CssClassName } from "../page-interactors/cssInjector";
+import type { CssClassName } from "../../shared/page-interactors/cssInjector";
 
 export type CreateCss = () => CreateCssResponse;
 
