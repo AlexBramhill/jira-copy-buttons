@@ -3,12 +3,12 @@ import {
   selectElementByTestId,
 } from "../../../page-interactors/elementSelectors";
 import { selectButtonDivUnderTitle } from "../../../page-interactors/jiraSpecificElementSelectors";
-import type { TicketSelectorStrategy as TicketSelectorStrategy } from "../ITicketSelectorStrategy";
+import type { TicketSelectorStrategy as TicketSelectorStrategy } from "../TicketSelectorStrategy";
 
-/**
- * Rule for ticket page ie https://example.atlassian.net/browse/PD-1
- */
 export const ticketPageSelectorStrategy: TicketSelectorStrategy = {
+  name: "Ticket Page Selector",
+  description:
+    "Rule for ticket page ie https://example.atlassian.net/browse/PD-1",
   selectContainers: () => selectElementsByVc("FullPageIssueContainer"),
   selectPrefixElement: (container: HTMLElement) =>
     selectElementByTestId(
