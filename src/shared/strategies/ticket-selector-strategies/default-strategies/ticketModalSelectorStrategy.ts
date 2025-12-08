@@ -3,12 +3,12 @@ import {
   selectElementsByTestId,
 } from "../../../page-interactors/elementSelectors";
 import { selectButtonDivUnderTitle } from "../../../page-interactors/jiraSpecificElementSelectors";
-import type { ITicketSelectorStrategy as ITicketSelectorStrategy } from "../ITicketSelectorStrategy";
+import type { TicketSelectorStrategy as TicketSelectorStrategy } from "../ITicketSelectorStrategy";
 
 /**
  * Rule for ticket modal ie https://example.atlassian.net/jira/software/projects/PD/boards/1?selectedIssue=PD-1
  */
-export const ticketModalSelectorStrategy: ITicketSelectorStrategy = {
+export const ticketModalSelectorStrategy: TicketSelectorStrategy = {
   selectContainers: () =>
     selectElementsByTestId(
       "issue.views.issue-details.issue-modal.modal-dialog"

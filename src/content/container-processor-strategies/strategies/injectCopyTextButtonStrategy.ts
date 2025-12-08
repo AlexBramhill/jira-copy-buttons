@@ -1,7 +1,7 @@
 import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy";
 import { logger } from "../../../shared/logger";
 import { upsertCopyButtonOnDom } from "../../page-interactors/buttonInjector";
-import type { ITicketSelectorStrategy } from "../../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
+import type { TicketSelectorStrategy } from "../../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
 import { getTextFromElementExcludingInjectedElements } from "../../../shared/page-interactors/elementSelectors";
 import { repository } from "../../../shared/repository/chromeStorageSync";
 
@@ -11,7 +11,7 @@ export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
     ticketSelectorStrategy,
   }: {
     container: HTMLElement;
-    ticketSelectorStrategy: ITicketSelectorStrategy;
+    ticketSelectorStrategy: TicketSelectorStrategy;
   }) => {
     logger.debug({ container }, "Injecting button into container");
 
