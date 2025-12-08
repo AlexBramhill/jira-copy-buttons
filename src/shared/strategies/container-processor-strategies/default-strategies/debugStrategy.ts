@@ -1,14 +1,14 @@
-import { logger } from "../../../shared/logger";
-import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy";
-import { addClassToElement } from "../../page-interactors/elementClassModifier";
 import {
-  createDebugPrefixCss,
-  createDebugTitleCss,
   createDebugButtonCss,
-} from "../../css/debugCss";
-import type { TicketSelectorStrategy } from "../../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
+  createDebugTitleCss,
+  createDebugPrefixCss,
+} from "../../../../content/css/debugCss";
+import { addClassToElement } from "../../../../content/page-interactors/elementClassModifier";
+import { logger } from "../../../logger";
+import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
+import type { ContainerProcessorStrategy } from "../ContainerProcessorStrategy";
 
-export const debugStrategy: IContainerProcessorStrategy = {
+export const debugStrategy: ContainerProcessorStrategy = {
   process: ({ container, ticketSelectorStrategy }) => {
     logger.debug({ container }, "Debug Strategy: Processing container");
 

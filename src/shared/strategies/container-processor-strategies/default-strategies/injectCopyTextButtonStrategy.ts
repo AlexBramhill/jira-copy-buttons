@@ -1,11 +1,11 @@
-import type { IContainerProcessorStrategy } from "../IContainerProcessorStrategy";
-import { logger } from "../../../shared/logger";
-import { upsertCopyButtonOnDom } from "../../page-interactors/buttonInjector";
-import type { TicketSelectorStrategy } from "../../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
-import { getTextFromElementExcludingInjectedElements } from "../../../shared/page-interactors/elementSelectors";
-import { repository } from "../../../shared/repository/chromeStorageSync";
+import { upsertCopyButtonOnDom } from "../../../../content/page-interactors/buttonInjector";
+import { logger } from "../../../logger";
+import { getTextFromElementExcludingInjectedElements } from "../../../page-interactors/elementSelectors";
+import { repository } from "../../../repository/chromeStorageSync";
+import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
+import type { ContainerProcessorStrategy } from "../ContainerProcessorStrategy";
 
-export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
+export const injectCopyTextButtonStrategy: ContainerProcessorStrategy = {
   process: async ({
     container,
     ticketSelectorStrategy,
