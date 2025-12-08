@@ -1,9 +1,9 @@
 import { DEFAULT_TICKET_SELECTOR_STRATEGIES_ARRAY } from "../strategies/ticket-selector-strategies/defaultTicketSelectorStrategies";
 import type { TicketSelectorStrategy } from "../strategies/ticket-selector-strategies/ITicketSelectorStrategy";
+import type { ToggleableStorageData } from "./ToggleableStorageData";
 
-export type TicketSelectorStrategyStorageDataItem = {
-  isEnabled: boolean;
-} & TicketSelectorStrategy;
+export type TicketSelectorStrategyStorageDataItem = ToggleableStorageData &
+  TicketSelectorStrategy;
 
 export type TicketSelectorStrategyStorageData =
   TicketSelectorStrategyStorageDataItem[];

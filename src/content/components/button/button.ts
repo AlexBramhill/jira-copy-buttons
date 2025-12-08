@@ -1,6 +1,6 @@
 import type { ElementName } from "../../helpers/elementHelper";
-import { addClassToElement } from "../../page-interactors/elementClassModifier";
 import { createButtonCss } from "../../css/buttonCss";
+import { addClassToElement } from "../../../shared/page-interactors/elementClassModifier";
 
 export const createButton = (
   buttonId: ElementName,

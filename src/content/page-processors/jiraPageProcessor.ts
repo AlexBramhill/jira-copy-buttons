@@ -1,7 +1,7 @@
 import { logger } from "../../shared/logger";
+import { addCssRootClass } from "../../shared/page-interactors/cssInjector";
+import { repository } from "../../shared/repository/chromeStorageSync";
 import type { TicketSelectorStrategy } from "../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
-import { getEnabledContainerProcessorStrategies } from "../helpers/strategyGetter";
-import { addCssRootClass } from "../page-interactors/cssInjector";
 
 export const addProcessJiraPageEventListener = (
   ticketSelectorStrategies: TicketSelectorStrategy[]
@@ -22,8 +22,9 @@ const processPage = (ticketSelectorStrategies: TicketSelectorStrategy[]) => {
   ticketSelectorStrategies.forEach(async (ticketSelectorStrategy) => {
     const containers = ticketSelectorStrategy.selectContainers();
 
-    const enabledContainerProcessorStrategies =
-      await getEnabledContainerProcessorStrategies();
+    const enabledContainerProcessorStrategies = (
+      await repository.containerProcessorStrategies.get()
+    ).filter((strategy) => strategy.isEnabled);
 
     containers.forEach((container) => {
       enabledContainerProcessorStrategies.forEach(

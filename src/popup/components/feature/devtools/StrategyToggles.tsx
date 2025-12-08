@@ -1,33 +1,38 @@
 import { For } from "solid-js";
 import ContainerHeading from "../../common/ContainerHeading";
-import { createValueWithIdStore } from "../../../stores/valueWithIdStore";
+import ToggleButton from "../../common/buttons/ToggleButton";
+import type { StorageRepository } from "../../../../shared/repository/chromeStorageSync";
+import type { ToggleableStorageData } from "../../../../shared/repository/ToggleableStorageData";
+import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
 import IconButton, {
   IconButtonVariants,
 } from "../../common/buttons/IconButton";
-import ToggleButton from "../../common/buttons/ToggleButton";
-import type { StorageRepository } from "../../../../shared/repository/chromeStorageSync";
+import type { ValueWithId } from "../../../stores/IValueWithId";
 
-interface StrategyTogglesProps<T extends Record<string, boolean>> {
+interface StrategyTogglesProps<T extends ToggleableStorageData> {
   title: string;
-  repository: StorageRepository<T>;
+  repository: StorageRepository<T[]>;
 }
 
-export const StrategyToggles = <T extends Record<string, boolean>>(
+export const StrategyToggles = <T extends ToggleableStorageData>(
   props: StrategyTogglesProps<T>
 ) => {
-  const { value, updateValue, resetValue } = createValueWithIdStore({
-    loadFromPersistence: props.repository.get,
-    saveToPersistence: props.repository.save,
-    createDefaultValue: props.repository.createDefaultValue,
+  const { values, updateValue } = createValueWithIdArrayStore({
+    repository: props.repository,
+    createDefaultValue: () => props.repository.createDefaultValue()[0],
   });
 
-  const handleToggle = (key: string) => {
-    updateValue({
-      id: value.id,
+  const resetValue = async () => {
+    await props.repository.save(props.repository.createDefaultValue());
+  };
+
+  const handleToggle = async (value: ValueWithId<T>) => {
+    await updateValue({
+      ...value,
       value: {
         ...value.value,
-        [key]: !value.value[key as keyof typeof value.value],
-      } as T,
+        isEnabled: !value.value.isEnabled,
+      },
     });
   };
 
@@ -44,13 +49,13 @@ export const StrategyToggles = <T extends Record<string, boolean>>(
         </IconButton>
       </div>
       <div class="space-y-2">
-        <For each={Object.keys(value.value).sort() as Array<keyof T & string>}>
-          {(key) => (
+        <For each={values.sort()}>
+          {(value) => (
             <ToggleButton
-              id={`toggle-${String(key)}`}
-              checked={value.value[key]}
-              onChange={() => handleToggle(String(key))}
-              prefix={String(key)}
+              id={`toggle-${String(value.id)}`}
+              checked={value.value.isEnabled}
+              onChange={() => handleToggle(value)}
+              prefix={String(value.id)}
             />
           )}
         </For>

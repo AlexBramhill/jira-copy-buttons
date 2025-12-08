@@ -1,5 +1,5 @@
-import { upsertCopyButtonOnDom } from "../../../../content/page-interactors/buttonInjector";
 import { logger } from "../../../logger";
+import { upsertCopyButtonOnDom } from "../../../page-interactors/buttonInjector";
 import { getTextFromElementExcludingInjectedElements } from "../../../page-interactors/elementSelectors";
 import { repository } from "../../../repository/chromeStorageSync";
 import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";

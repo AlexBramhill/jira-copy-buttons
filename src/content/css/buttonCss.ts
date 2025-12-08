@@ -1,5 +1,5 @@
+import { addCssClassToStylesheet } from "../../shared/page-interactors/cssInjector";
 import { createCssClassName } from "../helpers/cssHelper";
-import { addCssClassToStylesheet } from "../page-interactors/cssInjector";
 import type { CreateCss } from "./css";
 
 const BUTTON_CLASS_STYLES = "margin-left: 8px; height: 32px;";

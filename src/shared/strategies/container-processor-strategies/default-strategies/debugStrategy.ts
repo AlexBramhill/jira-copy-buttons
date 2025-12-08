@@ -3,8 +3,8 @@ import {
   createDebugTitleCss,
   createDebugPrefixCss,
 } from "../../../../content/css/debugCss";
-import { addClassToElement } from "../../../../content/page-interactors/elementClassModifier";
 import { logger } from "../../../logger";
+import { addClassToElement } from "../../../page-interactors/elementClassModifier";
 import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
 import type { ContainerProcessorStrategy } from "../ContainerProcessorStrategy";
 

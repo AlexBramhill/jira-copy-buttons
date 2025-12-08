@@ -1,8 +1,9 @@
-import { logger } from "../../shared/logger";
-import type { BranchCopyButtonStrategy } from "../../shared/strategies/branch-copy-button-strategies/BranchCopyButtonStrategy";
-import { toBranchCopyButtonText } from "../../shared/transformers/branchCopyButtonTransformer";
-import { createCopyButton } from "../components/button/copyButton";
-import { createElementName } from "../helpers/elementHelper";
+// TODO: Fix these imports to not rely on content (most likely through reworking strategy structure)
+import { createCopyButton } from "../../content/components/button/copyButton";
+import { createElementName } from "../../content/helpers/elementHelper";
+import { logger } from "../logger";
+import type { BranchCopyButtonStrategy } from "../strategies/branch-copy-button-strategies/BranchCopyButtonStrategy";
+import { toBranchCopyButtonText } from "../transformers/branchCopyButtonTransformer";
 
 export const upsertCopyButtonOnDom = (
   branchCopyButtonStrategy: BranchCopyButtonStrategy,
