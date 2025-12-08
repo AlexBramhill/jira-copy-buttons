@@ -7,12 +7,21 @@ export const containerProcessorStrategyNames = {
   debugStrategy: "debugStrategy",
 } as const satisfies { [K in ContainerProcessorStrategyName]: K };
 
-export type ContainerProcessorStrategyStorageData = {
-  [K in ContainerProcessorStrategyName]: boolean;
-};
+export type ContainerProcessorStrategyStorageDataItem = {
+  isEnabled: boolean;
+} & { name: ContainerProcessorStrategyName };
+
+export type ContainerProcessorStrategyStorageData =
+  ContainerProcessorStrategyStorageDataItem[];
 
 export const DEFAULT_CONTAINER_PROCESSOR_STRATEGY_STORAGE_DATA_DEFAULT: ContainerProcessorStrategyStorageData =
-  {
-    injectCopyTextButtonStrategy: true,
-    debugStrategy: false,
-  } as const;
+  [
+    {
+      name: "injectCopyTextButtonStrategy",
+      isEnabled: true,
+    },
+    {
+      name: "debugStrategy",
+      isEnabled: false,
+    },
+  ];
