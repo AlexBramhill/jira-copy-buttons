@@ -5,21 +5,20 @@ import IconButton, {
   IconButtonVariants,
 } from "../../common/buttons/IconButton";
 import ToggleButton from "../../common/buttons/ToggleButton";
+import type { StorageRepository } from "../../../../shared/repository/chromeStorageSync";
 
 interface StrategyTogglesProps<T extends Record<string, boolean>> {
   title: string;
-  loadFromPersistence: () => Promise<T>;
-  saveToPersistence: (value: T) => Promise<void>;
-  createDefaultValue: () => T;
+  repository: StorageRepository<T>;
 }
 
 export const StrategyToggles = <T extends Record<string, boolean>>(
   props: StrategyTogglesProps<T>
 ) => {
   const { value, updateValue, resetValue } = createValueWithIdStore({
-    loadFromPersistence: props.loadFromPersistence,
-    saveToPersistence: props.saveToPersistence,
-    createDefaultValue: props.createDefaultValue,
+    loadFromPersistence: props.repository.get,
+    saveToPersistence: props.repository.save,
+    createDefaultValue: props.repository.createDefaultValue,
   });
 
   const handleToggle = (key: string) => {
