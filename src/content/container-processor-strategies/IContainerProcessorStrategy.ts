@@ -1,4 +1,4 @@
-import type { ITicketSelectorStrategy } from "../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
+import type { TicketSelectorStrategy } from "../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
 
 export interface IContainerProcessorStrategy {
   process: ({
@@ -6,6 +6,6 @@ export interface IContainerProcessorStrategy {
     ticketSelectorStrategy,
   }: {
     container: HTMLElement;
-    ticketSelectorStrategy: ITicketSelectorStrategy;
+    ticketSelectorStrategy: TicketSelectorStrategy;
   }) => void;
 }

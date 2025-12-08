@@ -1,18 +1,17 @@
-export type DefaultTicketSelectorStrategyName =
-  | "ticketModalSelectorStrategy"
-  | "ticketPageSelectorStrategy";
+import { DEFAULT_TICKET_SELECTOR_STRATEGIES_ARRAY } from "../strategies/ticket-selector-strategies/defaultTicketSelectorStrategies";
+import type { TicketSelectorStrategy } from "../strategies/ticket-selector-strategies/ITicketSelectorStrategy";
 
-export const defaultTicketSelectorStrategyNames = {
-  ticketModalSelectorStrategy: "ticketModalSelectorStrategy",
-  ticketPageSelectorStrategy: "ticketPageSelectorStrategy",
-} as const satisfies { [K in DefaultTicketSelectorStrategyName]: K };
+export type TicketSelectorStrategyStorageDataItem = {
+  isEnabled: boolean;
+} & TicketSelectorStrategy;
 
-export type TicketSelectorStrategyStorageData = {
-  [K in DefaultTicketSelectorStrategyName]: boolean;
-};
+export type TicketSelectorStrategyStorageData =
+  TicketSelectorStrategyStorageDataItem[];
 
 export const DEFAULT_TICKET_SELECTOR_STRATEGY_STORAGE_DATA: TicketSelectorStrategyStorageData =
-  {
-    ticketModalSelectorStrategy: true,
-    ticketPageSelectorStrategy: true,
-  } as const;
+  [
+    ...DEFAULT_TICKET_SELECTOR_STRATEGIES_ARRAY.map((strategy) => ({
+      isEnabled: true,
+      ...strategy,
+    })),
+  ];

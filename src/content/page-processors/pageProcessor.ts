@@ -1,7 +1,7 @@
 import { logger } from "../../shared/logger";
-import { getEnabledTicketSelectorStrategies } from "../helpers/strategyGetter";
 import { addProcessJiraPageEventListener } from "./jiraPageProcessor";
 import { isOnJiraPage } from "./jiraPageDeterminator";
+import { repository } from "../../shared/repository/chromeStorageSync";
 
 export const processPage = async () => {
   if (!(await isOnJiraPage())) {
@@ -10,7 +10,9 @@ export const processPage = async () => {
   }
 
   logger.debug("On Jira page, registering processors");
-  const enabledTicketSelectorStrategies =
-    await getEnabledTicketSelectorStrategies();
+  const enabledTicketSelectorStrategies = (
+    await repository.ticketSelectorStrategies.get()
+  ).filter((strategy) => strategy.isEnabled);
+
   addProcessJiraPageEventListener(enabledTicketSelectorStrategies);
 };

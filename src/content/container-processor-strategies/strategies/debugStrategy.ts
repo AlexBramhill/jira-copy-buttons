@@ -6,7 +6,7 @@ import {
   createDebugTitleCss,
   createDebugButtonCss,
 } from "../../css/debugCss";
-import type { ITicketSelectorStrategy } from "../../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
+import type { TicketSelectorStrategy } from "../../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
 
 export const debugStrategy: IContainerProcessorStrategy = {
   process: ({ container, ticketSelectorStrategy }) => {
@@ -19,7 +19,7 @@ export const debugStrategy: IContainerProcessorStrategy = {
 };
 
 const highlightButtonElement = (
-  ticketSelectorStrategy: ITicketSelectorStrategy,
+  ticketSelectorStrategy: TicketSelectorStrategy,
   container: HTMLElement
 ) => {
   const debugButtonCss = createDebugButtonCss();
@@ -33,7 +33,7 @@ const highlightButtonElement = (
 };
 
 const highlightTitleElement = (
-  ticketSelectorStrategy: ITicketSelectorStrategy,
+  ticketSelectorStrategy: TicketSelectorStrategy,
   container: HTMLElement
 ) => {
   const debugTitleCss = createDebugTitleCss();
@@ -46,7 +46,7 @@ const highlightTitleElement = (
 };
 
 const highlightPrefixElement = (
-  ticketSelectorStrategy: ITicketSelectorStrategy,
+  ticketSelectorStrategy: TicketSelectorStrategy,
   container: HTMLElement
 ) => {
   const debugPrefixCss = createDebugPrefixCss();
