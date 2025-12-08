@@ -1,8 +1,9 @@
 import type { JSX } from "solid-js";
 
+export type Affix = string;
 interface Affixes {
-  prefix?: JSX.Element | string;
-  suffix?: JSX.Element | string;
+  prefix?: Affix;
+  suffix?: Affix;
   wrapperClass?: string;
   prefixClass?: string;
   suffixClass?: string;

@@ -1,4 +1,4 @@
-import { Affixes } from "./Affixes";
+import { Affixes, type Affix } from "./Affixes";
 
 interface TextInputProps {
   id: string;
@@ -6,8 +6,8 @@ interface TextInputProps {
   onInput: (value: string) => void;
   placeholder?: string;
   class?: string;
-  prefix?: string;
-  suffix?: string;
+  prefix?: Affix;
+  suffix?: Affix;
 }
 
 export const TextInput = (props: TextInputProps) => (

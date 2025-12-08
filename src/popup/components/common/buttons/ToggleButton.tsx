@@ -1,12 +1,13 @@
 import { Button } from "./Button";
 import { Toggle } from "../Toggle";
+import type { Affix } from "../Affixes";
 
 interface ToggleButtonProps {
   id?: string;
   checked: boolean;
   onChange: () => void;
-  prefix?: string;
-  suffix?: string;
+  prefix?: Affix;
+  suffix?: Affix;
   class?: string;
 }
 

@@ -1,3 +1,4 @@
+import type { Affix } from "../Affixes";
 import FormField from "../FormField";
 import { TextInput } from "../TextInput";
 
@@ -6,8 +7,8 @@ export type TextFieldProps = {
   id: string;
   onInput: (value: string) => void;
   placeholder?: string;
-  prefix?: string;
-  suffix?: string;
+  prefix?: Affix;
+  suffix?: Affix;
   class?: string;
 };
 
