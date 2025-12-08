@@ -1,4 +1,4 @@
-import { Affixes } from "./Affixes";
+import { Affixes, type Affix } from "./Affixes";
 
 interface SelectProps<T extends string> {
   id: string;
@@ -6,8 +6,8 @@ interface SelectProps<T extends string> {
   onChange: (value: T) => void;
   options: { value: T; label: string }[];
   class?: string;
-  prefix?: string;
-  suffix?: string;
+  prefix?: Affix;
+  suffix?: Affix;
 }
 
 export const Select = <T extends string>(props: SelectProps<T>) => {

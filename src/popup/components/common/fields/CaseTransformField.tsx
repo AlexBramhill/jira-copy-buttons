@@ -1,4 +1,5 @@
 import { Case } from "../../../../shared/transformers/Case";
+import type { Affix } from "../Affixes";
 import SelectField from "./SelectField";
 
 type CaseTransformOption = {
@@ -21,8 +22,8 @@ interface CaseTransformFieldProps {
   value: Case;
   onChange: (value: Case) => void;
   class?: string;
-  prefix?: string;
-  suffix?: string;
+  prefix?: Affix;
+  suffix?: Affix;
 }
 
 export const CaseTransformField = (props: CaseTransformFieldProps) => (

@@ -1,3 +1,4 @@
+import type { Affix } from "../Affixes";
 import FormField from "../FormField";
 import Select from "../Select";
 
@@ -9,8 +10,8 @@ interface SelectFieldProps<T extends string> {
   onChange: (value: T) => void;
   options: { value: T; label: string }[];
   class?: string;
-  prefix?: string;
-  suffix?: string;
+  prefix?: Affix;
+  suffix?: Affix;
 }
 
 export const SelectField = <T extends string>(props: SelectFieldProps<T>) => (

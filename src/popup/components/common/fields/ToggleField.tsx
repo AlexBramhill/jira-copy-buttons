@@ -1,3 +1,4 @@
+import type { Affix } from "../Affixes";
 import ToggleButton from "../buttons/ToggleButton";
 import FormField from "../FormField";
 
@@ -7,8 +8,8 @@ export const ToggleButtonField = (props: {
   checked: boolean;
   onChange: (checked: boolean) => void;
   class?: string;
-  prefix?: string;
-  suffix?: string;
+  prefix?: Affix;
+  suffix?: Affix;
 }) => (
   <FormField id={props.id}>
     <ToggleButton
