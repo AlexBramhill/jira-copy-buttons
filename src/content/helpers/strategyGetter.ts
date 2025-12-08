@@ -1,10 +1,7 @@
-import {
-  containerProcessorStrategiesRepository,
-  ticketSelectorStrategiesRepository,
-} from "../../shared/repository/chromeStorageSync";
+import { repository } from "../../shared/repository/chromeStorageSync";
 import { DEFAULT_TICKET_SELECTOR_STRATEGIES } from "../../shared/strategies/ticket-selector-strategies/defaultTicketSelectorStrategies";
 import type { ITicketSelectorStrategy } from "../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
-import { containerProcessorStrategies } from "../container-processor-strategies/allContainerProcessorStrategies";
+import { CONTAINER_PROCESSOR_STRATEGIES } from "../container-processor-strategies/allContainerProcessorStrategies";
 import type { IContainerProcessorStrategy } from "../container-processor-strategies/IContainerProcessorStrategy";
 
 export const getEnabledStrategies = <
@@ -20,18 +17,19 @@ export const getEnabledStrategies = <
     .map((key) => allStrategies[key]);
 };
 
+// TODO: make this an array
 export const getEnabledContainerProcessorStrategies = async (): Promise<
   IContainerProcessorStrategy[]
 > => {
-  const strategyEnabled = await containerProcessorStrategiesRepository.get();
+  const strategyEnabled = await repository.containerProcessorStrategies.get();
 
-  return getEnabledStrategies(containerProcessorStrategies, strategyEnabled);
+  return getEnabledStrategies(CONTAINER_PROCESSOR_STRATEGIES, strategyEnabled);
 };
 
 export const getEnabledTicketSelectorStrategies = async (): Promise<
   ITicketSelectorStrategy[]
 > => {
-  const strategyEnabled = await ticketSelectorStrategiesRepository.get();
+  const strategyEnabled = await repository.ticketSelectorStrategies.get();
   return getEnabledStrategies(
     DEFAULT_TICKET_SELECTOR_STRATEGIES,
     strategyEnabled

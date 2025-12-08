@@ -10,6 +10,7 @@ const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
 export type StorageRepository<T> = {
   save: (value: T) => Promise<void>;
   get: () => Promise<T>;
+  createDefaultValue: () => T;
 };
 
 const getValueOrDefault = async <T>(
@@ -25,24 +26,21 @@ const createStorageRepository = <T>(
 ): StorageRepository<T> => ({
   save: (value: T) => saveValue(key, value),
   get: () => getValueOrDefault(key, defaultValue),
+  createDefaultValue: () => defaultValue,
 });
 
-export const hostnamesRepository = createStorageRepository<string[]>(
-  storageKeys.savedHostnames,
-  []
-);
-
-export const containerProcessorStrategiesRepository = createStorageRepository(
-  storageKeys.containerProcessorStrategies,
-  DEFAULT_CONTAINER_PROCESSOR_STRATEGY_STORAGE_DATA_DEFAULT
-);
-
-export const ticketSelectorStrategiesRepository = createStorageRepository(
-  storageKeys.ticketSelectorStrategies,
-  DEFAULT_TICKET_SELECTOR_STRATEGY_STORAGE_DATA
-);
-
-export const branchCopyButtonStrategiesRepository = createStorageRepository(
-  storageKeys.branchCopyButtonStrategies,
-  DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA
-);
+export const repository = {
+  hostnames: createStorageRepository<string[]>(storageKeys.savedHostnames, []),
+  containerProcessorStrategies: createStorageRepository(
+    storageKeys.containerProcessorStrategies,
+    DEFAULT_CONTAINER_PROCESSOR_STRATEGY_STORAGE_DATA_DEFAULT
+  ),
+  ticketSelectorStrategies: createStorageRepository(
+    storageKeys.ticketSelectorStrategies,
+    DEFAULT_TICKET_SELECTOR_STRATEGY_STORAGE_DATA
+  ),
+  branchCopyButtonStrategies: createStorageRepository(
+    storageKeys.branchCopyButtonStrategies,
+    DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA
+  ),
+};
