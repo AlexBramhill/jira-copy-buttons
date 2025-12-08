@@ -9,7 +9,7 @@ type ButtonProps = {
 
 export const Button = (props: ButtonProps) => {
   const baseClasses =
-    "w-full rounded-md px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-900";
+    "w-full rounded-md px-2 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-900";
 
   const variantClasses =
     props.variant === "secondary"

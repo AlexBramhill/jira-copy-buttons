@@ -1,13 +1,11 @@
 import CaseTransformField from "../../common/fields/CaseTransformField";
 import type { BranchCopyButtonStrategyStorageDataItem } from "../../../../shared/repository/branchCopyButtonStrategyStorageData";
-import Toggle from "../../common/Toggle";
-import FormField from "../../common/FormField";
 import TextField from "../../common/fields/TextField";
 import {
   TICKET_DESCRIPTION_WILDCARD,
   TICKET_PREFIX_WILDCARD,
 } from "../../../../shared/transformers/ticketWildcards";
-import { ToggleField } from "../../common/fields/ToggleField";
+import { ToggleButtonField } from "../../common/fields/ToggleField";
 
 interface BranchCopyButtonStrategyCardProps {
   value: BranchCopyButtonStrategyStorageDataItem;
@@ -56,7 +54,7 @@ export const BranchCopyButtonStrategyCard = (
           props.updateValue({ ...props.value, descriptionCase: value })
         }
       />
-      <ToggleField
+      <ToggleButtonField
         id="enabled-toggle"
         checked={props.value.isEnabled}
         onChange={() =>
