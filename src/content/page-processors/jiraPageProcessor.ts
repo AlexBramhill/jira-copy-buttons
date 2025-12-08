@@ -1,7 +1,7 @@
 import { logger } from "../../shared/logger";
 import { addCssRootClass } from "../../shared/page-interactors/cssInjector";
 import { repository } from "../../shared/repository/chromeStorageSync";
-import type { TicketSelectorStrategy } from "../../shared/strategies/ticket-selector-strategies/ITicketSelectorStrategy";
+import type { TicketSelectorStrategy } from "../../shared/strategies/ticket-selector-strategies/TicketSelectorStrategy";
 
 export const addProcessJiraPageEventListener = (
   ticketSelectorStrategies: TicketSelectorStrategy[]

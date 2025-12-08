@@ -6,6 +6,7 @@ import {
 import type { BranchCopyButtonStrategy } from "../BranchCopyButtonStrategy";
 
 export const checkoutNewGitBranch: BranchCopyButtonStrategy = {
+  name: "Check out new git branch",
   buttonName: "Create Branch",
   formatPattern: `git checkout -b ${TICKET_PREFIX_WILDCARD}-${TICKET_DESCRIPTION_WILDCARD}`,
   prefixCase: Case.Kebab,

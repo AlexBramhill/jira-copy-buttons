@@ -2,10 +2,11 @@ import { logger } from "../../../logger";
 import { upsertCopyButtonOnDom } from "../../../page-interactors/buttonInjector";
 import { getTextFromElementExcludingInjectedElements } from "../../../page-interactors/elementSelectors";
 import { repository } from "../../../repository/chromeStorageSync";
-import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
+import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/TicketSelectorStrategy";
 import type { ContainerProcessorStrategy } from "../ContainerProcessorStrategy";
 
 export const injectCopyTextButtonStrategy: ContainerProcessorStrategy = {
+  name: "Inject Copy Text Button",
   process: async ({
     container,
     ticketSelectorStrategy,

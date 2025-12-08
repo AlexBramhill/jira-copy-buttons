@@ -5,10 +5,11 @@ import {
 } from "../../../../content/css/debugCss";
 import { logger } from "../../../logger";
 import { addClassToElement } from "../../../page-interactors/elementClassModifier";
-import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/ITicketSelectorStrategy";
+import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/TicketSelectorStrategy";
 import type { ContainerProcessorStrategy } from "../ContainerProcessorStrategy";
 
 export const debugStrategy: ContainerProcessorStrategy = {
+  name: "Debug",
   process: ({ container, ticketSelectorStrategy }) => {
     logger.debug({ container }, "Debug Strategy: Processing container");
 

@@ -1,4 +1,4 @@
-import type { TicketSelectorStrategy } from "./ITicketSelectorStrategy";
+import type { TicketSelectorStrategy } from "./TicketSelectorStrategy";
 import { ticketPageSelectorStrategy } from "./default-strategies/ticketPageSelectorStrategy";
 import { ticketModalSelectorStrategy } from "./default-strategies/ticketModalSelectorStrategy";
 
