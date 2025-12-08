@@ -1,8 +1,7 @@
-import { Affixes } from "../Affixes";
+import ToggleButton from "../buttons/ToggleButton";
 import FormField from "../FormField";
-import Toggle from "../Toggle";
 
-export const ToggleField = (props: {
+export const ToggleButtonField = (props: {
   id: string;
   label?: string;
   checked: boolean;
@@ -12,13 +11,13 @@ export const ToggleField = (props: {
   suffix?: string;
 }) => (
   <FormField id={props.id}>
-      <Toggle
-        id={props.id}
-        checked={props.checked}
-        onChange={() => props.onChange(!props.checked)}
-        class={props.class}
-        prefix={props.prefix}
-        suffix={props.suffix}
-      />
+    <ToggleButton
+      id={props.id}
+      checked={props.checked}
+      onChange={() => props.onChange(!props.checked)}
+      class={props.class}
+      prefix={props.prefix}
+      suffix={props.suffix}
+    />
   </FormField>
 );

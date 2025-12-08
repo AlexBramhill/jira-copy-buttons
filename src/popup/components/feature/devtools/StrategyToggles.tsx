@@ -1,10 +1,10 @@
 import { For } from "solid-js";
 import ContainerHeading from "../../common/ContainerHeading";
-import Toggle from "../../common/Toggle";
 import { createValueWithIdStore } from "../../../stores/valueWithIdStore";
 import IconButton, {
   IconButtonVariants,
 } from "../../common/buttons/IconButton";
+import ToggleButton from "../../common/buttons/ToggleButton";
 
 interface StrategyTogglesProps<T extends Record<string, boolean>> {
   title: string;
@@ -47,11 +47,11 @@ export const StrategyToggles = <T extends Record<string, boolean>>(
       <div class="space-y-2">
         <For each={Object.keys(value.value).sort() as Array<keyof T & string>}>
           {(key) => (
-            <Toggle
+            <ToggleButton
               id={`toggle-${String(key)}`}
               checked={value.value[key]}
               onChange={() => handleToggle(String(key))}
-              suffix={String(key)}
+              prefix={String(key)}
             />
           )}
         </For>
