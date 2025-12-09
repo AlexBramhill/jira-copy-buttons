@@ -1,13 +1,7 @@
-import type { TicketSelectorStrategy } from "./TicketSelectorStrategy";
-import { ticketPageSelectorStrategy } from "./default-strategies/ticketPageSelectorStrategy";
-import { ticketModalSelectorStrategy } from "./default-strategies/ticketModalSelectorStrategy";
+import { createTicketModalSelectorStrategy } from "./default-strategies-factories/ticketModalSelectorStrategyFactory";
+import { createTicketPageSelectorStrategy } from "./default-strategies-factories/ticketPageSelectorStrategyFactory";
 
-export const DEFAULT_TICKET_SELECTOR_STRATEGIES = {
-  ticketModalSelectorStrategy,
-  ticketPageSelectorStrategy,
-} satisfies {
-  [key: string]: TicketSelectorStrategy;
-};
-
-export const DEFAULT_TICKET_SELECTOR_STRATEGIES_ARRAY: TicketSelectorStrategy[] =
-  Object.values(DEFAULT_TICKET_SELECTOR_STRATEGIES);
+export const createDefaultTicketSelectorStrategies = () => [
+  createTicketModalSelectorStrategy(),
+  createTicketPageSelectorStrategy(),
+];
