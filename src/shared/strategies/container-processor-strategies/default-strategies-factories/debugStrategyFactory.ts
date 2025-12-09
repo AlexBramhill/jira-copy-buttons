@@ -5,6 +5,7 @@ import {
 } from "../../../../content/css/debugCss";
 import { logger } from "../../../logger";
 import { addClassToElement } from "../../../page-interactors/elementClassModifier";
+import { select } from "../../../page-interactors/selector";
 import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/TicketSelectorStrategy";
 import type { ContainerProcessorStrategy } from "../ContainerProcessorStrategy";
 
@@ -24,8 +25,10 @@ const highlightButtonElement = (
 ) => {
   const debugButtonCss = createDebugButtonCss();
 
-  const buttonElement =
-    ticketSelectorStrategy.selectElementToAddButtonTo(container);
+  const buttonElement = select(
+    ticketSelectorStrategy.buttonLocationSelector,
+    container
+  );
 
   if (buttonElement) {
     addClassToElement(buttonElement, debugButtonCss.className);
@@ -38,7 +41,7 @@ const highlightTitleElement = (
 ) => {
   const debugTitleCss = createDebugTitleCss();
 
-  const titleElement = ticketSelectorStrategy.selectTitleElement(container);
+  const titleElement = select(ticketSelectorStrategy.titleSelector, container);
 
   if (titleElement) {
     addClassToElement(titleElement, debugTitleCss.className);
@@ -51,7 +54,10 @@ const highlightPrefixElement = (
 ) => {
   const debugPrefixCss = createDebugPrefixCss();
 
-  const prefixElement = ticketSelectorStrategy.selectPrefixElement(container);
+  const prefixElement = select(
+    ticketSelectorStrategy.prefixSelector,
+    container
+  );
 
   if (prefixElement) {
     addClassToElement(prefixElement, debugPrefixCss.className);

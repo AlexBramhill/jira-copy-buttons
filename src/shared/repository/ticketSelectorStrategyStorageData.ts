@@ -1,6 +1,4 @@
-import {
-  createDefaultTicketSelectorStrategies,
-} from "../strategies/ticket-selector-strategies/defaultTicketSelectorStrategies";
+import { createDefaultTicketSelectorStrategies } from "../strategies/ticket-selector-strategies/defaultTicketSelectorStrategies";
 import type { TicketSelectorStrategy } from "../strategies/ticket-selector-strategies/TicketSelectorStrategy";
 import type { ToggleableStorageData } from "./ToggleableStorageData";
 
