@@ -22,7 +22,6 @@ export const StrategyToggles = <
 >(
   props: StrategyTogglesProps<T>
 ) => {
-  // TODO: Reset not currently working correctly due to reusing same instance of default values
   const { values, updateValue, resetToDefaults } = createValueWithIdArrayStore({
     repository: props.repository,
     createDefaultValue: () => props.repository.createDefaultValue()[0],
