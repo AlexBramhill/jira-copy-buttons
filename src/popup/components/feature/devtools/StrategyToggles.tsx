@@ -22,14 +22,11 @@ export const StrategyToggles = <
 >(
   props: StrategyTogglesProps<T>
 ) => {
-  const { values, updateValue } = createValueWithIdArrayStore({
+  // TODO: Reset not currently working correctly due to reusing same instance of default values
+  const { values, updateValue, resetToDefaults } = createValueWithIdArrayStore({
     repository: props.repository,
     createDefaultValue: () => props.repository.createDefaultValue()[0],
   });
-
-  const resetValue = async () => {
-    await props.repository.save(props.repository.createDefaultValue());
-  };
 
   const handleToggle = async (value: ValueWithId<T>) => {
     await updateValue({
@@ -46,7 +43,7 @@ export const StrategyToggles = <
       <div class="flex items-center justify-between">
         <ContainerHeading level={2}>{props.title}</ContainerHeading>
         <IconButton
-          onClick={resetValue}
+          onClick={resetToDefaults}
           ariaLabel="Reset to defaults"
           variant={IconButtonVariants.SECONDARY}
         >
