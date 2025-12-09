@@ -1,7 +1,10 @@
-import { DEFAULT_CONTAINER_PROCESSOR_STRATEGY_STORAGE_DATA_DEFAULT } from "./containerProcessorStrategyStorageData";
-import { DEFAULT_TICKET_SELECTOR_STRATEGY_STORAGE_DATA } from "./ticketSelectorStrategyStorageData";
+import { createDefaultTicketSelectorStrategyStorageData } from "./ticketSelectorStrategyStorageData";
 import { storageKeys, type StorageKey } from "./storageKeys";
-import { DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA } from "./branchCopyButtonStrategyStorageData";
+import { createDefaultContainerProcessorStrategyStorageData } from "./containerProcessorStrategyStorageData";
+import {
+  createDefaultBranchCopyButtonStrategyStorageData,
+  type BranchCopyButtonStrategyStorageData,
+} from "./branchCopyButtonStrategyStorageData";
 
 const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
   await chrome.storage.sync.set({ [key]: value });
@@ -22,25 +25,29 @@ const getValueOrDefault = async <T>(
 };
 const createStorageRepository = <T>(
   key: StorageKey,
-  defaultValue: T
+  createDefaults: () => T
 ): StorageRepository<T> => ({
   save: (value: T) => saveValue(key, value),
-  get: () => getValueOrDefault(key, defaultValue),
-  createDefaultValue: () => defaultValue,
+  get: () => getValueOrDefault(key, createDefaults()),
+  createDefaultValue: createDefaults,
 });
 
 export const repository = {
-  hostnames: createStorageRepository<string[]>(storageKeys.savedHostnames, []),
+  hostnames: createStorageRepository<string[]>(
+    storageKeys.savedHostnames,
+    () => []
+  ),
   containerProcessorStrategies: createStorageRepository(
     storageKeys.containerProcessorStrategies,
-    DEFAULT_CONTAINER_PROCESSOR_STRATEGY_STORAGE_DATA_DEFAULT
+    createDefaultContainerProcessorStrategyStorageData
   ),
   ticketSelectorStrategies: createStorageRepository(
     storageKeys.ticketSelectorStrategies,
-    DEFAULT_TICKET_SELECTOR_STRATEGY_STORAGE_DATA
+    createDefaultTicketSelectorStrategyStorageData
   ),
-  branchCopyButtonStrategies: createStorageRepository(
-    storageKeys.branchCopyButtonStrategies,
-    DEFAULT_BRANCH_COPY_BUTTON_STRATEGY_STORAGE_DATA
-  ),
+  branchCopyButtonStrategies:
+    createStorageRepository<BranchCopyButtonStrategyStorageData>(
+      storageKeys.branchCopyButtonStrategies,
+      createDefaultBranchCopyButtonStrategyStorageData
+    ),
 };

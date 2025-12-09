@@ -1,18 +1,15 @@
 import {
+  selectElementsByVc,
   selectElementByTestId,
-  selectElementsByTestId,
 } from "../../../page-interactors/elementSelectors";
 import { selectButtonDivUnderTitle } from "../../../page-interactors/jiraSpecificElementSelectors";
 import type { TicketSelectorStrategy as TicketSelectorStrategy } from "../TicketSelectorStrategy";
 
-export const ticketModalSelectorStrategy: TicketSelectorStrategy = {
-  name: "Ticket Modal Selector",
+export const createTicketPageSelectorStrategy = (): TicketSelectorStrategy => ({
+  name: "Ticket Page Selector",
   description:
-    "Rule for ticket modal ie https://example.atlassian.net/jira/software/projects/PD/boards/1?selectedIssue=PD-1",
-  selectContainers: () =>
-    selectElementsByTestId(
-      "issue.views.issue-details.issue-modal.modal-dialog"
-    ),
+    "Rule for ticket page ie https://example.atlassian.net/browse/PD-1",
+  selectContainers: () => selectElementsByVc("FullPageIssueContainer"),
   selectPrefixElement: (container: HTMLElement) =>
     selectElementByTestId(
       "issue.views.issue-base.foundation.breadcrumbs.current-issue.item",
@@ -25,4 +22,4 @@ export const ticketModalSelectorStrategy: TicketSelectorStrategy = {
     ),
   selectElementToAddButtonTo: (container: HTMLElement) =>
     selectButtonDivUnderTitle(container),
-};
+});

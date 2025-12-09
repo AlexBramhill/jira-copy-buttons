@@ -8,16 +8,15 @@ import { addClassToElement } from "../../../page-interactors/elementClassModifie
 import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/TicketSelectorStrategy";
 import type { ContainerProcessorStrategy } from "../ContainerProcessorStrategy";
 
-export const debugStrategy: ContainerProcessorStrategy = {
+export const createDebugStrategy = (): ContainerProcessorStrategy => ({
   name: "Debug",
   process: ({ container, ticketSelectorStrategy }) => {
     logger.debug({ container }, "Debug Strategy: Processing container");
-
     highlightPrefixElement(ticketSelectorStrategy, container);
     highlightTitleElement(ticketSelectorStrategy, container);
     highlightButtonElement(ticketSelectorStrategy, container);
   },
-};
+});
 
 const highlightButtonElement = (
   ticketSelectorStrategy: TicketSelectorStrategy,
