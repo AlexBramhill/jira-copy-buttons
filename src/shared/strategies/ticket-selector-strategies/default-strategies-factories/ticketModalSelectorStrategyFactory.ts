@@ -7,19 +7,19 @@ export const createTicketModalSelectorStrategy =
     description:
       "Rule for ticket modal ie https://example.atlassian.net/jira/software/projects/PD/boards/1?selectedIssue=PD-1",
     containerSelector: {
-      type: SelectorType.TestId,
+      type: SelectorType.ByTestId,
       value: "issue.views.issue-details.issue-modal.modal-dialog",
     },
     prefixSelector: {
-      type: SelectorType.TestId,
+      type: SelectorType.ByTestId,
       value: "issue.views.issue-base.foundation.breadcrumbs.current-issue.item",
     },
     titleSelector: {
-      type: SelectorType.TestId,
+      type: SelectorType.ByTestId,
       value: "issue.views.issue-base.foundation.summary.heading",
     },
     buttonLocationSelector: {
-      type: SelectorType.CssSelector,
+      type: SelectorType.ByCssSelector,
       value:
         "[data-testid='issue-view-product-templates-default.ui.foundation-content.foundation-content-wrapper'] + * > :nth-child(2)",
     },
