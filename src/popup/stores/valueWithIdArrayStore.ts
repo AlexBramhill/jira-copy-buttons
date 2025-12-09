@@ -20,6 +20,7 @@ export interface CreateValueWithIdArrayStoreResponse<T> {
   addValue: () => Promise<void>;
   updateValue: (row: ValueWithId<T>) => Promise<void>;
   removeValue: (id: UUID) => Promise<void>;
+  resetToDefaults: () => Promise<void>;
 }
 
 // TODO don't need create default here
@@ -79,10 +80,23 @@ export const createValueWithIdArrayStore = <T>({
     await persistValues();
   };
 
+  const updateAllValues = async (newValues: ValueWithId<T>[]) => {
+    setValues(newValues);
+    await persistValues();
+  };
+
+  const resetToDefaults = async () => {
+    await updateAllValues(
+      repository.createDefaultValue().map((value) => createValueWithId(value))
+    );
+    //
+  };
+
   return {
     values,
     addValue,
     updateValue,
     removeValue,
+    resetToDefaults,
   };
 };
