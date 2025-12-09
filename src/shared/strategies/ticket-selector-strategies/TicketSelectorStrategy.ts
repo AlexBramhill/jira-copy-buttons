@@ -1,8 +1,9 @@
 import type { ConfigurableStrategy } from "../ConfigurableStrategy";
+import type { ElementSelector } from "./ElementSelector";
 
 export type TicketSelectorStrategy = {
-  selectContainers: () => HTMLElement[];
-  selectPrefixElement: (container: HTMLElement) => HTMLElement | null;
-  selectTitleElement: (container: HTMLElement) => HTMLElement | null;
-  selectElementToAddButtonTo: (container: HTMLElement) => HTMLElement | null;
+  containerSelector: ElementSelector;
+  prefixSelector: ElementSelector;
+  titleSelector: ElementSelector;
+  buttonLocationSelector: ElementSelector;
 } & ConfigurableStrategy;
