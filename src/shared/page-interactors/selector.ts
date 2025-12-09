@@ -9,11 +9,11 @@ export const select = (
   container: HTMLElement = document.body
 ): HTMLElement | null => {
   switch (selector.type) {
-    case SelectorType.TestId:
+    case SelectorType.ByTestId:
       return container.querySelector(`[data-testid="${selector.value}"]`);
-    case SelectorType.VcAttribute:
+    case SelectorType.ByVcAttribute:
       return container.querySelector(`[data-vc="${selector.value}"]`);
-    case SelectorType.CssSelector:
+    case SelectorType.ByCssSelector:
       return container.querySelector(selector.value);
     default:
       console.warn(`Unknown selector type: ${selector.type}`);
@@ -26,15 +26,15 @@ export const selectAll = (
   container: HTMLElement = document.body
 ): HTMLElement[] => {
   switch (selector.type) {
-    case SelectorType.TestId:
+    case SelectorType.ByTestId:
       return Array.from(
         container.querySelectorAll(`[data-testid="${selector.value}"]`)
       );
-    case SelectorType.VcAttribute:
+    case SelectorType.ByVcAttribute:
       return Array.from(
         container.querySelectorAll(`[data-vc="${selector.value}"]`)
       );
-    case SelectorType.CssSelector:
+    case SelectorType.ByCssSelector:
       return Array.from(container.querySelectorAll(selector.value));
     default:
       console.warn(`Unknown selector type: ${selector.type}`);
