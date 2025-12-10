@@ -1,10 +1,5 @@
-import type { JSX } from "solid-js";
-import type { ToggleableStorageData } from "../../../../shared/repository/ToggleableStorageData";
-import type { ConfigurableStrategy } from "../../../../shared/strategies/ConfigurableStrategy";
 import type { Case } from "../../../../shared/transformers/Case";
 import type { ElementSelector } from "../../../../shared/strategies/ticket-selector-strategies/ElementSelector";
-
-export type StrategyStorageItem = ToggleableStorageData & ConfigurableStrategy;
 
 type BaseFieldDefinition = {
   id: string;
@@ -51,8 +46,3 @@ export type FieldDefinition<T> =
   | ToggleFieldDefinition<T>
   | ElementSelectorFieldDefinition<T>
   | CaseFieldDefinition<T>;
-
-export type StrategyConfig<T extends StrategyStorageItem> = {
-  fields: FieldDefinition<T>[];
-  renderHeader?: (item: T) => JSX.Element;
-};

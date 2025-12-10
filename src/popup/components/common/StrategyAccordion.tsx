@@ -1,9 +1,7 @@
 import Accordion from "./Accordion";
 import type { ValueWithId } from "../../stores/IValueWithId";
-import type {
-  StrategyStorageItem,
-  StrategyConfig,
-} from "./strategy-editors/types";
+import type { StrategyStorageItem } from "./StrategyStorageItem";
+import type { StrategyConfig } from "./StrategyConfig";
 import StrategyForm from "./StrategyForm";
 import ContainerHeading from "./ContainerHeading";
 

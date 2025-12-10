@@ -1,4 +1,4 @@
-import type { StrategyConfig } from "../../common/strategy-editors/types";
+import type { StrategyConfig } from "../../common/StrategyConfig";
 import type { BranchCopyButtonStrategyStorageDataItem } from "../../../../shared/repository/branchCopyButtonStrategyStorageData";
 import {
   TICKET_DESCRIPTION_WILDCARD,

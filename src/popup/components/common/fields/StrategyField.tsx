@@ -1,7 +1,5 @@
-import type {
-  StrategyStorageItem,
-  FieldDefinition,
-} from "../strategy-editors/types";
+import type { FieldDefinition } from "./FieldDefinition";
+import type { StrategyStorageItem } from "../StrategyStorageItem";
 import TextField from "./TextField";
 import SelectField from "./SelectField";
 import { ToggleButtonField } from "./ToggleField";
