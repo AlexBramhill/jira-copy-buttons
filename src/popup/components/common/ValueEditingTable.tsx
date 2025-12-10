@@ -2,7 +2,7 @@ import type { UUID } from "crypto";
 import { type CreateValueWithIdArrayStoreResponse } from "../../stores/valueWithIdArrayStore";
 import type { ValueWithId } from "../../stores/IValueWithId";
 import { DeleteButton } from "./buttons/DeleteButton";
-import { For, JSX } from "solid-js";
+import { For, type JSX } from "solid-js";
 import Button from "./buttons/Button";
 
 export interface ValuesTableProps<T> {
