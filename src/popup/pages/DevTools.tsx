@@ -11,7 +11,7 @@ export const DevTools = () => {
     <MainContainer>
       <MainNavbar title="Dev tools" showBackButton={true} />
       <StrategyToggles
-        title="Container processor strategies"
+        title="Container processor strategies:"
         repository={repository.containerProcessorStrategies}
       />
       <DangerZone>
