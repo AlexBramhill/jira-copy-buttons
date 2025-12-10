@@ -33,10 +33,9 @@ const createStorageRepository = <T>(
 });
 
 export const repository = {
-  hostnames: createStorageRepository<string[]>(
-    storageKeys.savedHostnames,
-    () => []
-  ),
+  hostnames: createStorageRepository(storageKeys.savedHostnames, () => [
+    "example.atlassian.net",
+  ]),
   containerProcessorStrategies: createStorageRepository(
     storageKeys.containerProcessorStrategies,
     createDefaultContainerProcessorStrategyStorageData
