@@ -1,4 +1,4 @@
-export type ConfigurableStrategy = {
+export type StrategyInfo = {
   name: string;
   description?: string;
 };

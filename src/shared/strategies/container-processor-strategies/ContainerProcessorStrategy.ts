@@ -1,4 +1,4 @@
-import type { ConfigurableStrategy } from "../ConfigurableStrategy";
+import type { StrategyInfo } from "../StrategyInfo";
 import type { TicketSelectorStrategy } from "../ticket-selector-strategies/TicketSelectorStrategy";
 
 export type ContainerProcessorStrategy = {
@@ -9,4 +9,4 @@ export type ContainerProcessorStrategy = {
     container: HTMLElement;
     ticketSelectorStrategy: TicketSelectorStrategy;
   }) => void;
-} & ConfigurableStrategy;
+} & StrategyInfo;

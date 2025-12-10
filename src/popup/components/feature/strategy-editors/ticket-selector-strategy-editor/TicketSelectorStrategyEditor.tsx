@@ -1,7 +1,7 @@
-import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
-import ValuesTable from "../../common/ValueEditingTable";
-import { repository } from "../../../../shared/repository/chromeStorageSync";
-import StrategyAccordion from "../../common/StrategyAccordion";
+import { createValueWithIdArrayStore } from "../../../../stores/valueWithIdArrayStore";
+import ValuesTable from "../../../common/ValueEditingTable";
+import { repository } from "../../../../../shared/repository/chromeStorageSync";
+import StrategyAccordion from "../../../common/StrategyAccordion";
 import { ticketSelectorStrategyConfig } from "./ticketSelectorStrategyConfig";
 
 export const TicketSelectorStrategyEditor = () => {

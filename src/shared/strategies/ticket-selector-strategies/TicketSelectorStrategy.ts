@@ -1,4 +1,4 @@
-import type { ConfigurableStrategy } from "../ConfigurableStrategy";
+import type { StrategyInfo } from "../StrategyInfo";
 import type { ElementSelector } from "./ElementSelector";
 
 export type TicketSelectorStrategy = {
@@ -6,4 +6,4 @@ export type TicketSelectorStrategy = {
   prefixSelector: ElementSelector;
   titleSelector: ElementSelector;
   buttonLocationSelector: ElementSelector;
-} & ConfigurableStrategy;
+} & StrategyInfo;

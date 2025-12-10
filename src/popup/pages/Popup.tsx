@@ -3,8 +3,8 @@ import { MainNavbar } from "../components/common/MainNavbar.tsx";
 import { MainFooter } from "../components/common/MainFooter.tsx";
 import ContainerHeading from "../components/common/ContainerHeading.tsx";
 import WhitelistManager from "../components/feature/whitelist-management/WhitelistManager.tsx";
-import BranchCopyButtonStrategyEditor from "../components/feature/branch-copy-button-strategy-editor/BranchCopyButtonStrategyEditor.tsx";
-import TicketSelectorStrategyEditor from "../components/feature/ticket-selector-strategy-editor/TicketSelectorStrategyEditor.tsx";
+import BranchCopyButtonStrategyEditor from "../components/feature/strategy-editors/branch-copy-button-strategy-editor/BranchCopyButtonStrategyEditor.tsx";
+import TicketSelectorStrategyEditor from "../components/feature/strategy-editors/ticket-selector-strategy-editor/TicketSelectorStrategyEditor.tsx";
 
 export const Popup = () => {
   return (

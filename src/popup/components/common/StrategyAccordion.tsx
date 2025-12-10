@@ -1,9 +1,11 @@
 import Accordion from "./Accordion";
 import type { ValueWithId } from "../../stores/IValueWithId";
-import type { StrategyStorageItem } from "./StrategyStorageItem";
-import type { StrategyConfig } from "./StrategyConfig";
 import StrategyForm from "./StrategyForm";
 import ContainerHeading from "./ContainerHeading";
+import type { StrategyInfo } from "../../../shared/strategies/StrategyInfo";
+import type { StrategyConfig } from "../feature/strategy-editors/StrategyConfig";
+
+export type StrategyStorageItem = StrategyInfo;
 
 interface GenericStrategyAccordionProps<T extends StrategyStorageItem> {
   valueWithId: ValueWithId<T>;

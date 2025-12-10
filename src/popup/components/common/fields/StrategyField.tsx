@@ -1,10 +1,10 @@
 import type { FieldDefinition } from "./FieldDefinition";
-import type { StrategyStorageItem } from "../StrategyStorageItem";
 import TextField from "./TextField";
 import SelectField from "./SelectField";
 import { ToggleButtonField } from "./ToggleField";
 import CaseTransformField from "./CaseTransformField";
 import ElementSelectorField from "./ElementSelectorField";
+import type { StrategyStorageItem } from "../StrategyAccordion";
 
 interface StrategyFieldProps<T extends StrategyStorageItem> {
   field: FieldDefinition<T>;

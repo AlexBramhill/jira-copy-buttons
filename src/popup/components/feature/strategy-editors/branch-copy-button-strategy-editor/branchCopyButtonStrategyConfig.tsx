@@ -1,9 +1,9 @@
-import type { StrategyConfig } from "../../common/StrategyConfig";
-import type { BranchCopyButtonStrategyStorageDataItem } from "../../../../shared/repository/branchCopyButtonStrategyStorageData";
+import type { BranchCopyButtonStrategyStorageDataItem } from "../../../../../shared/repository/branchCopyButtonStrategyStorageData";
 import {
   TICKET_DESCRIPTION_WILDCARD,
   TICKET_PREFIX_WILDCARD,
-} from "../../../../shared/transformers/ticketWildcards";
+} from "../../../../../shared/transformers/ticketWildcards";
+import type { StrategyConfig } from "../StrategyConfig";
 import BranchCopyButtonHeader from "./BranchCopyButtonHeader";
 
 export const branchCopyButtonStrategyConfig: StrategyConfig<BranchCopyButtonStrategyStorageDataItem> =

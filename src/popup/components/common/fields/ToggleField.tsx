@@ -15,7 +15,7 @@ export const ToggleButtonField = (props: {
     <ToggleButton
       id={props.id}
       checked={props.checked}
-      onChange={() => props.onChange(!props.checked)}
+      onClick={() => props.onChange(!props.checked)}
       class={props.class}
       prefix={props.prefix}
       suffix={props.suffix}

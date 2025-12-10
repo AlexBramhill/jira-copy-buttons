@@ -8,18 +8,14 @@ import IconButton, {
   IconButtonVariants,
 } from "../../common/buttons/IconButton";
 import type { ValueWithId } from "../../../stores/IValueWithId";
-import type { ConfigurableStrategy } from "../../../../shared/strategies/ConfigurableStrategy";
+import type { StrategyInfo } from "../../../../shared/strategies/StrategyInfo";
 
-interface StrategyTogglesProps<
-  T extends ConfigurableStrategy & ToggleableStorageData
-> {
+interface StrategyTogglesProps<T extends StrategyInfo & ToggleableStorageData> {
   title: string;
   repository: StorageRepository<T[]>;
 }
 
-export const StrategyToggles = <
-  T extends ConfigurableStrategy & ToggleableStorageData
->(
+export const StrategyToggles = <T extends StrategyInfo & ToggleableStorageData>(
   props: StrategyTogglesProps<T>
 ) => {
   const { values, updateValue, resetToDefaults } = createValueWithIdArrayStore({
@@ -55,7 +51,7 @@ export const StrategyToggles = <
             <ToggleButton
               id={`toggle-${String(value.id)}`}
               checked={value.value.isEnabled}
-              onChange={() => handleToggle(value)}
+              onClick={() => handleToggle(value)}
               prefix={String(value.value.name)}
             />
           )}

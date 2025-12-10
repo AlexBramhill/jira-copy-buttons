@@ -1,7 +1,7 @@
-import type { BranchCopyButtonStrategyEditorHeader } from "../../../../shared/strategies/branch-copy-button-strategies/BranchCopyButtonStrategy";
-import { getExampleBranchCopyButtonText } from "../../../../shared/transformers/branchCopyButtonTransformer";
-import { Code } from "../../common/Code";
-import ContainerHeading from "../../common/ContainerHeading";
+import type { BranchCopyButtonStrategyEditorHeader } from "../../../../../shared/strategies/branch-copy-button-strategies/BranchCopyButtonStrategy";
+import { getExampleBranchCopyButtonText } from "../../../../../shared/transformers/branchCopyButtonTransformer";
+import { Code } from "../../../common/Code";
+import ContainerHeading from "../../../common/ContainerHeading";
 
 interface BranchCopyButtonHeaderProps {
   config: BranchCopyButtonStrategyEditorHeader;

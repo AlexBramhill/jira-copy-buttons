@@ -5,7 +5,7 @@ import type { Affix } from "../Affixes";
 interface ToggleButtonProps {
   id?: string;
   checked: boolean;
-  onChange: () => void;
+  onClick: () => void;
   prefix?: Affix;
   suffix?: Affix;
   class?: string;
@@ -14,7 +14,7 @@ interface ToggleButtonProps {
 export const ToggleButton = (props: ToggleButtonProps) => {
   return (
     <Button
-      onClick={props.onChange}
+      onClick={props.onClick}
       variant="secondary"
       class={`flex items-center justify-between ${props.class || ""}`}
     >

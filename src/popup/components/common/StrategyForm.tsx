@@ -1,7 +1,7 @@
 import { For } from "solid-js";
-import type { StrategyStorageItem } from "./StrategyStorageItem";
-import type { StrategyConfig } from "./StrategyConfig";
 import StrategyField from "./fields/StrategyField";
+import type { StrategyStorageItem } from "./StrategyAccordion";
+import type { StrategyConfig } from "../feature/strategy-editors/StrategyConfig";
 
 interface StrategyFormProps<T extends StrategyStorageItem> {
   value: T;
