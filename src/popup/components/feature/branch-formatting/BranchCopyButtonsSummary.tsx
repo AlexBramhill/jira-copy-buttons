@@ -12,17 +12,15 @@ export const BranchCopyButtonsSummary = () => {
     }); // TODO: make so default value not required?
 
   return (
-    <>
-      <ValuesTable
-        createValuesWithIdArrayStore={createValuesStore}
-        renderRow={(valueWithId, onUpdate) => (
-          <BranchCopyButtonAccordion
-            valueWithId={valueWithId}
-            onUpdate={async (newValue) => onUpdate(newValue)}
-          />
-        )}
-      />
-    </>
+    <ValuesTable
+      createValuesWithIdArrayStore={createValuesStore}
+      renderRow={(valueWithId, onUpdate) => (
+        <BranchCopyButtonAccordion
+          valueWithId={valueWithId}
+          onUpdate={async (newValue) => onUpdate(newValue)}
+        />
+      )}
+    />
   );
 };
 
