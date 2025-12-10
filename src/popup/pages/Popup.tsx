@@ -3,8 +3,8 @@ import { MainNavbar } from "../components/common/MainNavbar.tsx";
 import { MainFooter } from "../components/common/MainFooter.tsx";
 import ContainerHeading from "../components/common/ContainerHeading.tsx";
 import WhitelistManager from "../components/feature/whitelist-management/WhitelistManager.tsx";
-import BranchCopyButtonsSummary from "../components/feature/branch-formatting/BranchCopyButtonsSummary.tsx";
-import TicketSelectorStrategiesSummary from "../components/feature/ticket-selector/TicketSelectorStrategiesSummary.tsx";
+import BranchCopyButtonStrategyEditor from "../components/feature/branch-copy-button-strategy-editor/BranchCopyButtonStrategyEditor.tsx";
+import TicketSelectorStrategyEditor from "../components/feature/ticket-selector-strategy-editor/TicketSelectorStrategyEditor.tsx";
 
 export const Popup = () => {
   return (
@@ -19,13 +19,13 @@ export const Popup = () => {
       </div>
       <div>
         <ContainerHeading level={2}>Buttons:</ContainerHeading>
-        <BranchCopyButtonsSummary />
+        <BranchCopyButtonStrategyEditor />
       </div>
       <div>
         <ContainerHeading level={2}>
           Ticket Selector Strategies:
         </ContainerHeading>
-        <TicketSelectorStrategiesSummary />
+        <TicketSelectorStrategyEditor />
       </div>
       <MainFooter />
     </MainContainer>

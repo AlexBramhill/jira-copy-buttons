@@ -2,11 +2,11 @@
 import { createCopyButton } from "../../content/components/button/copyButton";
 import { createElementName } from "../../content/helpers/elementHelper";
 import { logger } from "../logger";
-import type { BranchCopyButtonStrategy } from "../strategies/branch-copy-button-strategies/BranchCopyButtonStrategy";
+import type { BranchCopyButtonStrategyEditorHeader } from "../strategies/branch-copy-button-strategies/BranchCopyButtonStrategy";
 import { toBranchCopyButtonText } from "../transformers/branchCopyButtonTransformer";
 
 export const upsertCopyButtonOnDom = (
-  branchCopyButtonStrategy: BranchCopyButtonStrategy,
+  branchCopyButtonStrategy: BranchCopyButtonStrategyEditorHeader,
   prefixText: string,
   titleText: string,
   domElementToAppend: HTMLElement | null

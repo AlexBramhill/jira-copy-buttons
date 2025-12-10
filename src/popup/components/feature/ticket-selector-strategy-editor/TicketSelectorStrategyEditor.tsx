@@ -4,7 +4,7 @@ import { repository } from "../../../../shared/repository/chromeStorageSync";
 import GenericStrategyAccordion from "../strategy-configuration/GenericStrategyAccordion";
 import { ticketSelectorStrategyConfig } from "./ticketSelectorStrategyConfig";
 
-export const TicketSelectorStrategiesSummary = () => {
+export const TicketSelectorStrategyEditor = () => {
   const createValuesStore = () =>
     createValueWithIdArrayStore({
       repository: repository.ticketSelectorStrategies,
@@ -26,4 +26,4 @@ export const TicketSelectorStrategiesSummary = () => {
   );
 };
 
-export default TicketSelectorStrategiesSummary;
+export default TicketSelectorStrategyEditor;

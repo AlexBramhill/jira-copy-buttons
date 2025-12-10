@@ -4,7 +4,7 @@ import { repository } from "../../../../shared/repository/chromeStorageSync";
 import GenericStrategyAccordion from "../strategy-configuration/GenericStrategyAccordion";
 import { branchCopyButtonStrategyConfig } from "./branchCopyButtonStrategyConfig";
 
-export const BranchCopyButtonsSummary = () => {
+export const BranchCopyButtonStrategyEditor = () => {
   const createValuesStore = () =>
     createValueWithIdArrayStore({
       repository: repository.branchCopyButtonStrategies,
@@ -26,4 +26,4 @@ export const BranchCopyButtonsSummary = () => {
   );
 };
 
-export default BranchCopyButtonsSummary;
+export default BranchCopyButtonStrategyEditor;
