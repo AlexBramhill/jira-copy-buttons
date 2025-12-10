@@ -12,10 +12,6 @@ export const DevTools = () => {
         title="Container processor strategies"
         repository={repository.containerProcessorStrategies}
       />
-      <StrategyToggles
-        title="Ticket selector strategies"
-        repository={repository.ticketSelectorStrategies}
-      />
       <MainFooter />
     </MainContainer>
   );
