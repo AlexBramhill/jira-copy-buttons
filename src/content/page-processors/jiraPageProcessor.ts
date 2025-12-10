@@ -1,8 +1,8 @@
 import { logger } from "../../shared/logger";
 import { addCssRootClass } from "../../shared/page-interactors/cssInjector";
-import { repository } from "../../shared/repository/chromeStorageSync";
 import type { TicketSelectorStrategy } from "../../shared/strategies/ticket-selector-strategies/TicketSelectorStrategy";
 import { selectAll } from "../../shared/page-interactors/selector";
+import { createDefaultContainerProcessorStrategies } from "../../shared/strategies/container-processor-strategies/defaultContainerProcessorStrategiesFactory";
 
 export const addProcessJiraPageEventListener = (
   ticketSelectorStrategies: TicketSelectorStrategy[]
@@ -20,22 +20,20 @@ export const addProcessJiraPageEventListener = (
 };
 
 const processPage = (ticketSelectorStrategies: TicketSelectorStrategy[]) => {
-  ticketSelectorStrategies.forEach(async (ticketSelectorStrategy) => {
+  ticketSelectorStrategies.forEach((ticketSelectorStrategy) => {
     const containers = selectAll(ticketSelectorStrategy.containerSelector);
 
-    const enabledContainerProcessorStrategies = (
-      await repository.containerProcessorStrategies.get()
-    ).filter((strategy) => strategy.isEnabled);
+    // TODO revert container processor strategies to only be a boolean toggle.
+    const containerProcessorStrategies =
+      createDefaultContainerProcessorStrategies();
 
     containers.forEach((container) => {
-      enabledContainerProcessorStrategies.forEach(
-        (containerProcessorStrategy) => {
-          containerProcessorStrategy.process({
-            container,
-            ticketSelectorStrategy,
-          });
-        }
-      );
+      containerProcessorStrategies.forEach((containerProcessorStrategy) => {
+        containerProcessorStrategy.process({
+          container,
+          ticketSelectorStrategy,
+        });
+      });
     });
   });
 };
