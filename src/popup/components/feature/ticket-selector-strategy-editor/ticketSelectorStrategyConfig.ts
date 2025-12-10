@@ -1,4 +1,4 @@
-import type { StrategyConfig } from "../strategy-configuration/types";
+import type { StrategyConfig } from "../../common/strategy-editors/types";
 import type { TicketSelectorStrategyStorageDataItem } from "../../../../shared/repository/ticketSelectorStrategyStorageData";
 
 export const ticketSelectorStrategyConfig: StrategyConfig<TicketSelectorStrategyStorageDataItem> =

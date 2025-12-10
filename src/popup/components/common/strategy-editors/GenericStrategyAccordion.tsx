@@ -1,8 +1,8 @@
-import Accordion from "../../common/Accordion";
+import Accordion from "../Accordion";
 import type { ValueWithId } from "../../../stores/IValueWithId";
 import type { StrategyStorageItem, StrategyConfig } from "./types";
 import GenericStrategyCard from "./GenericStrategyCard";
-import ContainerHeading from "../../common/ContainerHeading";
+import ContainerHeading from "../ContainerHeading";
 
 interface GenericStrategyAccordionProps<T extends StrategyStorageItem> {
   valueWithId: ValueWithId<T>;

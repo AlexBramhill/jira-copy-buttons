@@ -1,9 +1,9 @@
 import type { StrategyStorageItem, FieldDefinition } from "./types";
-import TextField from "../../common/fields/TextField";
-import SelectField from "../../common/fields/SelectField";
-import { ToggleButtonField } from "../../common/fields/ToggleField";
-import CaseTransformField from "../../common/fields/CaseTransformField";
-import ElementSelectorField from "../../common/fields/ElementSelectorField";
+import TextField from "../fields/TextField";
+import SelectField from "../fields/SelectField";
+import { ToggleButtonField } from "../fields/ToggleField";
+import CaseTransformField from "../fields/CaseTransformField";
+import ElementSelectorField from "../fields/ElementSelectorField";
 
 interface StrategyFieldProps<T extends StrategyStorageItem> {
   field: FieldDefinition<T>;
