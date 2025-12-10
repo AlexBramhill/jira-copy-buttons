@@ -13,24 +13,24 @@ A Chrome extension that adds buttons to Jira to easily copy Jira ticket identifi
 
 ![alt text](readme-assets/popup.png)
 
-- **Page Whitelisting**
+### Page Whitelisting
 
 ![alt text](readme-assets/whitelisting.png)
 
-- **Multiple button support**
+### Multiple button support
 
 ![alt text](readme-assets/multipleButtonSupport.png)
 
-- **Highly customisable button configuration**
+### Highly customisable button configuration
 
 ![alt text](readme-assets/buttonCustomisation.png)
 
-- **Highly customisable ticket selector strategies**
+### Highly customisable ticket selector strategies
 
 ![alt text](readme-assets/ticketSelector1of2.png)
 ![alt text](readme-assets/ticketSelector2of2.png)
 
-- **Powerful developer mode**
+### Powerful developer mode
 
 ![alt text](readme-assets/devTools.png)
 
