@@ -1,15 +1,18 @@
 import { For } from "solid-js";
-import type { StrategyStorageItem, StrategyConfig } from "./types";
-import StrategyField from "./StrategyField";
+import type {
+  StrategyStorageItem,
+  StrategyConfig,
+} from "./strategy-editors/types";
+import StrategyField from "./fields/StrategyField";
 
-interface GenericStrategyCardProps<T extends StrategyStorageItem> {
+interface StrategyFormProps<T extends StrategyStorageItem> {
   value: T;
   config: StrategyConfig<T>;
   updateValue: (value: T) => Promise<void>;
 }
 
-export const GenericStrategyCard = <T extends StrategyStorageItem>(
-  props: GenericStrategyCardProps<T>
+export const StrategyForm = <T extends StrategyStorageItem>(
+  props: StrategyFormProps<T>
 ) => {
   return (
     <div class="space-y-4">
@@ -26,4 +29,4 @@ export const GenericStrategyCard = <T extends StrategyStorageItem>(
   );
 };
 
-export default GenericStrategyCard;
+export default StrategyForm;

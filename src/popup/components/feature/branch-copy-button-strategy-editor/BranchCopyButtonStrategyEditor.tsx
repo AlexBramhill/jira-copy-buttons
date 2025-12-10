@@ -1,7 +1,7 @@
 import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
 import ValuesTable from "../../common/ValueEditingTable";
 import { repository } from "../../../../shared/repository/chromeStorageSync";
-import GenericStrategyAccordion from "../../common/strategy-editors/GenericStrategyAccordion";
+import StrategyAccordion from "../../common/StrategyAccordion";
 import { branchCopyButtonStrategyConfig } from "./branchCopyButtonStrategyConfig";
 
 export const BranchCopyButtonStrategyEditor = () => {
@@ -16,7 +16,7 @@ export const BranchCopyButtonStrategyEditor = () => {
     <ValuesTable
       createValuesWithIdArrayStore={createValuesStore}
       renderRow={(valueWithId, onUpdate) => (
-        <GenericStrategyAccordion
+        <StrategyAccordion
           valueWithId={valueWithId}
           config={branchCopyButtonStrategyConfig}
           onUpdate={async (newValue) => onUpdate(newValue)}

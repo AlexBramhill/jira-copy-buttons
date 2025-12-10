@@ -1,7 +1,7 @@
 import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArrayStore";
 import ValuesTable from "../../common/ValueEditingTable";
 import { repository } from "../../../../shared/repository/chromeStorageSync";
-import GenericStrategyAccordion from "../../common/strategy-editors/GenericStrategyAccordion";
+import StrategyAccordion from "../../common/StrategyAccordion";
 import { ticketSelectorStrategyConfig } from "./ticketSelectorStrategyConfig";
 
 export const TicketSelectorStrategyEditor = () => {
@@ -16,7 +16,7 @@ export const TicketSelectorStrategyEditor = () => {
     <ValuesTable
       createValuesWithIdArrayStore={createValuesStore}
       renderRow={(valueWithId, onUpdate) => (
-        <GenericStrategyAccordion
+        <StrategyAccordion
           valueWithId={valueWithId}
           config={ticketSelectorStrategyConfig}
           onUpdate={async (newValue) => onUpdate(newValue)}

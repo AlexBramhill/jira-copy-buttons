@@ -1,8 +1,11 @@
-import Accordion from "../Accordion";
-import type { ValueWithId } from "../../../stores/IValueWithId";
-import type { StrategyStorageItem, StrategyConfig } from "./types";
-import GenericStrategyCard from "./GenericStrategyCard";
-import ContainerHeading from "../ContainerHeading";
+import Accordion from "./Accordion";
+import type { ValueWithId } from "../../stores/IValueWithId";
+import type {
+  StrategyStorageItem,
+  StrategyConfig,
+} from "./strategy-editors/types";
+import StrategyForm from "./StrategyForm";
+import ContainerHeading from "./ContainerHeading";
 
 interface GenericStrategyAccordionProps<T extends StrategyStorageItem> {
   valueWithId: ValueWithId<T>;
@@ -10,7 +13,7 @@ interface GenericStrategyAccordionProps<T extends StrategyStorageItem> {
   onUpdate: (value: T) => Promise<void>;
 }
 
-export const GenericStrategyAccordion = <T extends StrategyStorageItem>(
+export const StrategyAccordion = <T extends StrategyStorageItem>(
   props: GenericStrategyAccordionProps<T>
 ) => {
   const handleUpdate = async (newValue: T) => {
@@ -38,7 +41,7 @@ export const GenericStrategyAccordion = <T extends StrategyStorageItem>(
           : defaultHeader()
       }
     >
-      <GenericStrategyCard
+      <StrategyForm
         value={props.valueWithId.value}
         config={props.config}
         updateValue={handleUpdate}
@@ -47,4 +50,4 @@ export const GenericStrategyAccordion = <T extends StrategyStorageItem>(
   );
 };
 
-export default GenericStrategyAccordion;
+export default StrategyAccordion;
