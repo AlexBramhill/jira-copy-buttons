@@ -3,6 +3,8 @@ import MainFooter from "../components/common/MainFooter";
 import MainNavbar from "../components/common/MainNavbar";
 import StrategyToggles from "../components/feature/devtools/StrategyToggles";
 import { repository } from "../../shared/repository/chromeStorageSync";
+import ClearStorage from "../components/feature/devtools/ClearStorage";
+import DangerZone from "../components/feature/devtools/DangerZone";
 
 export const DevTools = () => {
   return (
@@ -12,6 +14,9 @@ export const DevTools = () => {
         title="Container processor strategies"
         repository={repository.containerProcessorStrategies}
       />
+      <DangerZone>
+        <ClearStorage />
+      </DangerZone>
       <MainFooter />
     </MainContainer>
   );
