@@ -3,8 +3,6 @@ import TextField from "../../common/fields/TextField";
 import SelectField from "../../common/fields/SelectField";
 import { ToggleButtonField } from "../../common/fields/ToggleField";
 import CaseTransformField from "../../common/fields/CaseTransformField";
-import type { Case } from "../../../../shared/transformers/Case";
-import type { ElementSelector } from "../../../../shared/strategies/ticket-selector-strategies/ElementSelector";
 import ElementSelectorField from "../../common/fields/ElementSelectorField";
 
 interface StrategyFieldProps<T extends StrategyStorageItem> {
@@ -16,18 +14,22 @@ interface StrategyFieldProps<T extends StrategyStorageItem> {
 export const StrategyField = <T extends StrategyStorageItem>(
   props: StrategyFieldProps<T>
 ) => {
-  const handleChange = async (newValue: any) => {
-    const updatedItem = props.field.setValue(props.value, newValue);
-    await props.onUpdate(updatedItem);
+  const createChangeHandler = <V,>(field: {
+    setValue: (item: T, value: V) => T;
+  }) => {
+    return async (value: V) => {
+      const updatedItem = field.setValue(props.value, value);
+      await props.onUpdate(updatedItem);
+    };
   };
 
   switch (props.field.type) {
-    case "text": // update to use consts
+    case "text":
       return (
         <TextField
           id={props.field.id}
-          value={props.field.getValue(props.value) as string}
-          onInput={handleChange}
+          value={props.field.getValue(props.value)}
+          onInput={createChangeHandler(props.field)}
           placeholder={props.field.placeholder}
           prefix={props.field.prefix}
           class={props.field.class}
@@ -38,9 +40,9 @@ export const StrategyField = <T extends StrategyStorageItem>(
       return (
         <SelectField
           id={props.field.id}
-          value={props.field.getValue(props.value) as string}
-          onChange={handleChange}
-          options={props.field.getOptions?.() || []}
+          value={props.field.getValue(props.value)}
+          onChange={createChangeHandler(props.field)}
+          options={props.field.getOptions()}
           prefix={props.field.prefix}
           label={props.field.label}
           class={props.field.class}
@@ -51,8 +53,8 @@ export const StrategyField = <T extends StrategyStorageItem>(
       return (
         <ToggleButtonField
           id={props.field.id}
-          checked={props.field.getValue(props.value) as boolean}
-          onChange={handleChange}
+          checked={props.field.getValue(props.value)}
+          onChange={createChangeHandler(props.field)}
           prefix={props.field.prefix}
         />
       );
@@ -62,8 +64,8 @@ export const StrategyField = <T extends StrategyStorageItem>(
         <ElementSelectorField
           id={props.field.id}
           label={props.field.label || ""}
-          value={props.field.getValue(props.value) as ElementSelector}
-          onChange={handleChange}
+          value={props.field.getValue(props.value)}
+          onChange={createChangeHandler(props.field)}
         />
       );
 
@@ -71,8 +73,8 @@ export const StrategyField = <T extends StrategyStorageItem>(
       return (
         <CaseTransformField
           id={props.field.id}
-          value={props.field.getValue(props.value) as Case}
-          onChange={handleChange}
+          value={props.field.getValue(props.value)}
+          onChange={createChangeHandler(props.field)}
           prefix={props.field.prefix}
           label={props.field.label}
           class={props.field.class}

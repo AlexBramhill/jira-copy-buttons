@@ -3,6 +3,7 @@ import { upsertCopyButtonOnDom } from "../../../page-interactors/buttonInjector"
 import { getTextFromElementExcludingInjectedElements } from "../../../page-interactors/elementSelectors";
 import { select } from "../../../page-interactors/selector";
 import { repository } from "../../../repository/chromeStorageSync";
+import type { BranchCopyButtonStrategyStorageDataItem } from "../../../repository/branchCopyButtonStrategyStorageData";
 import type { TicketSelectorStrategy } from "../../ticket-selector-strategies/TicketSelectorStrategy";
 import type { ContainerProcessorStrategy } from "../ContainerProcessorStrategy";
 
@@ -20,7 +21,10 @@ export const createInjectCopyTextButtonStrategy =
 
       const branchCopyButtonStrategies = (
         await repository.branchCopyButtonStrategies.get()
-      ).filter((strategy: any) => strategy.isEnabled);
+      ).filter(
+        (strategy: BranchCopyButtonStrategyStorageDataItem) =>
+          strategy.isEnabled
+      );
 
       logger.debug(
         { branchCopyButtonStrategies },
