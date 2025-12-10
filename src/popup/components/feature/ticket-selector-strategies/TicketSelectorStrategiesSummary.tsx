@@ -2,15 +2,15 @@ import { createValueWithIdArrayStore } from "../../../stores/valueWithIdArraySto
 import ValuesTable from "../../common/ValueEditingTable";
 import { repository } from "../../../../shared/repository/chromeStorageSync";
 import GenericStrategyAccordion from "../strategy-configuration/GenericStrategyAccordion";
-import { branchCopyButtonStrategyConfig } from "./branchCopyButtonStrategyConfig";
+import { ticketSelectorStrategyConfig } from "./ticketSelectorStrategyConfig";
 
-export const BranchCopyButtonsSummary = () => {
+export const TicketSelectorStrategiesSummary = () => {
   const createValuesStore = () =>
     createValueWithIdArrayStore({
-      repository: repository.branchCopyButtonStrategies,
+      repository: repository.ticketSelectorStrategies,
       createDefaultValue: () =>
-        repository.branchCopyButtonStrategies.createDefaultValue()[0],
-    }); // TODO: make so default value not required?
+        repository.ticketSelectorStrategies.createDefaultValue()[0],
+    });
 
   return (
     <ValuesTable
@@ -18,7 +18,7 @@ export const BranchCopyButtonsSummary = () => {
       renderRow={(valueWithId, onUpdate) => (
         <GenericStrategyAccordion
           valueWithId={valueWithId}
-          config={branchCopyButtonStrategyConfig}
+          config={ticketSelectorStrategyConfig}
           onUpdate={async (newValue) => onUpdate(newValue)}
         />
       )}
@@ -26,4 +26,4 @@ export const BranchCopyButtonsSummary = () => {
   );
 };
 
-export default BranchCopyButtonsSummary;
+export default TicketSelectorStrategiesSummary;
