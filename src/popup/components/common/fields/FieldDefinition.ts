@@ -1,44 +1,57 @@
 import type { Case } from "../../../../shared/transformers/Case";
 import type { ElementSelector } from "../../../../shared/strategies/ticket-selector-strategies/ElementSelector";
+import type { Affix } from "../Affixes";
 
-type BaseFieldDefinition = {
+type FieldDefinitionWithValue<T, V, ExtraProps = {}> = {
   id: string;
   label?: string;
-  prefix?: string;
+  prefix?: Affix;
   class?: string;
-};
+  getValue: (item: T) => V;
+  setValue: (item: T, value: V) => T;
+} & ExtraProps;
 
-type TextFieldDefinition<T> = BaseFieldDefinition & {
-  type: "text";
-  placeholder?: string;
-  getValue: (item: T) => string;
-  setValue: (item: T, value: string) => T;
-};
+type TextFieldDefinition<T> = FieldDefinitionWithValue<
+  T,
+  string,
+  {
+    type: "text";
+    placeholder?: string;
+  }
+>;
 
-type SelectFieldDefinition<T> = BaseFieldDefinition & {
-  type: "select";
-  getOptions: () => { value: string; label: string }[];
-  getValue: (item: T) => string;
-  setValue: (item: T, value: string) => T;
-};
+type SelectFieldDefinition<T> = FieldDefinitionWithValue<
+  T,
+  string,
+  {
+    type: "select";
+    getOptions: () => { value: string; label: string }[];
+  }
+>;
 
-type ToggleFieldDefinition<T> = BaseFieldDefinition & {
-  type: "toggle";
-  getValue: (item: T) => boolean;
-  setValue: (item: T, value: boolean) => T;
-};
+type ToggleFieldDefinition<T> = FieldDefinitionWithValue<
+  T,
+  boolean,
+  {
+    type: "toggle";
+  }
+>;
 
-type ElementSelectorFieldDefinition<T> = BaseFieldDefinition & {
-  type: "elementSelector";
-  getValue: (item: T) => ElementSelector;
-  setValue: (item: T, value: ElementSelector) => T;
-};
+type ElementSelectorFieldDefinition<T> = FieldDefinitionWithValue<
+  T,
+  ElementSelector,
+  {
+    type: "elementSelector";
+  }
+>;
 
-type CaseFieldDefinition<T> = BaseFieldDefinition & {
-  type: "case";
-  getValue: (item: T) => Case;
-  setValue: (item: T, value: Case) => T;
-};
+type CaseFieldDefinition<T> = FieldDefinitionWithValue<
+  T,
+  Case,
+  {
+    type: "case";
+  }
+>;
 
 export type FieldDefinition<T> =
   | TextFieldDefinition<T>
