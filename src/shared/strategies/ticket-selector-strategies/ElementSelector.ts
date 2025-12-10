@@ -1,7 +1,7 @@
 export const SelectorType = {
-  ByTestId: "test-id",
-  ByVcAttribute: "vc-attribute",
-  ByCssSelector: "css-selector",
+  TestId: "test-id",
+  VcAttribute: "vc-attribute",
+  CssSelector: "css-selector",
 } as const;
 
 export type SelectorType = (typeof SelectorType)[keyof typeof SelectorType];
