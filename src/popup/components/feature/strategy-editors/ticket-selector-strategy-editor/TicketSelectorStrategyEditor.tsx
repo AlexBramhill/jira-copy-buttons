@@ -8,8 +8,6 @@ export const TicketSelectorStrategyEditor = () => {
   const createValuesStore = () =>
     createValueWithIdArrayStore({
       repository: repository.ticketSelectorStrategies,
-      createDefaultValue: () =>
-        repository.ticketSelectorStrategies.createDefaultValue()[0],
     });
 
   return (

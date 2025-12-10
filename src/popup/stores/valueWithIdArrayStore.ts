@@ -11,7 +11,7 @@ import type { StorageRepository } from "../../shared/repository/chromeStorageSyn
 
 export interface CreateValueWithIdArrayStoreConfig<T> {
   repository: StorageRepository<T[]>;
-  createDefaultValue: () => T;
+  createDefaultValue?: () => T;
   allowEmptyStore?: boolean;
 }
 
@@ -27,7 +27,7 @@ export interface CreateValueWithIdArrayStoreResponse<T> {
 // TODO separate id layer
 export const createValueWithIdArrayStore = <T>({
   repository,
-  createDefaultValue,
+  createDefaultValue = () => repository.createDefaultValue()[0],
   allowEmptyStore = false,
 }: CreateValueWithIdArrayStoreConfig<T>) => {
   const [values, setValues] = createStore<ValueWithId<T>[]>([

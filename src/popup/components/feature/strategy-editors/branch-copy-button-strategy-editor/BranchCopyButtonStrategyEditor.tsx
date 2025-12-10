@@ -8,9 +8,7 @@ export const BranchCopyButtonStrategyEditor = () => {
   const createValuesStore = () =>
     createValueWithIdArrayStore({
       repository: repository.branchCopyButtonStrategies,
-      createDefaultValue: () =>
-        repository.branchCopyButtonStrategies.createDefaultValue()[0],
-    }); // TODO: make so default value not required?
+    });
 
   return (
     <ValuesTable

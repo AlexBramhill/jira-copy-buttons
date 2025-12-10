@@ -9,8 +9,6 @@ export const WhitelistManager = () => {
       createValuesWithIdArrayStore={() =>
         createValueWithIdArrayStore({
           repository: repository.hostnames,
-          createDefaultValue: () =>
-            repository.hostnames.createDefaultValue()[0],
         })
       }
       renderRow={(valueWithId, onInput) => (
