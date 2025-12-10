@@ -16,8 +16,6 @@ interface StrategyFieldProps<T extends StrategyStorageItem> {
 export const StrategyField = <T extends StrategyStorageItem>(
   props: StrategyFieldProps<T>
 ) => {
-  const currentValue = props.field.getValue(props.value);
-
   const handleChange = async (newValue: any) => {
     const updatedItem = props.field.setValue(props.value, newValue);
     await props.onUpdate(updatedItem);
@@ -28,7 +26,7 @@ export const StrategyField = <T extends StrategyStorageItem>(
       return (
         <TextField
           id={props.field.id}
-          value={currentValue as string}
+          value={props.field.getValue(props.value) as string}
           onInput={handleChange}
           placeholder={props.field.placeholder}
           prefix={props.field.prefix}
@@ -40,7 +38,7 @@ export const StrategyField = <T extends StrategyStorageItem>(
       return (
         <SelectField
           id={props.field.id}
-          value={currentValue as string}
+          value={props.field.getValue(props.value) as string}
           onChange={handleChange}
           options={props.field.getOptions?.() || []}
           prefix={props.field.prefix}
@@ -53,7 +51,7 @@ export const StrategyField = <T extends StrategyStorageItem>(
       return (
         <ToggleButtonField
           id={props.field.id}
-          checked={currentValue as boolean}
+          checked={props.field.getValue(props.value) as boolean}
           onChange={handleChange}
           prefix={props.field.prefix}
         />
@@ -64,7 +62,7 @@ export const StrategyField = <T extends StrategyStorageItem>(
         <ElementSelectorField
           id={props.field.id}
           label={props.field.label || ""}
-          value={currentValue as ElementSelector}
+          value={props.field.getValue(props.value) as ElementSelector}
           onChange={handleChange}
         />
       );
@@ -73,7 +71,7 @@ export const StrategyField = <T extends StrategyStorageItem>(
       return (
         <CaseTransformField
           id={props.field.id}
-          value={currentValue as Case}
+          value={props.field.getValue(props.value) as Case}
           onChange={handleChange}
           prefix={props.field.prefix}
           label={props.field.label}
