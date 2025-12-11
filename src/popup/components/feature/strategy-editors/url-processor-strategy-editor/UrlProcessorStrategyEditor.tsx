@@ -13,11 +13,12 @@ export const UrlProcessorStrategyEditor = () => {
   return (
     <ValuesTable
       createValuesWithIdArrayStore={createValuesStore}
-      renderRow={(valueWithId, onUpdate) => (
+      renderRow={(valueWithId, onUpdate, onDelete) => (
         <StrategyAccordion
           valueWithId={valueWithId}
           config={UrlProcessorStrategyConfig}
           onUpdate={async (newValue) => onUpdate(newValue)}
+          onDelete={async () => onDelete()}
         />
       )}
     />

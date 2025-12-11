@@ -13,11 +13,12 @@ export const BranchCopyButtonStrategyEditor = () => {
   return (
     <ValuesTable
       createValuesWithIdArrayStore={createValuesStore}
-      renderRow={(valueWithId, onUpdate) => (
+      renderRow={(valueWithId, onUpdate, onDelete) => (
         <StrategyAccordion
           valueWithId={valueWithId}
           config={branchCopyButtonStrategyConfig}
           onUpdate={async (newValue) => onUpdate(newValue)}
+          onDelete={async () => onDelete()}
         />
       )}
     />

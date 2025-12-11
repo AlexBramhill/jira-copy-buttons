@@ -13,11 +13,12 @@ export const TicketSelectorStrategyEditor = () => {
   return (
     <ValuesTable
       createValuesWithIdArrayStore={createValuesStore}
-      renderRow={(valueWithId, onUpdate) => (
+      renderRow={(valueWithId, onUpdate, onDelete) => (
         <StrategyAccordion
           valueWithId={valueWithId}
           config={ticketSelectorStrategyConfig}
           onUpdate={async (newValue) => onUpdate(newValue)}
+          onDelete={async () => onDelete()}
         />
       )}
     />

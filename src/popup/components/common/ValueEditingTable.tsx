@@ -1,7 +1,6 @@
 import type { UUID } from "crypto";
 import { type CreateValueWithIdArrayStoreResponse } from "../../stores/valueWithIdArrayStore";
 import type { ValueWithId } from "../../stores/IValueWithId";
-import { DeleteButton } from "./buttons/DeleteButton";
 import { For, type JSX } from "solid-js";
 import Button from "./buttons/Button";
 
@@ -9,7 +8,8 @@ export interface ValuesTableProps<T> {
   createValuesWithIdArrayStore: () => CreateValueWithIdArrayStoreResponse<T>;
   renderRow: (
     valueWithId: ValueWithId<T>,
-    onInput: (newValue: T) => void
+    onInput: (newValue: T) => void,
+    onDelete: () => void
   ) => JSX.Element;
   addButtonText?: string;
 }
@@ -40,15 +40,12 @@ export const ValuesTable = <T,>({
         <tbody class="gap-2 flex flex-col p-2">
           <For each={values}>
             {(valueWithId: ValueWithId<T>) => (
-              <tr class="flex items-start justify-between w-full p-2 pr-3 gap-2 dark:bg-neutral-800/50 rounded-lg">
-                <td>
-                  <DeleteButton
-                    onClick={() => handleOnRemove(valueWithId.id)}
-                  />
-                </td>
+              <tr class="flex w-full p-y-2">
                 <td class="flex-1">
-                  {renderRow(valueWithId, (newValue: T) =>
-                    handleInput(valueWithId.id, newValue)
+                  {renderRow(
+                    valueWithId,
+                    (newValue: T) => handleInput(valueWithId.id, newValue),
+                    () => handleOnRemove(valueWithId.id)
                   )}
                 </td>
               </tr>
