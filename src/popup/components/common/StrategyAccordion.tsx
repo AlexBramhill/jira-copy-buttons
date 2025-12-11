@@ -19,11 +19,11 @@ export const StrategyAccordion = <T,>(
   };
 
   const header = (
-    <div class="flex items-center justify-between w-full gap-2">
+    <div class="flex justify-between w-full gap-2">
       <DeleteButton onClick={props.onDelete} />
-      <span class="flex-1">
+      <div class="min-h-4 flex">
         {props.config.renderHeader(props.valueWithId.value)}
-      </span>
+      </div>
     </div>
   );
 

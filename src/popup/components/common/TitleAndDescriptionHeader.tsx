@@ -5,15 +5,18 @@ type StrategyDefaultHeaderProps = {
   description?: string;
 };
 
-export const TitleAndDescriptionHeader = (props: StrategyDefaultHeaderProps) => (
-  <div class="flex-1">
+export const TitleAndDescriptionHeader = (
+  props: StrategyDefaultHeaderProps
+) => (
+  <span class="flex flex-col justify-center">
     <ContainerHeading level={3} class="text-sm">
       {props.title}
     </ContainerHeading>
+
     {props.description && (
-      <p class="text-xs text-neutral-400 mt-1">{props.description}</p>
+      <p class="text-xs text-neutral-400">{props.description}</p>
     )}
-  </div>
+  </span>
 );
 
 export default TitleAndDescriptionHeader;

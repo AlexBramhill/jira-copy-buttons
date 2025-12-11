@@ -26,7 +26,7 @@ export const Accordion = (props: AccordionProps) => {
         <span class="ml-2 text-neutral-400">{open() ? "▲" : "▼"}</span>
       </Button>
       <Show when={open()}>
-        <div class="pt-4 p-2 bg-neutral-900 border border-neutral-700 border-t-0 rounded-b-md">
+        <div class="pt-2 p-2 bg-neutral-900 border border-neutral-700 border-t-0 rounded-b-md">
           {props.children}
         </div>
       </Show>

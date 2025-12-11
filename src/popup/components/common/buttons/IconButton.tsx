@@ -24,7 +24,7 @@ export const IconButton = ({
   class: className,
 }: IconButtonProps) => {
   const baseClasses =
-    "w-8 h-8 flex items-center justify-center text-xs rounded-md border transition";
+    "w-8 h-8 min-w-8 min-h-8 flex items-center justify-center text-xs rounded-md border transition";
 
   const variantClasses = {
     [IconButtonVariants.PRIMARY]:
