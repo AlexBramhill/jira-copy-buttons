@@ -1,46 +1,23 @@
 import Accordion from "./Accordion";
 import type { ValueWithId } from "../../stores/IValueWithId";
 import StrategyForm from "./StrategyForm";
-import ContainerHeading from "./ContainerHeading";
-import type { StrategyInfo } from "../../../shared/strategies/StrategyInfo";
 import type { StrategyConfig } from "../feature/strategy-editors/StrategyConfig";
 
-export type StrategyStorageItem = StrategyInfo;
-
-interface GenericStrategyAccordionProps<T extends StrategyStorageItem> {
+interface GenericStrategyAccordionProps<T> {
   valueWithId: ValueWithId<T>;
   config: StrategyConfig<T>;
   onUpdate: (value: T) => Promise<void>;
 }
 
-export const StrategyAccordion = <T extends StrategyStorageItem>(
+export const StrategyAccordion = <T,>(
   props: GenericStrategyAccordionProps<T>
 ) => {
   const handleUpdate = async (newValue: T) => {
     await props.onUpdate(newValue);
   };
 
-  const defaultHeader = () => (
-    <div class="flex-1">
-      <ContainerHeading level={3} class="text-sm">
-        {props.valueWithId.value.name}
-      </ContainerHeading>
-      {props.valueWithId.value.description && (
-        <p class="text-xs text-neutral-400 mt-1">
-          {props.valueWithId.value.description}
-        </p>
-      )}
-    </div>
-  );
-
   return (
-    <Accordion
-      header={
-        props.config.renderHeader
-          ? props.config.renderHeader(props.valueWithId.value)
-          : defaultHeader()
-      }
-    >
+    <Accordion header={props.config.renderHeader(props.valueWithId.value)}>
       <StrategyForm
         value={props.valueWithId.value}
         config={props.config}

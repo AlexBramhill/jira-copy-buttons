@@ -1,5 +1,6 @@
 import { createBooleanToggle } from "../../signals/booleanToggleStore";
 import { type JSX, Show, type ParentProps } from "solid-js";
+import Button from "./buttons/Button";
 
 interface AccordionProps extends ParentProps {
   openByDefault?: boolean;
@@ -12,15 +13,16 @@ export const Accordion = (props: AccordionProps) => {
 
   return (
     <div class={`${props.class ?? ""}`}>
-      <button
+      <Button
         type="button"
         class="w-full flex justify-between items-center text-left text-white font-semibold"
+        variant="secondary"
         aria-expanded={open()}
         onClick={toggle}
       >
-        {props.header}
+        <span>{props.header}</span>
         <span class="ml-2 text-neutral-400">{open() ? "▲" : "▼"}</span>
-      </button>
+      </Button>
       <Show when={open()}>
         <div class="mt-6 pt-4 border-t border-neutral-700">
           {props.children}

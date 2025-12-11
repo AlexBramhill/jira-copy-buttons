@@ -1,17 +1,14 @@
 import { For } from "solid-js";
 import StrategyField from "./fields/StrategyField";
-import type { StrategyStorageItem } from "./StrategyAccordion";
 import type { StrategyConfig } from "../feature/strategy-editors/StrategyConfig";
 
-interface StrategyFormProps<T extends StrategyStorageItem> {
+interface StrategyFormProps<T> {
   value: T;
   config: StrategyConfig<T>;
   updateValue: (value: T) => Promise<void>;
 }
 
-export const StrategyForm = <T extends StrategyStorageItem>(
-  props: StrategyFormProps<T>
-) => {
+export const StrategyForm = <T,>(props: StrategyFormProps<T>) => {
   return (
     <div class="space-y-4">
       <For each={props.config.fields}>

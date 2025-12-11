@@ -4,17 +4,14 @@ import SelectField from "./SelectField";
 import { ToggleButtonField } from "./ToggleField";
 import CaseTransformField from "./CaseTransformField";
 import ElementSelectorField from "./ElementSelectorField";
-import type { StrategyStorageItem } from "../StrategyAccordion";
 
-interface StrategyFieldProps<T extends StrategyStorageItem> {
+interface StrategyFieldProps<T> {
   field: FieldDefinition<T>;
   value: T;
   onUpdate: (value: T) => Promise<void>;
 }
 
-export const StrategyField = <T extends StrategyStorageItem>(
-  props: StrategyFieldProps<T>
-) => {
+export const StrategyField = <T,>(props: StrategyFieldProps<T>) => {
   const createChangeHandler = <V,>(field: {
     setValue: (item: T, value: V) => T;
   }) => {

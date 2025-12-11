@@ -1,8 +1,15 @@
 import type { TicketSelectorStrategyStorageDataItem } from "../../../../../shared/repository/ticketSelectorStrategyStorageData";
+import TitleAndDescriptionHeader from "../../../common/TitleAndDescriptionHeader";
 import type { StrategyConfig } from "../StrategyConfig";
 
 export const ticketSelectorStrategyConfig: StrategyConfig<TicketSelectorStrategyStorageDataItem> =
   {
+    renderHeader: (item) => (
+      <TitleAndDescriptionHeader
+        title={item.name}
+        description={item.description}
+      />
+    ),
     fields: [
       {
         id: "strategy-name",
