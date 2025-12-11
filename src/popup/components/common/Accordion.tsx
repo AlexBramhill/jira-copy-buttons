@@ -14,7 +14,7 @@ export const Accordion = (props: AccordionProps) => {
     <div class={`${props.class ?? ""}`}>
       <button
         type="button"
-        class="w-full flex justify-between items-center pb-2 text-left text-white font-semibold"
+        class="w-full flex justify-between items-center text-left text-white font-semibold"
         aria-expanded={open()}
         onClick={toggle}
       >

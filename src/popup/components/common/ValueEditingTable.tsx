@@ -41,7 +41,7 @@ export const ValuesTable = <T,>({
           <For each={values}>
             {(valueWithId: ValueWithId<T>) => (
               <tr class="flex items-start justify-between w-full p-2 pr-3 gap-2 dark:bg-neutral-800/50 rounded-lg">
-                <td class="shrink-0 pl-1 pt-1">
+                <td>
                   <DeleteButton
                     onClick={() => handleOnRemove(valueWithId.id)}
                   />
