@@ -7,7 +7,7 @@ export const ticketSelectorStrategyConfig: StrategyConfig<TicketSelectorStrategy
       {
         id: "strategy-name",
         type: "text",
-        prefix: "Name:",
+        prefix: "Name",
         placeholder: "Strategy Name",
         getValue: (item) => item.name,
         setValue: (item, value) => ({ ...item, name: value }),
@@ -15,7 +15,7 @@ export const ticketSelectorStrategyConfig: StrategyConfig<TicketSelectorStrategy
       {
         id: "strategy-description",
         type: "text",
-        prefix: "Description:",
+        prefix: "Description",
         placeholder: "Description (optional)",
         getValue: (item) => item.description || "",
         setValue: (item, value) => ({ ...item, description: value }),

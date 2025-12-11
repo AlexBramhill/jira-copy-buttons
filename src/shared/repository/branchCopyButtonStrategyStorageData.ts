@@ -2,8 +2,8 @@ import type { BranchCopyButtonStrategyEditorHeader } from "../strategies/branch-
 import { createDefaultBranchCopyButtonStrategies } from "../strategies/branch-copy-button-strategies/defaultBranchCopyButtonStrategiesFactory";
 import type { ToggleableStorageData } from "./ToggleableStorageData";
 
-export type BranchCopyButtonStrategyStorageDataItem = ToggleableStorageData &
-  BranchCopyButtonStrategyEditorHeader;
+export type BranchCopyButtonStrategyStorageDataItem =
+  BranchCopyButtonStrategyEditorHeader & ToggleableStorageData;
 
 export type BranchCopyButtonStrategyStorageData =
   BranchCopyButtonStrategyStorageDataItem[];

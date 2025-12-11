@@ -5,15 +5,16 @@ import {
   createDefaultBranchCopyButtonStrategyStorageData,
   type BranchCopyButtonStrategyStorageData,
 } from "./branchCopyButtonStrategyStorageData";
-
-const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
-  await chrome.storage.sync.set({ [key]: value });
-};
+import { createDefaultUrlProcessorStrategyStorageData } from "./urlProcessorStrategyStorageData";
 
 export type StorageRepository<T> = {
   save: (value: T) => Promise<void>;
   get: () => Promise<T>;
   createDefaultValue: () => T;
+};
+
+const saveValue = async <T>(key: StorageKey, value: T): Promise<void> => {
+  await chrome.storage.sync.set({ [key]: value });
 };
 
 const getValueOrDefault = async <T>(
@@ -33,9 +34,10 @@ const createStorageRepository = <T>(
 });
 
 export const repository = {
-  hostnames: createStorageRepository(storageKeys.savedHostnames, () => [
-    "example.atlassian.net",
-  ]),
+  urlProcessorStrategies: createStorageRepository(
+    storageKeys.urlProcessorStrategies,
+    createDefaultUrlProcessorStrategyStorageData
+  ),
   containerProcessorStrategies: createStorageRepository(
     storageKeys.containerProcessorStrategies,
     createDefaultContainerProcessorStrategyStorageData

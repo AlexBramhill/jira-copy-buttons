@@ -2,8 +2,8 @@ import type { ContainerProcessorStrategy } from "../strategies/container-process
 import { createDefaultContainerProcessorStrategies } from "../strategies/container-processor-strategies/defaultContainerProcessorStrategiesFactory";
 import type { ToggleableStorageData } from "./ToggleableStorageData";
 
-export type ContainerProcessorStrategyStorageDataItem = ToggleableStorageData &
-  ContainerProcessorStrategy;
+export type ContainerProcessorStrategyStorageDataItem =
+  ContainerProcessorStrategy & ToggleableStorageData;
 
 export type ContainerProcessorStrategyStorageData =
   ContainerProcessorStrategyStorageDataItem[];

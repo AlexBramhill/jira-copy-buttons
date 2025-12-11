@@ -8,6 +8,7 @@ import BranchCopyButtonHeader from "./BranchCopyButtonHeader";
 
 export const branchCopyButtonStrategyConfig: StrategyConfig<BranchCopyButtonStrategyStorageDataItem> =
   {
+    renderHeader: (item) => <BranchCopyButtonHeader config={item} />,
     fields: [
       {
         id: "button-name",
@@ -48,5 +49,4 @@ export const branchCopyButtonStrategyConfig: StrategyConfig<BranchCopyButtonStra
         setValue: (item, value) => ({ ...item, isEnabled: value }),
       },
     ],
-    renderHeader: (item) => <BranchCopyButtonHeader config={item} />,
   };

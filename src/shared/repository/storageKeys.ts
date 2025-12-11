@@ -3,14 +3,14 @@ import type { TicketSelectorStrategyStorageData } from "./ticketSelectorStrategy
 import type { BranchCopyButtonStrategyEditorHeader } from "../strategies/branch-copy-button-strategies/BranchCopyButtonStrategy";
 
 interface StorageData {
-  savedHostnames: string[];
+  urlProcessorStrategies: string[];
   branchCopyButtonStrategies: BranchCopyButtonStrategyEditorHeader[];
   containerProcessorStrategies: ContainerProcessorStrategyStorageData[];
   ticketSelectorStrategies: TicketSelectorStrategyStorageData[];
 }
 
 export const storageKeys = {
-  savedHostnames: "savedHostnames",
+  urlProcessorStrategies: "urlProcessorStrategies",
   branchCopyButtonStrategies: "branchCopyButtonStrategies",
   containerProcessorStrategies: "containerProcessorStrategies",
   ticketSelectorStrategies: "ticketSelectorStrategies",
